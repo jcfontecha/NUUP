@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace NUUP.Core
 {
-    interface IEntity
-    {
-
-    }
+   interface IEntity
+   {
+      string GetTableName();
+      Task<string> SerializeAsync();
+      Task DeserializeAsync(string serializedForm);
+   }
 }
