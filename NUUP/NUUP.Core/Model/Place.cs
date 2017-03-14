@@ -1,14 +1,19 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NUUP.Core.Models
+namespace NUUP.Core.Model
 {
    public class Place
    {
       public int IdPlace { get; set; }
-      public string Label { get; set; }
+      public int Label { get; set; }
+
+      public Place()
+      {
+
+      }
    }
 }

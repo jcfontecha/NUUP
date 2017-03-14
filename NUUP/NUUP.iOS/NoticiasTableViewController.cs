@@ -1,5 +1,5 @@
 ﻿using Foundation;
-using NUUP.Core.Models;
+using NUUP.Core.Model;
 using System;
 using System.Collections.Generic;
 using UIKit;

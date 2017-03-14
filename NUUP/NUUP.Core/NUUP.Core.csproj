@@ -36,9 +36,11 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Degree.cs" />
+    <Compile Include="Model\FriendRequest.cs" />
     <Compile Include="Model\Friendship.cs" />
     <Compile Include="Model\Group.cs" />
     <Compile Include="Model\Interval.cs" />
@@ -46,7 +48,6 @@
     <Compile Include="Model\Offer.cs" />
     <Compile Include="Model\Place.cs" />
     <Compile Include="Model\Post.cs" />
-    <Compile Include="Model\UserExtensions.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Subject.cs" />

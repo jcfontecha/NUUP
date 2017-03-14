@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NUUP.Core.Models
+namespace NUUP.Core.Model
 {
    public class Session
    {
@@ -16,11 +16,16 @@ namespace NUUP.Core.Models
       public int IdInterval { get; set; }
       public int IdState { get; set; }
       public int IdPlace { get; set; }
-      public float Lat { get; set; }
-      public float Lng { get; set; }
+      public float? Lat { get; set; }
+      public float? Lng { get; set; }
       public int IdTutor { get; set; }
       public int IdStudent { get; set; }
       public string OtherLocation { get; set; }
       public DateTime EndDate { get; set; }
+
+      public Session()
+      {
+
+      }
    }
 }

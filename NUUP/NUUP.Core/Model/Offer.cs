@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NUUP.Core.Models
+namespace NUUP.Core.Model
 {
    public class Offer
    {
@@ -14,7 +14,12 @@ namespace NUUP.Core.Models
       public int IdSubject { get; set; }
       public int IdUser { get; set; }
       public int IdInterval { get; set; }
-      public DateTime Datetime { get; set; }
+      public DateTime Creation { get; set; }
       public bool Available { get; set; }
+
+      public Offer()
+      {
+
+      }
    }
 }
