@@ -85,7 +85,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BusquedaTableViewController.cs" />
+    <Compile Include="ClasesTableViewController.cs" />
     <Compile Include="ClasesViewController.cs" />
+    <Compile Include="DetalleClaseTableViewController.cs" />
     <Compile Include="GruposTableViewController.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="NoticiasTableViewController.cs" />
     <Compile Include="PerfilPropioTableViewController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="noticias-tabicon.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetailViewController.cs" />
@@ -104,10 +107,67 @@
     <Compile Include="MasterViewController.designer.cs">
       <DependentUpon>MasterViewController.cs</DependentUpon>
     </Compile>
+    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda-tab.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda-tab@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda-tab@3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases-tab.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases-tab@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases-tab@3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos-tab.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos-tab@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos-tab@3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tab.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tab@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tab@3x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tabicon.pdf">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil-tab.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil-tab@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil-tab@3x.png">
       <InProject>false</InProject>
     </ImageAsset>
     <InterfaceDefinition Include="Main.storyboard" />
@@ -124,6 +184,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NUUP.Core\NUUP.Core.csproj">
+      <Project>{021406f8-8e94-4895-8c7c-90f6ebe90573}</Project>
+      <Name>NUUP.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

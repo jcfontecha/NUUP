@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Drawing;
 
 using CoreFoundation;
 using UIKit;
 using Foundation;
+using NUUP.Core.Models;
 
 namespace NUUP.iOS
 {
@@ -11,6 +14,7 @@ namespace NUUP.iOS
     public class GruposTableViewController : UITableViewController
     {
         private DataSource dataSource;
+        public List<Group> Grupos { get; set; }
 
         public GruposTableViewController(IntPtr handle) : base(handle)
         {
@@ -31,10 +35,14 @@ namespace NUUP.iOS
 
             // Perform any additional setup after loading the view
             TableView.DataSource = dataSource = new DataSource(this);
+            Grupos = new List<Group>();
+
+            Grupos.Add(new Group() { Description = "Gran clase maestra" });
         }
 
         class DataSource : UITableViewDataSource
         {
+            private static NSString cellIdentifier = new NSString("Cell");
             readonly GruposTableViewController controller;
 
             public DataSource(GruposTableViewController controller)
@@ -44,12 +52,14 @@ namespace NUUP.iOS
 
             public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
             {
-                throw new NotImplementedException();
+                var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath);
+                cell.TextLabel.Text = controller.Grupos[indexPath.Row].Description;
+                return cell;
             }
 
             public override nint RowsInSection(UITableView tableView, nint section)
             {
-                throw new NotImplementedException();
+                return controller.Grupos.Count;
             }
         }
     }

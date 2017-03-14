@@ -3,21 +3,20 @@
     {
       "scale": "1x",
       "idiom": "iphone",
-      "filename": "noticias-tab.png"
+      "filename": "perfil-tab.png"
     },
     {
       "scale": "2x",
       "idiom": "iphone",
-      "filename": "noticias-tab@2x.png"
+      "filename": "perfil-tab@2x.png"
     },
     {
       "scale": "3x",
       "idiom": "iphone",
-      "filename": "noticias-tab@3x.png"
+      "filename": "perfil-tab@3x.png"
     },
     {
-      "idiom": "iphone",
-      "filename": "noticias-tabicon.pdf"
+      "idiom": "iphone"
     }
   ],
   "properties": {

@@ -1,16 +1,19 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 using CoreFoundation;
 using UIKit;
 using Foundation;
+using NUUP.Core.Models;
 
 namespace NUUP.iOS
 {
-    [Register("PerfilPropioViewController")]
+    [Register("PerfilPropioTableViewController")]
     public class PerfilPropioTableViewController : UITableViewController
     {
         private DataSource dataSource;
+        public User Usuario { get; private set; }
 
         public PerfilPropioTableViewController(IntPtr handle) : base(handle)
         {
@@ -31,6 +34,7 @@ namespace NUUP.iOS
 
             // Perform any additional setup after loading the view
             TableView.DataSource = dataSource = new DataSource(this);
+            Usuario = new User();
         }
 
         class DataSource : UITableViewDataSource
