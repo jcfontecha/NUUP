@@ -85,28 +85,41 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BusquedaTableViewController.cs" />
+    <Compile Include="BusquedaTableViewController.designer.cs">
+      <DependentUpon>BusquedaTableViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClasesTableViewController.cs" />
+    <Compile Include="ClasesTableViewController.designer.cs">
+      <DependentUpon>ClasesTableViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClasesViewController.cs" />
+    <Compile Include="ClasesViewController.designer.cs">
+      <DependentUpon>ClasesViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetalleClaseTableViewController.cs" />
+    <Compile Include="DetalleClaseTableViewController.designer.cs">
+      <DependentUpon>DetalleClaseTableViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="GruposTableViewController.cs" />
+    <Compile Include="GruposTableViewController.designer.cs">
+      <DependentUpon>GruposTableViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="NoticiasTableViewController.cs" />
+    <Compile Include="NoticiasTableViewController.designer.cs">
+      <DependentUpon>NoticiasTableViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="PerfilPropioTableViewController.cs" />
+    <Compile Include="PerfilPropioTableViewController.designer.cs">
+      <DependentUpon>PerfilPropioTableViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="noticias-tabicon.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DetailViewController.cs" />
-    <Compile Include="DetailViewController.designer.cs">
-      <DependentUpon>DetailViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MasterViewController.cs" />
-    <Compile Include="MasterViewController.designer.cs">
-      <DependentUpon>MasterViewController.cs</DependentUpon>
-    </Compile>
     <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda-tab.png">
       <InProject>false</InProject>
     </ImageAsset>

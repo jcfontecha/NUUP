@@ -1,16 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-
-using CoreFoundation;
-using UIKit;
-using Foundation;
+﻿using Foundation;
 using NUUP.Core.Models;
+using System;
+using System.Collections.Generic;
+using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("NoticiasTableViewController")]
     public partial class NoticiasTableViewController : UITableViewController
     {
         private DataSource dataSource;

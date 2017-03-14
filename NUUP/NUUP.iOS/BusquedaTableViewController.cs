@@ -1,16 +1,11 @@
+ï»¿using Foundation;
+using NUUP.Core;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-
-using CoreFoundation;
 using UIKit;
-using Foundation;
-using NUUP.Core;
-using NUUP.Core.Models;
 
 namespace NUUP.iOS
 {
-    [Register("BusquedaTableViewController")]
     public partial class BusquedaTableViewController : UITableViewController
     {
         private DataSource dataSource;
@@ -18,7 +13,7 @@ namespace NUUP.iOS
 
         public BusquedaTableViewController(IntPtr handle) : base(handle)
         {
-            Title = NSBundle.MainBundle.LocalizedString("Búsqueda", "Búsqueda");
+            Title = NSBundle.MainBundle.LocalizedString("BÃºsqueda", "BÃºsqueda");
         }
 
         public override void DidReceiveMemoryWarning()

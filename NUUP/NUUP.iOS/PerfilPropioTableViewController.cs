@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-
-using CoreFoundation;
-using UIKit;
-using Foundation;
+﻿using Foundation;
 using NUUP.Core.Models;
+using System;
+using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register("PerfilPropioTableViewController")]
-    public class PerfilPropioTableViewController : UITableViewController
+    public partial class PerfilPropioTableViewController : UITableViewController
     {
         private DataSource dataSource;
         public User Usuario { get; private set; }
@@ -56,5 +51,6 @@ namespace NUUP.iOS
                 throw new NotImplementedException();
             }
         }
+
     }
 }
