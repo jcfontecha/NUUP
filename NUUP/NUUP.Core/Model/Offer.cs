@@ -17,6 +17,11 @@ namespace NUUP.Core.Model
       public DateTime Creation { get; set; }
       public bool Available { get; set; }
 
+      public User User { get; set; }
+      public Subject Subject { get; set; }
+      public Interval Interval { get; set; }
+      public List<Session> Sessions { get; set; }
+
       public Offer()
       {
 

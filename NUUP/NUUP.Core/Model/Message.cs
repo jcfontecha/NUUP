@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace NUUP.Core.Model
 {
-   public class FriendRequest
+   public class Message
    {
-      public int IdFriendRequest { get; set; }
+      public int IdMessage { get; set; }
       public int IdUserFrom { get; set; }
       public int IdUserTo { get; set; }
+      public string Text { get; set; }
       public DateTime Creation { get; set; }
 
       public User UserFrom { get; set; }
       public User UserTo { get; set; }
 
-      public FriendRequest()
+      public Message()
       {
 
       }

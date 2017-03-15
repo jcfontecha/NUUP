@@ -11,9 +11,10 @@ namespace NUUP.Core.Model
       public int IdCategory { get; set; }
       public string Label { get; set; }
 
+      public List<Subject> Subjects { get; set; }
+
       public Category()
       {
-
       }
    }
 }

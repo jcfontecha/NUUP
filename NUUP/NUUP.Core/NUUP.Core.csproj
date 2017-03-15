@@ -45,6 +45,7 @@
     <Compile Include="Model\Group.cs" />
     <Compile Include="Model\Interval.cs" />
     <Compile Include="Model\Membership.cs" />
+    <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Offer.cs" />
     <Compile Include="Model\Place.cs" />
     <Compile Include="Model\Post.cs" />

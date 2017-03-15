@@ -23,6 +23,13 @@ namespace NUUP.Core.Model
       public string OtherLocation { get; set; }
       public DateTime EndDate { get; set; }
 
+      public Offer Offer { get; set; }
+      public Interval Interval { get; set; }
+      public State State { get; set; }
+      public Place Place { get; set; }
+      public User Tutor { get; set; }
+      public User Student { get; set; }
+
       public Session()
       {
 

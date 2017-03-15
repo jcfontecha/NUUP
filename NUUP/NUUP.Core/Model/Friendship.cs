@@ -13,6 +13,9 @@ namespace NUUP.Core.Model
       public int IdUser2 { get; set; }
       public DateTime Creation { get; set; }
 
+      public User User1 { get; set; }
+      public User User2 { get; set; }
+
       public Friendship()
       {
 

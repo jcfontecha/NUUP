@@ -11,9 +11,10 @@ namespace NUUP.Core.Model
       public int IdDegree { get; set; }
       public string Label { get; set; }
 
+      public List<User> Users { get; set; }
+
       public Degree()
       {
-
       }
    }
 }

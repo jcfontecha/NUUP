@@ -17,5 +17,14 @@ namespace NUUP.Core.Model
       public float? Lng { get; set; }
       public int IdTutor { get; set; }
       public DateTime Creation { get; set; }
+
+      public User Tutor { get; set; }
+      public List<Interval> Intervals { get; set; }
+      public List<Membership> Memberships { get; set; }
+      public List<User> Members { get; set; }
+
+      public Group()
+      {
+      }
    }
 }

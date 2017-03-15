@@ -13,6 +13,8 @@ namespace NUUP.Core.Model
       public string Text { get; set; }
       public DateTime Date { get; set; }
 
+      public User User { get; set; }
+
       public Post()
       {
 

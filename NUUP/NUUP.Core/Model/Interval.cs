@@ -13,6 +13,8 @@ namespace NUUP.Core.Model
       public TimeSpan endTime { get; set; }
       public int IdWeekday { get; set; }
 
+      public Weekday Weekday { get; set; }
+
       public Interval()
       {
 
