@@ -22,7 +22,7 @@ namespace NUUP.Core
 
          await Task.Run(() =>
          {
-            var post = new Post() { IdPost = 3, IdUser = 6, Date = DateTime.Today, Text = "Me la pelan todos" };
+            var post = new Post() { IdPost = 3, IdUser = 6, Date = DateTime.Today, Text = "Me gustaría aprender piano" };
             post.User = new User() { IdUser = 6, Nombre = "Jose Carlos", Apellido = "Suarez" };
 
             news.Add(post);

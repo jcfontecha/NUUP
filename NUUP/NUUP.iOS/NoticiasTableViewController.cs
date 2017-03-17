@@ -29,6 +29,7 @@ namespace NUUP.iOS
       public async override void ViewDidLoad()
       {
          base.ViewDidLoad();
+         NavigationController.NavigationBar.BarStyle = UIBarStyle.BlackOpaque;
 
          // Perform any additional setup after loading the view, typically from a nib.
 
@@ -58,7 +59,6 @@ namespace NUUP.iOS
       {
          static readonly NSString CellIdentifier = new NSString("Cell");
          readonly NoticiasTableViewController controller;
-         private int count = 1;
 
          public DataSource(NoticiasTableViewController controller)
          {

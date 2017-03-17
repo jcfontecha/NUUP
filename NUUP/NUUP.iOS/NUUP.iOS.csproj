@@ -118,6 +118,14 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="noticias-tabicon.pdf" />
+    <Compile Include="FeaturedClasesPageViewController.cs" />
+    <Compile Include="FeaturedClasesPageViewController.designer.cs">
+      <DependentUpon>FeaturedClasesPageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClasePageViewController.cs" />
+    <Compile Include="ClasePageViewController.designer.cs">
+      <DependentUpon>ClasePageViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda.png">

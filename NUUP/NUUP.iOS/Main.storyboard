@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="20">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <variation key="widthClass=compact">
-                            <color key="selectedImageTintColor" colorSpace="calibratedRGB" red="0.60392156862745094" green="0.30196078431372547" blue="0.85490196078431369" alpha="1"/>
+                            <color key="selectedImageTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
                         </variation>
                     </tabBar>
                     <connections>
@@ -34,11 +34,11 @@
         <scene sceneID="455">
             <objects>
                 <navigationController id="456" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="458" translucent="NO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="458" translucent="NO" barStyle="black">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
-                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.39215686274509803" green="0.19607843137254902" blue="0.66666666666666663" alpha="1"/>
+                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
@@ -66,7 +66,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="548" id="549">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -84,11 +84,11 @@
         <scene sceneID="551">
             <objects>
                 <navigationController id="552" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="554">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="554" barStyle="black" translucent="NO">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
-                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.53725490196078429" green="0.26666666666666666" blue="0.803921568627451" alpha="1"/>
+                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="636" id="637">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -134,11 +134,11 @@
         <scene sceneID="639">
             <objects>
                 <navigationController id="640" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="642">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="642" barStyle="black" translucent="NO">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
-                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.52549019607843139" green="0.29019607843137257" blue="0.84705882352941175" alpha="1"/>
+                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
@@ -163,10 +163,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="768" reuseIdentifier="Cel">
-                                <rect key="frame" x="0.0" y="55.5" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="56" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="768" id="769">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -184,9 +184,12 @@
         <scene sceneID="771">
             <objects>
                 <navigationController id="772" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="774">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="774" translucent="NO" barStyle="black">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <variation key="widthClass=compact">
+                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
+                        </variation>
                     </navigationBar>
                     <connections>
                         <segue destination="763" kind="relationship" relationship="rootViewController" id="773"/>
@@ -212,23 +215,73 @@
                         <subviews>
                             <containerView contentMode="scaleToFill" id="2218" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="0.0" y="268" width="400" height="283"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <segue id="2315" destination="2226" kind="embed"/>
                                 </connections>
-                                <variation key="widthClass=compact" fixedFrame="YES"/>
+                                <variation key="widthClass=compact"/>
+                            </containerView>
+                            <containerView contentMode="scaleToFill" id="2565" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="64" width="400" height="196"/>
+                                <connections>
+                                    <segue id="2649" destination="2584" kind="embed"/>
+                                </connections>
+                                <constraints>
+                                    <constraint id="2576" firstItem="2565" firstAttribute="height" constant="196"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2576"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="2576"/>
+                                    </mask>
+                                </variation>
                             </containerView>
                         </subviews>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="2218"/>
+                                <exclude reference="2565"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2572"/>
+                                <exclude reference="2573"/>
+                                <exclude reference="2574"/>
+                                <exclude reference="2575"/>
+                                <exclude reference="2579"/>
+                                <exclude reference="2580"/>
+                                <exclude reference="2581"/>
+                                <exclude reference="2582"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="2218"/>
+                                <include reference="2565"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2572"/>
+                                <include reference="2573"/>
+                                <include reference="2574"/>
+                                <include reference="2575"/>
+                                <include reference="2579"/>
+                                <include reference="2580"/>
+                                <include reference="2581"/>
+                                <include reference="2582"/>
                             </mask>
                         </variation>
+                        <constraints>
+                            <constraint id="2572" firstItem="2565" firstAttribute="top" secondItem="898" secondAttribute="bottom"/>
+                            <constraint id="2573" firstItem="2565" firstAttribute="leading" secondItem="902" secondAttribute="leading"/>
+                            <constraint id="2574" firstItem="2565" firstAttribute="leading" secondItem="902" secondAttribute="leading"/>
+                            <constraint id="2575" firstItem="2565" firstAttribute="trailing" secondItem="902" secondAttribute="trailing"/>
+                            <constraint id="2579" firstItem="2218" firstAttribute="top" secondItem="2565" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2580" firstItem="2218" firstAttribute="leading" secondItem="902" secondAttribute="leading"/>
+                            <constraint id="2581" firstItem="2218" firstAttribute="trailing" secondItem="902" secondAttribute="trailing"/>
+                            <constraint id="2582" firstItem="2218" firstAttribute="bottom" secondItem="899" secondAttribute="top"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="903" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,11 +300,11 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1506" id="1507">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1676">
-                                            <rect key="frame" x="20" y="0.0" width="560" height="43.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="560" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -275,11 +328,11 @@
         <scene sceneID="1509">
             <objects>
                 <navigationController id="1510" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1512" translucent="NO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1512" translucent="NO" barStyle="black">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
-                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.39215686274509803" green="0.19607843137254902" blue="0.66666666666666663" alpha="1"/>
+                            <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
@@ -307,11 +360,11 @@
                                 <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2230" id="2231">
-                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2317">
-                                            <rect key="frame" x="20" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -600,11 +653,11 @@
                                         <rect key="frame" x="0.0" y="368" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2468" id="2469">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Conectar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2541">
-                                                    <rect key="frame" x="15" y="0.0" width="350" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="350" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -627,12 +680,19 @@
             </objects>
             <point key="canvasLocation" x="2200" y="199"/>
         </scene>
+        <scene sceneID="2583">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="2584" sceneMemberID="viewController" customClass="FeaturedClasesPageViewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2585" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1662" y="-56"/>
+        </scene>
     </scenes>
     <resources>
         <image name="noticias-tabicon" width="30" height="30"/>
         <image name="busqueda-tabicon" width="30" height="30"/>
         <image name="clases-tabicon" width="30" height="30"/>
-        <image name="grupos-tabicon" width="30" height="25"/>
-        <image name="perfil-tabicon" width="23" height="30"/>
+        <image name="grupos-tabicon" width="30" height="30"/>
+        <image name="perfil-tabicon" width="30" height="30"/>
     </resources>
 </document>
