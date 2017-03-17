@@ -120,25 +120,25 @@
     <None Include="noticias-tabicon.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda-tab.png">
+    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda-tab@2x.png">
+    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda@2x.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda-tab@3x.png">
+    <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda@3x.png">
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases-tab.png">
+    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases-tab@2x.png">
+    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases@2x.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases-tab@3x.png">
+    <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\clases@3x.png">
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\clases-tabicon.imageset\Contents.json">
@@ -147,40 +147,40 @@
     <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos-tab.png">
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos-tab@2x.png">
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos.svg">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos-tab@3x.png">
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\grupos-tabicon.imageset\grupos@3x.png">
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tab.png">
+    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tab@2x.png">
+    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias@2x.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tab@3x.png">
-      <InProject>false</InProject>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias-tabicon.pdf">
+    <ImageAsset Include="Resources\Images.xcassets\noticias-tabicon.imageset\noticias@3x.png">
       <InProject>false</InProject>
     </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil-tab.png">
+    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil-tab@2x.png">
+    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil@2x.png">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil-tab@3x.png">
+    <ImageAsset Include="Resources\Images.xcassets\perfil-tabicon.imageset\perfil@3x.png">
       <InProject>false</InProject>
     </ImageAsset>
     <InterfaceDefinition Include="Main.storyboard" />

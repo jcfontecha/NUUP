@@ -3,17 +3,17 @@
     {
       "scale": "1x",
       "idiom": "iphone",
-      "filename": "perfil-tab.png"
+      "filename": "perfil.png"
     },
     {
       "scale": "2x",
       "idiom": "iphone",
-      "filename": "perfil-tab@2x.png"
+      "filename": "perfil@2x.png"
     },
     {
       "scale": "3x",
       "idiom": "iphone",
-      "filename": "perfil-tab@3x.png"
+      "filename": "perfil@3x.png"
     },
     {
       "idiom": "iphone"

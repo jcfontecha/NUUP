@@ -1,69 +1,87 @@
 ﻿using Foundation;
+using NUUP.Core;
 using NUUP.Core.Model;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace NUUP.iOS
 {
-    public partial class NoticiasTableViewController : UITableViewController
-    {
-        private DataSource dataSource;
-        public List<Post> Noticias { get; private set; }
+   public partial class NoticiasTableViewController : UITableViewController
+   {
+      private DataSource dataSource;
+      private DataAccess dataAccess;
+      public List<Post> Noticias { get; private set; }
 
-        public NoticiasTableViewController(IntPtr handle) : base(handle)
-        {
-            Title = NSBundle.MainBundle.LocalizedString("Noticias", "Noticias");
-        }
+      public NoticiasTableViewController(IntPtr handle) : base(handle)
+      {
+         Title = NSBundle.MainBundle.LocalizedString("Noticias", "Noticias");
+      }
 
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
+      public override void DidReceiveMemoryWarning()
+      {
+         base.DidReceiveMemoryWarning();
 
-            // Release any cached data, images, etc that aren't in use.
-        }
+         // Release any cached data, images, etc that aren't in use.
+      }
 
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
+      public async override void ViewDidLoad()
+      {
+         base.ViewDidLoad();
 
-            // Perform any additional setup after loading the view, typically from a nib.
+         // Perform any additional setup after loading the view, typically from a nib.
 
-            TableView.DataSource = dataSource = new DataSource(this);
-            Noticias = new List<Post>();
+         dataAccess = new DataAccess();
+         Noticias = new List<Post>();
 
-            Noticias.Add(new Post() { Text = "Hola mundo" });
-            Noticias.Add(new Post() { Text = "Adios mundo" });
-        }
+         TableView.DataSource = dataSource = new DataSource(this);
 
-        class DataSource : UITableViewDataSource
-        {
-            static readonly NSString CellIdentifier = new NSString("Cell");
-            readonly NoticiasTableViewController controller;
-            private int count = 1;
+         await GetDataAsync();
+      }
 
-            public DataSource(NoticiasTableViewController controller)
-            {
-                this.controller = controller;
-            }
-            public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
-            {
-                var cell = tableView.DequeueReusableCell(CellIdentifier, indexPath);
+      public async Task GetDataAsync()
+      {
+         TableView.RefreshControl = new UIRefreshControl();
+         TableView.RefreshControl.BeginRefreshing();
+         TableView.SetContentOffset(new CoreGraphics.CGPoint(0, -TableView.RefreshControl.Frame.Size.Height), true);
 
-                cell.TextLabel.Text = controller.Noticias[indexPath.Row].Text;
+         Noticias = await dataAccess.GetLatestNews();
 
-                return cell;
-            }
+         TableView.SetContentOffset(new CoreGraphics.CGPoint(0, TableView.RefreshControl.Frame.Size.Height), true);
+         TableView.RefreshControl.EndRefreshing();
 
-            public override nint RowsInSection(UITableView tableView, nint section)
-            {
-                return controller.Noticias.Count;
-            }
+         TableView.ReloadData();
+      }
 
-            public override nint NumberOfSections(UITableView tableView)
-            {
-                return 1;
-            }
-        }
-    }
+      class DataSource : UITableViewDataSource
+      {
+         static readonly NSString CellIdentifier = new NSString("Cell");
+         readonly NoticiasTableViewController controller;
+         private int count = 1;
+
+         public DataSource(NoticiasTableViewController controller)
+         {
+            this.controller = controller;
+         }
+         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+         {
+            var cell = tableView.DequeueReusableCell(CellIdentifier, indexPath);
+
+            cell.TextLabel.Text = controller.Noticias[indexPath.Row].Text;
+
+            return cell;
+         }
+
+         public override nint RowsInSection(UITableView tableView, nint section)
+         {
+            return controller.Noticias.Count;
+         }
+
+         public override nint NumberOfSections(UITableView tableView)
+         {
+            return 1;
+         }
+      }
+   }
 }

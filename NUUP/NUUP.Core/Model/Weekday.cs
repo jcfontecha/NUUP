@@ -13,7 +13,6 @@ namespace NUUP.Core.Model
 
       public Weekday()
       {
-
       }
    }
 }

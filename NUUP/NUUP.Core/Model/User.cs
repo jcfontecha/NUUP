@@ -10,6 +10,9 @@ namespace NUUP.Core.Model
    {
       public int IdUser { get; set; }
       public int IdDreamfactory { get; set; }
+      public string Nombre { get; set; }
+      public string Apellido { get; set; }
+      public string Email { get; set; }
       public DateTime Birthday { get; set; }
       public float? Lat { get; set; }
       public float? Lng { get; set; }

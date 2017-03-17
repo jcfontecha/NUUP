@@ -3,17 +3,17 @@
     {
       "scale": "1x",
       "idiom": "iphone",
-      "filename": "busqueda-tab.png"
+      "filename": "busqueda.png"
     },
     {
       "scale": "2x",
       "idiom": "iphone",
-      "filename": "busqueda-tab@2x.png"
+      "filename": "busqueda@2x.png"
     },
     {
       "scale": "3x",
       "idiom": "iphone",
-      "filename": "busqueda-tab@3x.png"
+      "filename": "busqueda@3x.png"
     },
     {
       "idiom": "iphone"

@@ -3,20 +3,21 @@
     {
       "scale": "1x",
       "idiom": "iphone",
-      "filename": "grupos-tab.png"
+      "filename": "grupos.png"
     },
     {
       "scale": "2x",
       "idiom": "iphone",
-      "filename": "grupos-tab@2x.png"
+      "filename": "grupos@2x.png"
     },
     {
       "scale": "3x",
       "idiom": "iphone",
-      "filename": "grupos-tab@3x.png"
+      "filename": "grupos@3x.png"
     },
     {
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "filename": "grupos.svg"
     }
   ],
   "properties": {
