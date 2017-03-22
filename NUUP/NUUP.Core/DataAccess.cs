@@ -52,5 +52,20 @@ namespace NUUP.Core
 
          return categorias;
       }
+
+      public async Task<List<Subject>> GetClasesForCategoriaAsync(Category category)
+      {
+         var clases = new List<Subject>();
+
+         await Task.Run(() =>
+         {
+            var subject = new Subject() { IdSubject = 3, Name = "Calculo", IdCategory = category.IdCategory, Category = category };
+            clases.Add(subject);
+            var subject2 = new Subject() { IdSubject = 4, Name = "Algebra Lineal", IdCategory = category.IdCategory, Category = category };
+            clases.Add(subject2);
+         });
+
+         return clases;
+      }
    }
 }

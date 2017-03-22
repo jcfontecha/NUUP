@@ -3,21 +3,22 @@ using NUUP.Core;
 using NUUP.Core.Model;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace NUUP.iOS
 {
-   public partial class ClasesTableViewController : UITableViewController
+   public partial class CategoriasTableViewController : UITableViewController
    {
       public List<Category> Categorias { get; set; }
       private DataSource dataSource;
       private DataAccess dataAccess;
 
-      public ClasesTableViewController(IntPtr handle) : base(handle)
+      public CategoriasTableViewController(IntPtr handle) : base(handle)
       {
       }
 
-      public override void ViewDidLoad()
+      public override async void ViewDidLoad()
       {
          base.ViewDidLoad();
 
@@ -29,9 +30,11 @@ namespace NUUP.iOS
          Categorias.Add(new Category() { IdCategory = 3, Label = "Derecho" });
 
          TableView.DataSource = dataSource = new DataSource(this);
+
+         await GetDataAsync();
       }
 
-      private async void GetData()
+      private async Task GetDataAsync()
       {
          TableView.RefreshControl = new UIRefreshControl();
          TableView.RefreshControl.BeginRefreshing();
@@ -45,12 +48,23 @@ namespace NUUP.iOS
          TableView.ReloadData();
       }
 
+      public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+      {
+         base.PrepareForSegue(segue, sender);
+
+         if (segue.Identifier == "showClases")
+         {
+            var vc = (ClasesListTableViewController)segue.DestinationViewController;
+            vc.Categoria = Categorias[TableView.IndexPathForSelectedRow.Row];
+         }
+      }
+
       class DataSource : UITableViewDataSource
       {
-         private readonly ClasesTableViewController controller;
+         private readonly CategoriasTableViewController controller;
          private static string cellIdentifier = "Cell";
 
-         public DataSource(ClasesTableViewController controller)
+         public DataSource(CategoriasTableViewController controller)
          {
             this.controller = controller;
          }

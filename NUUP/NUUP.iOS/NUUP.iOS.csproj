@@ -88,9 +88,13 @@
     <Compile Include="BusquedaTableViewController.designer.cs">
       <DependentUpon>BusquedaTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClasesTableViewController.cs" />
-    <Compile Include="ClasesTableViewController.designer.cs">
-      <DependentUpon>ClasesTableViewController.cs</DependentUpon>
+    <Compile Include="ClasesListTableViewController.cs" />
+    <Compile Include="ClasesListTableViewController.designer.cs">
+      <DependentUpon>ClasesListTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriasTableViewController.cs" />
+    <Compile Include="CategoriasTableViewController.designer.cs">
+      <DependentUpon>CategoriasTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ClasesViewController.cs" />
     <Compile Include="ClasesViewController.designer.cs">
@@ -111,6 +115,10 @@
     <Compile Include="NoticiasTableViewController.cs" />
     <Compile Include="NoticiasTableViewController.designer.cs">
       <DependentUpon>NoticiasTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfertasListTableViewController.cs" />
+    <Compile Include="OfertasListTableViewController.designer.cs">
+      <DependentUpon>OfertasListTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="PerfilPropioTableViewController.cs" />
     <Compile Include="PerfilPropioTableViewController.designer.cs">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="20">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
@@ -39,9 +39,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
                             <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
+                            <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
+                            <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -66,7 +67,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="548" id="549">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -89,6 +90,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
                             <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
@@ -116,7 +118,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="636" id="637">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -139,6 +141,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
                             <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
@@ -163,10 +166,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="768" reuseIdentifier="Cel">
-                                <rect key="frame" x="0.0" y="56" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="768" id="769">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -213,8 +216,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" id="2218" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="268" width="400" height="283"/>
+                            <containerView contentMode="scaleToFill" id="2218" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="304" width="400" height="247"/>
                                 <connections>
                                     <segue id="2315" destination="2226" kind="embed"/>
                                 </connections>
@@ -239,37 +242,64 @@
                                     </mask>
                                 </variation>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2666" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="12" y="275" width="368" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17" weight="semibold"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="2670" firstItem="2666" firstAttribute="height" constant="21"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2670"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="2670"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="2218"/>
                                 <exclude reference="2565"/>
+                                <exclude reference="2666"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="2572"/>
                                 <exclude reference="2573"/>
                                 <exclude reference="2574"/>
                                 <exclude reference="2575"/>
-                                <exclude reference="2579"/>
-                                <exclude reference="2580"/>
-                                <exclude reference="2581"/>
-                                <exclude reference="2582"/>
+                                <exclude reference="2667"/>
+                                <exclude reference="2668"/>
+                                <exclude reference="2669"/>
+                                <exclude reference="2671"/>
+                                <exclude reference="2672"/>
+                                <exclude reference="2673"/>
+                                <exclude reference="2674"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="2218"/>
                                 <include reference="2565"/>
+                                <include reference="2666"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="2572"/>
                                 <include reference="2573"/>
                                 <include reference="2574"/>
                                 <include reference="2575"/>
-                                <include reference="2579"/>
-                                <include reference="2580"/>
-                                <include reference="2581"/>
-                                <include reference="2582"/>
+                                <include reference="2667"/>
+                                <include reference="2668"/>
+                                <include reference="2669"/>
+                                <include reference="2671"/>
+                                <include reference="2672"/>
+                                <include reference="2673"/>
+                                <include reference="2674"/>
                             </mask>
                         </variation>
                         <constraints>
@@ -277,10 +307,13 @@
                             <constraint id="2573" firstItem="2565" firstAttribute="leading" secondItem="902" secondAttribute="leading"/>
                             <constraint id="2574" firstItem="2565" firstAttribute="leading" secondItem="902" secondAttribute="leading"/>
                             <constraint id="2575" firstItem="2565" firstAttribute="trailing" secondItem="902" secondAttribute="trailing"/>
-                            <constraint id="2579" firstItem="2218" firstAttribute="top" secondItem="2565" secondAttribute="bottom" constant="8"/>
-                            <constraint id="2580" firstItem="2218" firstAttribute="leading" secondItem="902" secondAttribute="leading"/>
-                            <constraint id="2581" firstItem="2218" firstAttribute="trailing" secondItem="902" secondAttribute="trailing"/>
-                            <constraint id="2582" firstItem="2218" firstAttribute="bottom" secondItem="899" secondAttribute="top"/>
+                            <constraint id="2667" firstItem="2666" firstAttribute="leading" secondItem="902" secondAttribute="leading" constant="12"/>
+                            <constraint id="2668" firstItem="2666" firstAttribute="top" secondItem="2565" secondAttribute="bottom" constant="15"/>
+                            <constraint id="2669" firstItem="902" firstAttribute="trailing" secondItem="2666" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2671" firstItem="2218" firstAttribute="top" secondItem="2666" secondAttribute="bottom" constant="8"/>
+                            <constraint id="2672" firstItem="2218" firstAttribute="leading" secondItem="902" secondAttribute="leading"/>
+                            <constraint id="2673" firstItem="2218" firstAttribute="bottom" secondItem="899" secondAttribute="top"/>
+                            <constraint id="2674" firstItem="2218" firstAttribute="trailing" secondItem="902" secondAttribute="trailing"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -300,11 +333,11 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1506" id="1507">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1676">
-                                            <rect key="frame" x="20" y="0.0" width="560" height="43"/>
+                                            <rect key="frame" x="20" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -333,6 +366,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <variation key="widthClass=compact">
                             <color key="barTintColor" colorSpace="calibratedRGB" red="0.31372549019607843" green="0.10196078431372549" blue="0.6" alpha="1"/>
+                            <color key="tintColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
                         </variation>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
@@ -350,7 +384,7 @@
         </scene>
         <scene sceneID="2225">
             <objects>
-                <tableViewController id="2226" sceneMemberID="viewController" customClass="ClasesTableViewController">
+                <tableViewController id="2226" sceneMemberID="viewController" customClass="CategoriasTableViewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2227">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="283"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -360,11 +394,11 @@
                                 <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2230" id="2231">
-                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2317">
-                                            <rect key="frame" x="20" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="20" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -373,7 +407,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue id="2461" destination="2333" kind="show" identifier="showClaseSegue"/>
+                                    <segue id="2926" destination="2676" kind="show" identifier="showClases"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -653,11 +687,11 @@
                                         <rect key="frame" x="0.0" y="368" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2468" id="2469">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Conectar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2541">
-                                                    <rect key="frame" x="15" y="0.0" width="350" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="350" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -678,7 +712,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2339" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2200" y="199"/>
+            <point key="canvasLocation" x="3256" y="199"/>
         </scene>
         <scene sceneID="2583">
             <objects>
@@ -686,6 +720,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2585" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1662" y="-56"/>
+        </scene>
+        <scene sceneID="2675">
+            <objects>
+                <tableViewController id="2676" sceneMemberID="viewController" customClass="ClasesListTableViewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2677">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2680" reuseIdentifier="Cell" style="IBUITableViewCellStyleDefault" textLabel="2928" accessoryType="disclosureIndicator">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2680" id="2681">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Materia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2928">
+                                            <rect key="frame" x="15" y="0.0" width="210" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue id="3046" destination="2930" kind="show"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2676" id="2678"/>
+                            <outlet property="delegate" destination="2676" id="2679"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2682" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2205" y="199"/>
+        </scene>
+        <scene sceneID="2929">
+            <objects>
+                <tableViewController id="2930" sceneMemberID="viewController" customClass="OfertasListTableViewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2931">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2934" style="IBUITableViewCellStyleSubtitle" textLabel="3053" detailTextLabel="3054" reuseIdentifier="Cell" accessoryType="disclosureIndicator">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2934" id="2935">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Oferta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3053">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3054">
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue id="3139" destination="2333" kind="show"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2930" id="2932"/>
+                            <outlet property="delegate" destination="2930" id="2933"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2936" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2730" y="200"/>
         </scene>
     </scenes>
     <resources>

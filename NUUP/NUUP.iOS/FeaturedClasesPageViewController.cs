@@ -19,14 +19,39 @@ namespace NUUP.iOS
          base.ViewDidLoad();
 
          var list = new List<ClasePageViewController>();
-         list.Add(new ClasePageViewController(View.Frame, "Matematicas", 0));
-			list.Add(new ClasePageViewController(View.Frame, "Italiano", 1));
-			list.Add(new ClasePageViewController(View.Frame, "Frances", 2));
+         var vc = new ClasePageViewController(View.Frame, "Matematicas", 0);
+         vc.View.BackgroundColor = UIColor.Red;
+         list.Add(vc);
+
+         var vc2 = new ClasePageViewController(View.Frame, "Italiano", 1);
+         vc2.View.BackgroundColor = UIColor.Green;
+         list.Add(vc2);
+
+         var vc3 = new ClasePageViewController(View.Frame, "Frances", 2);
+         vc3.View.BackgroundColor = UIColor.Blue;
+         list.Add(vc3);
 
          DataSource = dataSource = new PVDataSource(list);
 
          this.SetViewControllers(new UIViewController[] { list[0] },
             UIPageViewControllerNavigationDirection.Forward, true, s => { });
+
+         // INTENTOS PARA QUE SE VEA EL INDICADOR
+         // ... fallidos hasta ahora
+         var pageControlAppearance = UIPageControl.AppearanceWhenContainedIn(typeof(UIPageViewController));
+         pageControlAppearance.PageIndicatorTintColor = UIColor.LightGray;
+         pageControlAppearance.CurrentPageIndicatorTintColor = UIColor.DarkGray;
+
+         foreach (var subview in View.Subviews)
+         {
+            if (subview is UIPageControl)
+            {
+               var pageControl = (UIPageControl)subview;
+               pageControl.PageIndicatorTintColor = UIColor.LightGray;
+               pageControl.CurrentPageIndicatorTintColor = UIColor.DarkGray;
+               pageControl.Layer.ZPosition = 1;
+            }
+         }
       }
 
       class PVDataSource : UIPageViewControllerDataSource

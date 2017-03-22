@@ -24,12 +24,12 @@ namespace NUUP.iOS
             {
                Label.Text = text;
 
-               Label.Frame = new CGRect(
-                  View.Frame.Width / 2 - Label.Bounds.Size.Width,
-                  View.Frame.Height / 2 - Label.Bounds.Size.Height,
-                  Label.Bounds.Size.Width,
-                  Label.Bounds.Size.Height
-               );
+               //Label.Frame = new CGRect(
+               //   View.Frame.Width / 2 - Label.Bounds.Size.Width,
+               //   View.Frame.Height / 2 - Label.Bounds.Size.Height,
+               //   Label.Bounds.Size.Width,
+               //   Label.Bounds.Size.Height
+               //);
             }
          }
       }
@@ -70,9 +70,13 @@ namespace NUUP.iOS
          base.ViewDidLoad();
          // Perform any additional setup after loading the view, typically from a nib.
 
-         var label = new UILabel();
-         View.AddSubview(label);
-         Text = "Default";
+         Label = new UILabel();
+         Label.Frame = new CGRect(5, 5, View.Frame.Size.Width - 10, 25);
+         Label.Text = (Text != null)? Text : "Default";
+         Label.BackgroundColor = new UIColor(1, 1, 1, 1);
+
+         View.BackgroundColor = new UIColor(1.0f, 0.0f, 0.0f, 1.0f);
+         View.AddSubview(Label);
       }
 
       public override void DidReceiveMemoryWarning()
