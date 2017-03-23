@@ -39,6 +39,7 @@ namespace NUUP.iOS
          {
             var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath);
             cell.TextLabel.Text = controller.Ofertas[indexPath.Row].Description;
+            cell.DetailTextLabel.Text = controller.Ofertas[indexPath.Row].User.Nombre + " " + controller.Ofertas[indexPath.Row].User.Apellido;
 
             return cell;
          }

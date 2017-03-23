@@ -67,5 +67,43 @@ namespace NUUP.Core
 
          return clases;
       }
+
+      public async Task<List<Offer>> GetOfertasForSubjectAsync(Subject subject)
+      {
+         var ofertas = new List<Offer>();
+
+         await Task.Run(() =>
+         {
+            var weekday = new Weekday() { IdWeekday = 1, Label = "Lunes" };
+            var interval = new Interval() { IdInterval = 1, IdWeekday = weekday.IdWeekday, Weekday = weekday };
+            interval.startTime = new TimeSpan(2, 0, 0);
+            interval.endTime = new TimeSpan(4, 0, 0);
+
+            var oferta = new Offer() {
+               IdOffer = 3,
+               Description = "Clases para principiantes",
+               Interval = interval,
+               IdInterval = interval.IdInterval };
+
+            ofertas.Add(oferta);
+
+            var weekday2 = new Weekday() { IdWeekday = 2, Label = "Martes" };
+            var interval2 = new Interval() { IdInterval = 2, IdWeekday = weekday2.IdWeekday, Weekday = weekday };
+            interval.startTime = new TimeSpan(3, 0, 0);
+            interval.endTime = new TimeSpan(5, 0, 0);
+
+            var oferta2 = new Offer()
+            {
+               IdOffer = 4,
+               Description = "Clases intermedias, muy efectivas",
+               Interval = interval2,
+               IdInterval = interval2.IdInterval
+            };
+
+            ofertas.Add(oferta2);
+         });
+
+         return ofertas;
+      }
    }
 }
