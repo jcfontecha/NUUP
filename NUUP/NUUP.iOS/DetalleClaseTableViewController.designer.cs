@@ -16,7 +16,23 @@ namespace NUUP.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel categoriaLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel descripcionLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableViewCell headerCell { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel horarioLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel nombreMateriaLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -28,9 +44,29 @@ namespace NUUP.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (categoriaLabel != null) {
+                categoriaLabel.Dispose ();
+                categoriaLabel = null;
+            }
+
+            if (descripcionLabel != null) {
+                descripcionLabel.Dispose ();
+                descripcionLabel = null;
+            }
+
             if (headerCell != null) {
                 headerCell.Dispose ();
                 headerCell = null;
+            }
+
+            if (horarioLabel != null) {
+                horarioLabel.Dispose ();
+                horarioLabel = null;
+            }
+
+            if (nombreMateriaLabel != null) {
+                nombreMateriaLabel.Dispose ();
+                nombreMateriaLabel = null;
             }
 
             if (nombreUsuarioLabel != null) {

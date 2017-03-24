@@ -324,37 +324,20 @@
         <scene sceneID="1500">
             <objects>
                 <tableViewController id="1501" sceneMemberID="viewController" customClass="NoticiasTableViewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1503">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" id="1503">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1506" reuseIdentifier="Cell" style="IBUITableViewCellStyleDefault" textLabel="1676">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1506" id="1507">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1676">
-                                            <rect key="frame" x="20" y="0.0" width="560" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3158" rowHeight="138" customClass="PostTableViewCell" reuseIdentifier="PostCell">
-                                <rect key="frame" x="0.0" y="72" width="400" height="138"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="3158" rowHeight="140" customClass="PostTableViewCell" reuseIdentifier="PostTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="400" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3158" id="3159">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="137.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="3161" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="20" y="20" width="360" height="97.5"/>
+                                            <rect key="frame" x="20" y="11" width="360" height="117"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3162" translatesAutoresizingMaskIntoConstraints="NO">
@@ -377,11 +360,10 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3171" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="11" y="38" width="338" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="11" y="38" width="338" height="69.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1"/>
                                                 </label>
                                             </subviews>
                                             <variation key="default">
@@ -430,10 +412,10 @@
                                             <exclude reference="3161"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="3163"/>
-                                            <exclude reference="3164"/>
-                                            <exclude reference="3165"/>
-                                            <exclude reference="3166"/>
+                                            <exclude reference="3194"/>
+                                            <exclude reference="3195"/>
+                                            <exclude reference="3196"/>
+                                            <exclude reference="3197"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -441,33 +423,37 @@
                                             <include reference="3161"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="3163"/>
-                                            <include reference="3164"/>
-                                            <include reference="3165"/>
-                                            <include reference="3166"/>
+                                            <include reference="3194"/>
+                                            <include reference="3195"/>
+                                            <include reference="3196"/>
+                                            <include reference="3197"/>
                                         </mask>
                                     </variation>
                                     <constraints>
-                                        <constraint id="3163" firstItem="3161" firstAttribute="top" secondItem="3159" secondAttribute="top" constant="20"/>
-                                        <constraint id="3164" firstItem="3161" firstAttribute="leading" secondItem="3159" secondAttribute="leading" constant="20"/>
-                                        <constraint id="3165" firstItem="3159" firstAttribute="bottom" secondItem="3161" secondAttribute="bottom" constant="20"/>
-                                        <constraint id="3166" firstItem="3159" firstAttribute="trailing" secondItem="3161" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="3194" firstItem="3161" firstAttribute="top" secondItem="3159" secondAttribute="top" constant="11"/>
+                                        <constraint id="3195" firstItem="3161" firstAttribute="leading" secondItem="3159" secondAttribute="leading" constant="20"/>
+                                        <constraint id="3196" firstItem="3159" firstAttribute="bottom" secondItem="3161" secondAttribute="bottom" constant="11"/>
+                                        <constraint id="3197" firstItem="3159" firstAttribute="trailing" secondItem="3161" secondAttribute="trailing" constant="20"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <variation key="widthClass=compact">
-                                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0.9137254901960784" green="0.92549019607843142" blue="0.95686274509803926" alpha="1"/>
+                                    <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
                                 </variation>
                                 <connections>
                                     <outlet property="postBackgroundView" destination="3161" id="name-outlet-3161"/>
                                     <outlet property="authorLabel" destination="3162" id="name-outlet-3162"/>
                                     <outlet property="postLabel" destination="3171" id="name-outlet-3171"/>
                                 </connections>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="1501" id="1504"/>
                             <outlet property="delegate" destination="1501" id="1505"/>
                         </connections>
+                        <variation key="widthClass=compact">
+                            <color key="backgroundColor" colorSpace="calibratedRGB" red="0.9137254901960784" green="0.92549019607843142" blue="0.93333333333333335" alpha="1"/>
+                        </variation>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="1502"/>
                 </tableViewController>
@@ -562,7 +548,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2470" translatesAutoresizingMaskIntoConstraints="NO">
                                                     <rect key="frame" x="20" y="20" width="360" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.615686274509804" green="0.615686274509804" blue="0.615686274509804" alpha="1"/>
                                                     <nil key="highlightedColor"/>
                                                     <constraints>
                                                         <constraint id="2477" firstItem="2470" firstAttribute="height" constant="21"/>
@@ -646,7 +632,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2499" translatesAutoresizingMaskIntoConstraints="NO">
                                                     <rect key="frame" x="20" y="20" width="360" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1"/>
                                                     <nil key="highlightedColor"/>
                                                     <constraints>
                                                         <constraint id="2527" firstItem="2499" firstAttribute="height" constant="17"/>
@@ -700,10 +686,10 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2511" translatesAutoresizingMaskIntoConstraints="NO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2511" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="4">
                                                     <rect key="frame" x="20" y="112" width="360" height="106"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.592156862745098" green="0.592156862745098" blue="0.592156862745098" alpha="1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2515" translatesAutoresizingMaskIntoConstraints="NO">
@@ -825,7 +811,13 @@
                         <outlet property="rolUsuarioLabel" destination="2470" id="name-outlet-2470"/>
                         <outlet property="nombreUsuarioLabel" destination="2479" id="name-outlet-2479"/>
                         <outlet property="headerCell" destination="2464" id="name-outlet-2464"/>
+                        <outlet property="categoriaLabel" destination="2499" id="name-outlet-2499"/>
+                        <outlet property="nombreMateriaLabel" destination="2503" id="name-outlet-2503"/>
+                        <outlet property="horarioLabel" destination="2507" id="name-outlet-2507"/>
+                        <outlet property="descripcionLabel" destination="2511" id="name-outlet-2511"/>
                     </connections>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="500"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2339" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

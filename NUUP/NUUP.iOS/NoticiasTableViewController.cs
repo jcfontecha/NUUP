@@ -57,7 +57,7 @@ namespace NUUP.iOS
 
       class DataSource : UITableViewDataSource
       {
-         static readonly NSString CellIdentifier = new NSString("PostCell");
+         static readonly NSString CellIdentifier = new NSString("PostTableViewCell");
          readonly NoticiasTableViewController controller;
 
          public DataSource(NoticiasTableViewController controller)
@@ -67,8 +67,8 @@ namespace NUUP.iOS
          public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
          {
             var cell = (PostTableViewCell)tableView.DequeueReusableCell(CellIdentifier, indexPath);
-            cell.AuthorLabel.Text = controller.Noticias[indexPath.Row].User.Nombre + " " + controller.Noticias[indexPath.Row].User.Apellido;
-            cell.PostLabel.Text = controller.Noticias[indexPath.Row].Text;
+            cell.Author = controller.Noticias[indexPath.Row].User.Nombre + " " + controller.Noticias[indexPath.Row].User.Apellido;
+            cell.Post = controller.Noticias[indexPath.Row].Text;
 
             return cell;
          }
