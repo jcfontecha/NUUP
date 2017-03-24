@@ -79,11 +79,15 @@ namespace NUUP.Core
             interval.startTime = new TimeSpan(2, 0, 0);
             interval.endTime = new TimeSpan(4, 0, 0);
 
-            var oferta = new Offer() {
+            var oferta = new Offer()
+            {
                IdOffer = 3,
                Description = "Clases para principiantes",
                Interval = interval,
-               IdInterval = interval.IdInterval };
+               IdInterval = interval.IdInterval,
+               Subject = subject,
+               IdSubject = subject.IdSubject
+            };
 
             ofertas.Add(oferta);
 
@@ -97,7 +101,9 @@ namespace NUUP.Core
                IdOffer = 4,
                Description = "Clases intermedias, muy efectivas",
                Interval = interval2,
-               IdInterval = interval2.IdInterval
+               IdInterval = interval2.IdInterval,
+               Subject = subject,
+               IdSubject = subject.IdSubject
             };
 
             ofertas.Add(oferta2);

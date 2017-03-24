@@ -51,6 +51,17 @@ namespace NUUP.iOS
          TableView.ReloadData();
       }
 
+      public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+      {
+         base.PrepareForSegue(segue, sender);
+
+         if (segue.Identifier == "showOfertas")
+         {
+            var vc = (OfertasListTableViewController)segue.DestinationViewController;
+            vc.Clase = Clases[TableView.IndexPathForSelectedRow.Row];
+         }
+      }
+
       private class ClasesListDataSource : UITableViewDataSource
       {
          readonly ClasesListTableViewController controller;

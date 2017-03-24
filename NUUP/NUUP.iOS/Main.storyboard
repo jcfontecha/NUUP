@@ -346,6 +346,123 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3158" rowHeight="138" customClass="PostTableViewCell" reuseIdentifier="PostCell">
+                                <rect key="frame" x="0.0" y="72" width="400" height="138"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3158" id="3159">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="137.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="3161" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="20" y="20" width="360" height="97.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3162" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="47" y="9" width="293" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="3170" firstItem="3162" firstAttribute="height" constant="21"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="3170"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="3170"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3171" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="11" y="38" width="338" height="49"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="3162"/>
+                                                    <exclude reference="3171"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="3167"/>
+                                                    <exclude reference="3168"/>
+                                                    <exclude reference="3169"/>
+                                                    <exclude reference="3172"/>
+                                                    <exclude reference="3173"/>
+                                                    <exclude reference="3174"/>
+                                                    <exclude reference="3175"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="3162"/>
+                                                    <include reference="3171"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="3167"/>
+                                                    <include reference="3168"/>
+                                                    <include reference="3169"/>
+                                                    <include reference="3172"/>
+                                                    <include reference="3173"/>
+                                                    <include reference="3174"/>
+                                                    <include reference="3175"/>
+                                                </mask>
+                                            </variation>
+                                            <constraints>
+                                                <constraint id="3167" firstItem="3162" firstAttribute="top" secondItem="3161" secondAttribute="top" constant="9"/>
+                                                <constraint id="3168" firstItem="3162" firstAttribute="leading" secondItem="3161" secondAttribute="leading" constant="47"/>
+                                                <constraint id="3169" firstItem="3161" firstAttribute="trailing" secondItem="3162" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="3172" firstItem="3171" firstAttribute="top" secondItem="3162" secondAttribute="bottom" constant="8"/>
+                                                <constraint id="3173" firstItem="3171" firstAttribute="leading" secondItem="3161" secondAttribute="leading" constant="11"/>
+                                                <constraint id="3174" firstItem="3161" firstAttribute="bottom" secondItem="3171" secondAttribute="bottom" constant="10"/>
+                                                <constraint id="3175" firstItem="3161" firstAttribute="trailing" secondItem="3171" secondAttribute="trailing" constant="11"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="3161"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="3163"/>
+                                            <exclude reference="3164"/>
+                                            <exclude reference="3165"/>
+                                            <exclude reference="3166"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="3161"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="3163"/>
+                                            <include reference="3164"/>
+                                            <include reference="3165"/>
+                                            <include reference="3166"/>
+                                        </mask>
+                                    </variation>
+                                    <constraints>
+                                        <constraint id="3163" firstItem="3161" firstAttribute="top" secondItem="3159" secondAttribute="top" constant="20"/>
+                                        <constraint id="3164" firstItem="3161" firstAttribute="leading" secondItem="3159" secondAttribute="leading" constant="20"/>
+                                        <constraint id="3165" firstItem="3159" firstAttribute="bottom" secondItem="3161" secondAttribute="bottom" constant="20"/>
+                                        <constraint id="3166" firstItem="3159" firstAttribute="trailing" secondItem="3161" secondAttribute="trailing" constant="20"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <variation key="widthClass=compact">
+                                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0.9137254901960784" green="0.92549019607843142" blue="0.95686274509803926" alpha="1"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="postBackgroundView" destination="3161" id="name-outlet-3161"/>
+                                    <outlet property="authorLabel" destination="3162" id="name-outlet-3162"/>
+                                    <outlet property="postLabel" destination="3171" id="name-outlet-3171"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="1501" id="1504"/>
@@ -746,7 +863,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue id="3046" destination="2930" kind="show"/>
+                                    <segue id="3046" destination="2930" kind="show" identifier="showOfertas"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

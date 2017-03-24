@@ -124,6 +124,10 @@
     <Compile Include="PerfilPropioTableViewController.designer.cs">
       <DependentUpon>PerfilPropioTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PostTableViewCell.cs" />
+    <Compile Include="PostTableViewCell.designer.cs">
+      <DependentUpon>PostTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="noticias-tabicon.pdf" />
     <Compile Include="FeaturedClasesPageViewController.cs" />
