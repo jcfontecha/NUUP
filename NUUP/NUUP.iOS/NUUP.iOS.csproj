@@ -138,6 +138,10 @@
     <Compile Include="ClasePageViewController.designer.cs">
       <DependentUpon>ClasePageViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PerfilAjenoTableViewController.cs" />
+    <Compile Include="PerfilAjenoTableViewController.designer.cs">
+      <DependentUpon>PerfilAjenoTableViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\busqueda-tabicon.imageset\busqueda.png">

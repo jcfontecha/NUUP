@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UIKit;
+using CoreGraphics;
 
 namespace NUUP.iOS
 {
@@ -53,6 +54,21 @@ namespace NUUP.iOS
          TableView.RefreshControl.EndRefreshing();
 
          TableView.ReloadData();
+      }
+
+      public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+      {
+         base.PrepareForSegue(segue, sender);
+
+         if (segue.Identifier == "VerPerfilSegue")
+         {
+            var vc = (PerfilAjenoTableViewController)segue.DestinationViewController;
+            var senderButton = (UIButton)sender;
+            CGPoint buttonPosition = senderButton.ConvertPointToView(new CGPoint(0.0f, 0.0f), TableView);
+            NSIndexPath indexPath = TableView.IndexPathForRowAtPoint(buttonPosition);
+
+            vc.User = Noticias[indexPath.Row].User;
+         }
       }
 
       class DataSource : UITableViewDataSource
