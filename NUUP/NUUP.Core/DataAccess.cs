@@ -28,7 +28,7 @@ namespace NUUP.Core
             news.Add(post);
 
             var post2 = new Post() { IdPost = 3, IdUser = 7, Date = DateTime.Today, Text = "Doy clases de programación" };
-            post2.User = new User() { IdUser = 7, Nombre = "Juan Pablo", Apellido = "Gonzalez" };
+            post2.User = new User() { IdUser = 7, Nombre = "Gerardo", Apellido = "Alcántara" };
 
             news.Add(post2);
          });

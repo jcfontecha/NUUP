@@ -51,5 +51,15 @@ namespace NUUP.iOS
          authorLabel.Text = author;
          postLabel.Text = post;
       }
+
+      public override void LayoutSubviews()
+      {
+			postBackgroundView.Layer.CornerRadius = 5.0f;
+
+			postBackgroundView.Layer.ShadowColor = UIColor.Black.CGColor;
+			postBackgroundView.Layer.ShadowOpacity = 0.2f;
+			postBackgroundView.Layer.ShadowRadius = 4.0f;
+			postBackgroundView.Layer.ShadowOffset = new CoreGraphics.CGSize(0.0f, 0.0f);
+      }
    }
 }

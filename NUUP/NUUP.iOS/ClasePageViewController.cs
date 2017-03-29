@@ -73,7 +73,7 @@ namespace NUUP.iOS
          Label = new UILabel();
          Label.Frame = new CGRect(5, 5, View.Frame.Size.Width - 10, 25);
          Label.Text = (Text != null)? Text : "Default";
-         Label.BackgroundColor = new UIColor(1, 1, 1, 1);
+         //Label.BackgroundColor = new UIColor(1, 1, 1, 1);
 
          View.BackgroundColor = new UIColor(1.0f, 0.0f, 0.0f, 1.0f);
          View.AddSubview(Label);
