@@ -20,6 +20,10 @@ namespace NUUP.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView perfilImage { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView postBackgroundView { get; set; }
 
         [Outlet]
@@ -31,6 +35,11 @@ namespace NUUP.iOS
             if (authorLabel != null) {
                 authorLabel.Dispose ();
                 authorLabel = null;
+            }
+
+            if (perfilImage != null) {
+                perfilImage.Dispose ();
+                perfilImage = null;
             }
 
             if (postBackgroundView != null) {

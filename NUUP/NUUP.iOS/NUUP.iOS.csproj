@@ -112,6 +112,10 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
+    <Compile Include="MensajesViewController.cs" />
+    <Compile Include="MensajesViewController.designer.cs">
+      <DependentUpon>MensajesViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="NoticiasTableViewController.cs" />
     <Compile Include="NoticiasTableViewController.designer.cs">
       <DependentUpon>NoticiasTableViewController.cs</DependentUpon>

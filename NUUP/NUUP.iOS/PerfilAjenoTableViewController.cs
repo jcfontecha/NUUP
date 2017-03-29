@@ -22,7 +22,7 @@ namespace NUUP.iOS
             User = new User() { Nombre = "Juan Carlos" };
          }
 
-         nameLabel.Text = User.Nombre;
+         NombreLabel.Text = User.Nombre;
       }
    }
 }

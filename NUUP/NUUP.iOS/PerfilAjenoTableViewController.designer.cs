@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Xamarin Studio from the outlets and
 // actions declared in your storyboard file.
@@ -16,13 +16,58 @@ namespace NUUP.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel nameLabel { get; set; }
+        UIKit.UILabel AlumnoLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel DescripcionLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel EstudiosLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel NombreLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView PerfilImage { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel TutorLabel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (nameLabel != null) {
-                nameLabel.Dispose ();
-                nameLabel = null;
+            if (AlumnoLabel != null) {
+                AlumnoLabel.Dispose ();
+                AlumnoLabel = null;
+            }
+
+            if (DescripcionLabel != null) {
+                DescripcionLabel.Dispose ();
+                DescripcionLabel = null;
+            }
+
+            if (EstudiosLabel != null) {
+                EstudiosLabel.Dispose ();
+                EstudiosLabel = null;
+            }
+
+            if (NombreLabel != null) {
+                NombreLabel.Dispose ();
+                NombreLabel = null;
+            }
+
+            if (PerfilImage != null) {
+                PerfilImage.Dispose ();
+                PerfilImage = null;
+            }
+
+            if (TutorLabel != null) {
+                TutorLabel.Dispose ();
+                TutorLabel = null;
             }
         }
     }

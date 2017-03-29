@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="20">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
@@ -67,7 +67,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="548" id="549">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -76,9 +76,29 @@
                             <outlet property="dataSource" destination="543" id="546"/>
                             <outlet property="delegate" destination="543" id="547"/>
                         </connections>
+                        <searchBar contentMode="redraw" id="4015" key="tableHeaderView">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="543" id="4016"/>
+                            </connections>
+                        </searchBar>
                     </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="4018" id="4017"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="550" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="4018">
+                    <connections>
+                        <outlet property="delegate" destination="543" id="4019"/>
+                        <outlet property="searchBar" destination="4015" id="4020"/>
+                        <outlet property="searchContentsController" destination="543" id="4021"/>
+                        <outlet property="searchResultsDataSource" destination="543" id="4022"/>
+                        <outlet property="searchResultsDelegate" destination="543" id="4023"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1138" y="660"/>
         </scene>
@@ -118,7 +138,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="636" id="637">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -166,10 +186,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="768" reuseIdentifier="Cel">
-                                <rect key="frame" x="0.0" y="56" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="768" id="769">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -341,29 +361,18 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3162" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="47" y="9" width="293" height="21"/>
+                                                    <rect key="frame" x="60" y="20" width="292" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <constraints>
-                                                        <constraint id="3170" firstItem="3162" firstAttribute="height" constant="21"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="3170"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <variation key="widthClass=compact">
-                                                        <mask key="constraints">
-                                                            <include reference="3170"/>
-                                                        </mask>
-                                                    </variation>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3171" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="11" y="38" width="194" height="83"/>
+                                                    <rect key="frame" x="11" y="57" width="341" height="64"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                     <color key="textColor" colorSpace="calibratedRGB" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3232" translatesAutoresizingMaskIntoConstraints="NO">
                                                     <rect key="frame" x="8" y="129" width="164" height="30"/>
@@ -405,7 +414,29 @@
                                                             <include reference="3241"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <segue id="3705" destination="3377" kind="show" identifier="EnviarMensajeSegue"/>
+                                                    </connections>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4000" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="11" y="9" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint id="4003" firstItem="4000" firstAttribute="height" constant="40"/>
+                                                        <constraint id="4004" firstAttribute="width" secondItem="4000" secondAttribute="height" multiplier="1:1"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="4003"/>
+                                                            <exclude reference="4004"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="4003"/>
+                                                            <include reference="4004"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
                                             </subviews>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -413,21 +444,24 @@
                                                     <exclude reference="3171"/>
                                                     <exclude reference="3232"/>
                                                     <exclude reference="3233"/>
+                                                    <exclude reference="4000"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="3167"/>
-                                                    <exclude reference="3168"/>
-                                                    <exclude reference="3169"/>
                                                     <exclude reference="3234"/>
                                                     <exclude reference="3235"/>
                                                     <exclude reference="3236"/>
                                                     <exclude reference="3237"/>
                                                     <exclude reference="3238"/>
                                                     <exclude reference="3239"/>
-                                                    <exclude reference="3250"/>
-                                                    <exclude reference="3251"/>
-                                                    <exclude reference="3252"/>
-                                                    <exclude reference="3253"/>
+                                                    <exclude reference="4001"/>
+                                                    <exclude reference="4002"/>
+                                                    <exclude reference="4006"/>
+                                                    <exclude reference="4007"/>
+                                                    <exclude reference="4008"/>
+                                                    <exclude reference="4009"/>
+                                                    <exclude reference="4010"/>
+                                                    <exclude reference="4011"/>
+                                                    <exclude reference="4012"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -436,27 +470,27 @@
                                                     <include reference="3171"/>
                                                     <include reference="3232"/>
                                                     <include reference="3233"/>
+                                                    <include reference="4000"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="3167"/>
-                                                    <include reference="3168"/>
-                                                    <include reference="3169"/>
                                                     <include reference="3234"/>
                                                     <include reference="3235"/>
                                                     <include reference="3236"/>
                                                     <include reference="3237"/>
                                                     <include reference="3238"/>
                                                     <include reference="3239"/>
-                                                    <include reference="3250"/>
-                                                    <include reference="3251"/>
-                                                    <include reference="3252"/>
-                                                    <include reference="3253"/>
+                                                    <include reference="4001"/>
+                                                    <include reference="4002"/>
+                                                    <include reference="4006"/>
+                                                    <include reference="4007"/>
+                                                    <include reference="4008"/>
+                                                    <include reference="4009"/>
+                                                    <include reference="4010"/>
+                                                    <include reference="4011"/>
+                                                    <include reference="4012"/>
                                                 </mask>
                                             </variation>
                                             <constraints>
-                                                <constraint id="3167" firstItem="3162" firstAttribute="top" secondItem="3161" secondAttribute="top" constant="9"/>
-                                                <constraint id="3168" firstItem="3162" firstAttribute="leading" secondItem="3161" secondAttribute="leading" constant="47"/>
-                                                <constraint id="3169" firstItem="3161" firstAttribute="trailing" secondItem="3162" secondAttribute="trailing" constant="20"/>
                                                 <constraint id="3234" firstItem="3161" firstAttribute="bottom" secondItem="3232" secondAttribute="bottom" constant="12">
                                                     <variation key="widthClass=compact" constant="8"/>
                                                 </constraint>
@@ -473,14 +507,15 @@
                                                     <variation key="widthClass=compact" constant="8"/>
                                                 </constraint>
                                                 <constraint id="3239" firstItem="3233" firstAttribute="width" secondItem="3232" secondAttribute="width"/>
-                                                <constraint id="3250" firstItem="3171" firstAttribute="top" secondItem="3162" secondAttribute="bottom" constant="8"/>
-                                                <constraint id="3251" firstItem="3171" firstAttribute="leading" secondItem="3161" secondAttribute="leading" constant="11"/>
-                                                <constraint id="3252" firstItem="3232" firstAttribute="top" secondItem="3171" secondAttribute="bottom" constant="73">
-                                                    <variation key="widthClass=compact" constant="8"/>
-                                                </constraint>
-                                                <constraint id="3253" firstItem="3161" firstAttribute="trailing" secondItem="3171" secondAttribute="trailing" constant="311">
-                                                    <variation key="widthClass=compact" constant="8"/>
-                                                </constraint>
+                                                <constraint id="4001" firstItem="4000" firstAttribute="top" secondItem="3161" secondAttribute="top" constant="9"/>
+                                                <constraint id="4002" firstItem="4000" firstAttribute="leading" secondItem="3161" secondAttribute="leading" constant="11"/>
+                                                <constraint id="4006" firstItem="3162" firstAttribute="leading" secondItem="4000" secondAttribute="trailing" constant="9"/>
+                                                <constraint id="4007" firstItem="3161" firstAttribute="trailing" secondItem="3162" secondAttribute="trailing" constant="8"/>
+                                                <constraint id="4008" firstItem="3162" firstAttribute="centerY" secondItem="4000" secondAttribute="centerY" constant="1"/>
+                                                <constraint id="4009" firstItem="3171" firstAttribute="top" secondItem="4000" secondAttribute="bottom" constant="8"/>
+                                                <constraint id="4010" firstItem="3171" firstAttribute="leading" secondItem="3161" secondAttribute="leading" constant="11"/>
+                                                <constraint id="4011" firstItem="3232" firstAttribute="top" secondItem="3171" secondAttribute="bottom" constant="8"/>
+                                                <constraint id="4012" firstItem="3161" firstAttribute="trailing" secondItem="3171" secondAttribute="trailing" constant="8"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -520,6 +555,7 @@
                                     <outlet property="postBackgroundView" destination="3161" id="name-outlet-3161"/>
                                     <outlet property="authorLabel" destination="3162" id="name-outlet-3162"/>
                                     <outlet property="postLabel" destination="3171" id="name-outlet-3171"/>
+                                    <outlet property="perfilImage" destination="4000" id="name-outlet-4000"/>
                                 </connections>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
@@ -574,11 +610,11 @@
                                 <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2230" id="2231">
-                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Categoria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2317">
-                                            <rect key="frame" x="20" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="20" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -867,11 +903,11 @@
                                         <rect key="frame" x="0.0" y="368" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2468" id="2469">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Conectar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2541">
-                                                    <rect key="frame" x="15" y="0.0" width="350" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="350" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -919,11 +955,11 @@
                                 <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2680" id="2681">
-                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Materia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2928">
-                                            <rect key="frame" x="20" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="20" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -941,6 +977,7 @@
                             <outlet property="delegate" destination="2676" id="2679"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedTopBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2682" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -958,18 +995,18 @@
                                 <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2934" id="2935">
-                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Oferta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3053">
-                                            <rect key="frame" x="20" y="4" width="49" height="21"/>
+                                            <rect key="frame" x="20" y="5" width="49" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3054">
-                                            <rect key="frame" x="20" y="25" width="44" height="15"/>
+                                            <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -996,7 +1033,7 @@
             <objects>
                 <tableViewController id="3224" sceneMemberID="viewController" customClass="PerfilAjenoTableViewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3225">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -1004,82 +1041,299 @@
                             <outlet property="delegate" destination="3224" id="3227"/>
                         </connections>
                         <sections>
-                            <tableViewSection headerTitle="Section" id="3305">
+                            <tableViewSection id="3305">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3306" rowHeight="80">
-                                        <rect key="frame" x="0.0" y="28" width="400" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3306" rowHeight="250">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3306" id="3307">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="249.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3312" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="20" y="8" width="372" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3344" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="150" y="20" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint id="3348" firstItem="3344" firstAttribute="height" constant="100"/>
+                                                        <constraint id="3349" firstAttribute="width" secondItem="3344" secondAttribute="height" multiplier="1:1"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="3348"/>
+                                                            <exclude reference="3349"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="3348"/>
+                                                            <include reference="3349"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3350" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="20" y="128" width="370" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nivel de estudios: Licenciatura" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3354" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="20" y="161.5" width="360" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3358" translatesAutoresizingMaskIntoConstraints="NO" text="Tutor: 4 estrellas">
+                                                    <rect key="frame" x="20" y="185.5" width="360" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alumno: 3 estrellas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3363" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="20" y="210" width="370" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="3344"/>
+                                                    <exclude reference="3350"/>
+                                                    <exclude reference="3354"/>
+                                                    <exclude reference="3358"/>
+                                                    <exclude reference="3363"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="3345"/>
+                                                    <exclude reference="3347"/>
+                                                    <exclude reference="3351"/>
+                                                    <exclude reference="3352"/>
+                                                    <exclude reference="3353"/>
+                                                    <exclude reference="3355"/>
+                                                    <exclude reference="3356"/>
+                                                    <exclude reference="3357"/>
+                                                    <exclude reference="3359"/>
+                                                    <exclude reference="3360"/>
+                                                    <exclude reference="3361"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="3344"/>
+                                                    <include reference="3350"/>
+                                                    <include reference="3354"/>
+                                                    <include reference="3358"/>
+                                                    <include reference="3363"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="3345"/>
+                                                    <include reference="3347"/>
+                                                    <include reference="3351"/>
+                                                    <include reference="3352"/>
+                                                    <include reference="3353"/>
+                                                    <include reference="3355"/>
+                                                    <include reference="3356"/>
+                                                    <include reference="3357"/>
+                                                    <include reference="3359"/>
+                                                    <include reference="3360"/>
+                                                    <include reference="3361"/>
+                                                </mask>
+                                            </variation>
+                                            <constraints>
+                                                <constraint id="3345" firstItem="3344" firstAttribute="top" secondItem="3307" secondAttribute="top" constant="20"/>
+                                                <constraint id="3347" firstItem="3344" firstAttribute="centerX" secondItem="3307" secondAttribute="centerX"/>
+                                                <constraint id="3351" firstItem="3350" firstAttribute="top" secondItem="3344" secondAttribute="bottom" constant="8"/>
+                                                <constraint id="3352" firstItem="3350" firstAttribute="leading" secondItem="3307" secondAttribute="leading" constant="20"/>
+                                                <constraint id="3353" firstItem="3307" firstAttribute="trailing" secondItem="3350" secondAttribute="trailing" constant="10"/>
+                                                <constraint id="3355" firstItem="3354" firstAttribute="top" secondItem="3350" secondAttribute="bottom" constant="7"/>
+                                                <constraint id="3356" firstItem="3354" firstAttribute="leading" secondItem="3307" secondAttribute="leading" constant="20"/>
+                                                <constraint id="3357" firstItem="3307" firstAttribute="trailing" secondItem="3354" secondAttribute="trailing" constant="20"/>
+                                                <constraint id="3359" firstItem="3358" firstAttribute="top" secondItem="3354" secondAttribute="bottom" constant="7"/>
+                                                <constraint id="3360" firstItem="3358" firstAttribute="leading" secondItem="3307" secondAttribute="leading" constant="20"/>
+                                                <constraint id="3361" firstItem="3307" firstAttribute="trailing" secondItem="3358" secondAttribute="trailing" constant="20"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3308" rowHeight="88">
+                                        <rect key="frame" x="0.0" y="250" width="400" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3308" id="3309">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="87.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3364" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="4">
+                                                    <rect key="frame" x="9" y="9" width="382" height="70"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="3312"/>
+                                                    <exclude reference="3364"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="3313"/>
-                                                    <exclude reference="3314"/>
-                                                    <exclude reference="3315"/>
+                                                    <exclude reference="3365"/>
+                                                    <exclude reference="3366"/>
+                                                    <exclude reference="3367"/>
+                                                    <exclude reference="3368"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
-                                                    <include reference="3312"/>
+                                                    <include reference="3364"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="3313"/>
-                                                    <include reference="3314"/>
-                                                    <include reference="3315"/>
+                                                    <include reference="3365"/>
+                                                    <include reference="3366"/>
+                                                    <include reference="3367"/>
+                                                    <include reference="3368"/>
                                                 </mask>
                                             </variation>
                                             <constraints>
-                                                <constraint id="3313" firstItem="3312" firstAttribute="top" secondItem="3307" secondAttribute="top" constant="20">
-                                                    <variation key="widthClass=compact" constant="8"/>
-                                                </constraint>
-                                                <constraint id="3314" firstItem="3312" firstAttribute="leading" secondItem="3307" secondAttribute="leading" constant="20">
-                                                    <variation key="widthClass=compact" constant="8"/>
-                                                </constraint>
-                                                <constraint id="3315" firstItem="3307" firstAttribute="trailing" secondItem="3312" secondAttribute="trailing" constant="338">
-                                                    <variation key="widthClass=compact" constant="8"/>
-                                                </constraint>
+                                                <constraint id="3365" firstItem="3364" firstAttribute="top" secondItem="3309" secondAttribute="top" constant="9"/>
+                                                <constraint id="3366" firstItem="3364" firstAttribute="leading" secondItem="3309" secondAttribute="leading" constant="9"/>
+                                                <constraint id="3367" firstItem="3309" firstAttribute="bottom" secondItem="3364" secondAttribute="bottom" constant="8"/>
+                                                <constraint id="3368" firstItem="3309" firstAttribute="trailing" secondItem="3364" secondAttribute="trailing" constant="9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3308">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3310" style="IBUITableViewCellStyleDefault" textLabel="3369">
+                                        <rect key="frame" x="0.0" y="152" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3310" id="3311">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Enviar mensaje" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3369">
+                                                    <rect key="frame" x="15" y="0.0" width="210" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue id="3823" destination="3377" kind="show" identifier="EnviarMensajeSegue"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3335" style="IBUITableViewCellStyleDefault" textLabel="3370">
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3308" id="3309">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3335" id="3336">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Agregar amigo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3370">
+                                                    <rect key="frame" x="15" y="0.0" width="210" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="3337">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3338" rowHeight="18">
+                                        <rect key="frame" x="0.0" y="852" width="400" height="18"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3338" id="3339">
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3310">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3371" style="IBUITableViewCellStyleDefault" textLabel="3373" accessoryType="disclosureIndicator">
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3310" id="3311">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3371" id="3372">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ver clases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3373">
+                                                    <rect key="frame" x="15" y="0.0" width="210" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue id="3998" destination="2676" kind="show" identifier="ShowClasesForUsuario"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
                     </tableView>
                     <connections>
-                        <outlet property="nameLabel" destination="3312" id="name-outlet-3312"/>
+                        <outlet property="NombreLabel" destination="3350" id="name-outlet-3350"/>
+                        <outlet property="PerfilImage" destination="3344" id="name-outlet-3344"/>
+                        <outlet property="EstudiosLabel" destination="3354" id="name-outlet-3354"/>
+                        <outlet property="TutorLabel" destination="3358" id="name-outlet-3358"/>
+                        <outlet property="AlumnoLabel" destination="3363" id="name-outlet-3363"/>
+                        <outlet property="DescripcionLabel" destination="3364" id="name-outlet-3364"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3230" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741" y="-726"/>
+            <point key="canvasLocation" x="1664" y="-724"/>
+        </scene>
+        <scene sceneID="3376">
+            <objects>
+                <viewController id="3377" sceneMemberID="viewController" customClass="MensajesViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3374"/>
+                        <viewControllerLayoutGuide type="bottom" id="3375"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3378">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensajes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3833" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="280" width="360" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3833"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3839"/>
+                                <exclude reference="3840"/>
+                                <exclude reference="3841"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="3833"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3839"/>
+                                <include reference="3840"/>
+                                <include reference="3841"/>
+                            </mask>
+                        </variation>
+                        <constraints>
+                            <constraint id="3839" firstItem="3833" firstAttribute="leading" secondItem="3378" secondAttribute="leading" constant="20"/>
+                            <constraint id="3840" firstItem="3378" firstAttribute="trailing" secondItem="3833" secondAttribute="trailing" constant="20"/>
+                            <constraint id="3841" firstItem="3378" firstAttribute="centerY" secondItem="3833" secondAttribute="centerY" constant="4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3379" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2198" y="-727"/>
         </scene>
     </scenes>
     <resources>
