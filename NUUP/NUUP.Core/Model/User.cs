@@ -4,22 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace NUUP.Core.Model
 {
    public class User
    {
+      [JsonProperty("idUser")]
       public int IdUser { get; set; }
+
+      [JsonProperty("idDreamfactory")]
       public int IdDreamfactory { get; set; }
+
+      [JsonProperty("first_name")]
       public string FirstName { get; set; }
+
+      [JsonProperty("last_name")]
       public string LastName { get; set; }
+
+      [JsonProperty("email")]
       public string Email { get; set; }
+
+      [JsonProperty("birthday")]
       public DateTime Birthday { get; set; }
+
+      [JsonProperty("lat")]
       public float? Lat { get; set; }
+
+      [JsonProperty("lng")]
       public float? Lng { get; set; }
+
+      [JsonProperty("idDegree")]
       public int? IdDegree { get; set; }
+
+      [JsonProperty("creation")]
       public DateTime Creation { get; set; }
+
+      [JsonProperty("ratingTutor")]
       public float? RatingTutor { get; set; }
+
+      [JsonProperty("ratingStudent")]
       public float? RatingStudent { get; set; }
 
       public Degree Degree { get; set; }
@@ -50,24 +76,6 @@ namespace NUUP.Core.Model
          Friends = new List<User>();
          SentMessages = new List<Message>();
          ReceivedMessages = new List<Message>();
-      }
-
-      public User(string json)
-      {
-         var jUser = JObject.Parse(json);
-
-         IdUser = (int)jUser["idUser"];
-         IdDreamfactory = (int)jUser["idDreamfactory"];
-         FirstName = (string)jUser["firstName"];
-         LastName = (string)jUser["lastName"];
-         Email = (string)jUser["email"];
-         Birthday = (DateTime)jUser["birthday"];
-         Lat = (float?)jUser["lat"];
-         Lng = (float?)jUser["lng"];
-         IdDegree = (int?)jUser["idDegree"];
-         Creation = (DateTime)jUser["creation"];
-         RatingTutor = (float?)jUser["ratingTutor"];
-         RatingStudent = (float?)jUser["ratingStudent"];
       }
    }
 }

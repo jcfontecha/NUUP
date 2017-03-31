@@ -46,11 +46,11 @@ namespace NUUP.iOS
       {
          TableView.RefreshControl = new UIRefreshControl();
          TableView.RefreshControl.BeginRefreshing();
-         TableView.SetContentOffset(new CoreGraphics.CGPoint(0, -TableView.RefreshControl.Frame.Size.Height), true);
+         TableView.SetContentOffset(new CGPoint(0, -TableView.RefreshControl.Frame.Size.Height), true);
 
-         Noticias = await dataAccess.GetLatestNews();
+         Noticias = await dataAccess.GetLatestNewsAsync();
 
-         TableView.SetContentOffset(new CoreGraphics.CGPoint(0, TableView.RefreshControl.Frame.Size.Height), true);
+         TableView.SetContentOffset(new CGPoint(0, TableView.RefreshControl.Frame.Size.Height), true);
          TableView.RefreshControl.EndRefreshing();
 
          TableView.ReloadData();

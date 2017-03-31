@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUUP.Core.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace NUUP.Core
 {
@@ -17,9 +19,49 @@ namespace NUUP.Core
          service = ServiceManager.Instance;
       }
 
-      public async Task<User> GetFullUser(int id)
+      public async Task<User> GetFullUserAsync(int id)
       {
          var json = await service.GetResourceAsync("nuup/_table/user/1");
+         var user = JsonConvert.DeserializeObject<User>(json);
+
+         return user;
+      }
+
+      public async Task FillDreamFactoryUser(User user)
+      {
+         var json = await service.GetResourceAsync("system/user/14?fields=first_name%2Clast_name%2Cemail");
+         var jObject = JObject.Parse(json);
+
+         user.FirstName = jObject.GetValue("first_name").ToString();
+         user.LastName = jObject.GetValue("last_name").ToString();
+      }
+
+      public async Task<List<Post>> GetLatestNewsAsync()
+      {
+         var json = await service.GetResourceAsync("nuup/_table/post?related=user_by_idUser&limit=10&order=date%20DESC");
+         var jObject = JObject.Parse(json);
+         var jToken = jObject.GetValue("resource");
+         List<Post> posts = jToken.ToObject<List<Post>>();
+
+         string ids = "";
+         Post last = posts.Last();
+         foreach (var post in posts)
+         {
+            ids += post.User.IdDreamfactory;
+
+            if (post != last)
+            {
+               ids += ",";
+            }
+         }
+
+         json = await service.GetResourceAsync("system/user?fields=id%2Cfirst_name%2Clast_name%2Cemail&ids=" + Uri.EscapeDataString(ids));
+         jObject = JObject.Parse(json);
+         jToken = jObject.GetValue("resource");
+
+         // TODO: Finish parsing this shit
+
+         return posts;
       }
 
       public async Task<List<Post>> GetLatestNews()
