@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace NUUP.Core.Model
 {
@@ -10,8 +11,8 @@ namespace NUUP.Core.Model
    {
       public int IdUser { get; set; }
       public int IdDreamfactory { get; set; }
-      public string Nombre { get; set; }
-      public string Apellido { get; set; }
+      public string FirstName { get; set; }
+      public string LastName { get; set; }
       public string Email { get; set; }
       public DateTime Birthday { get; set; }
       public float? Lat { get; set; }
@@ -49,6 +50,24 @@ namespace NUUP.Core.Model
          Friends = new List<User>();
          SentMessages = new List<Message>();
          ReceivedMessages = new List<Message>();
+      }
+
+      public User(string json)
+      {
+         var jUser = JObject.Parse(json);
+
+         IdUser = (int)jUser["idUser"];
+         IdDreamfactory = (int)jUser["idDreamfactory"];
+         FirstName = (string)jUser["firstName"];
+         LastName = (string)jUser["lastName"];
+         Email = (string)jUser["email"];
+         Birthday = (DateTime)jUser["birthday"];
+         Lat = (float?)jUser["lat"];
+         Lng = (float?)jUser["lng"];
+         IdDegree = (int?)jUser["idDegree"];
+         Creation = (DateTime)jUser["creation"];
+         RatingTutor = (float?)jUser["ratingTutor"];
+         RatingStudent = (float?)jUser["ratingStudent"];
       }
    }
 }

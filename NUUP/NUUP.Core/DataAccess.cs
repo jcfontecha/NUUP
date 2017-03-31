@@ -9,11 +9,17 @@ namespace NUUP.Core
 {
    public class DataAccess
    {
-      private ServiceManager service = new ServiceManager();
+      private ServiceManager service;
       public User LoggedInUser { get; set; }
 
       public DataAccess()
       {
+         service = ServiceManager.Instance;
+      }
+
+      public async Task<User> GetFullUser(int id)
+      {
+         var json = await service.GetResourceAsync("nuup/_table/user/1");
       }
 
       public async Task<List<Post>> GetLatestNews()
@@ -23,12 +29,12 @@ namespace NUUP.Core
          await Task.Run(() =>
          {
             var post = new Post() { IdPost = 3, IdUser = 6, Date = DateTime.Today, Text = "Me gustaría aprender piano" };
-            post.User = new User() { IdUser = 6, Nombre = "Jose Carlos", Apellido = "Suarez" };
+            post.User = new User() { IdUser = 6, FirstName = "Jose Carlos", LastName = "Suarez" };
 
             news.Add(post);
 
             var post2 = new Post() { IdPost = 3, IdUser = 7, Date = DateTime.Today, Text = "Doy clases de programación" };
-            post2.User = new User() { IdUser = 7, Nombre = "Gerardo", Apellido = "Alcántara" };
+            post2.User = new User() { IdUser = 7, FirstName = "Gerardo", LastName = "Alcántara" };
 
             news.Add(post2);
          });

@@ -11,6 +11,7 @@ namespace NUUP.iOS
    {
       private DataSource dataSource;
       public List<IEntity> Results { get; private set; }
+      private UISearchController searchController;
 
       public List<Subject> Materias { get; set; }
       public List<Offer> Ofertas { get; set; }
@@ -41,10 +42,13 @@ namespace NUUP.iOS
          Ofertas = new List<Offer>();
          Grupos = new List<Group>();
 
-         var searchUpdater = new SearchResultsUpdater();
-         searchUpdater.UpdateSearchResults += Search;
+         var searchResultsController = new SearchResultsViewController();
 
-         var searchController = new UISearchController(this)
+         var searchUpdater = new SearchResultsUpdater();
+         searchUpdater.UpdateSearchResults += searchResultsController.Search;
+
+
+         searchController = new UISearchController(searchResultsController)
          {
             SearchResultsUpdater = searchUpdater
          };
@@ -52,21 +56,13 @@ namespace NUUP.iOS
          searchController.SearchBar.SizeToFit();
          searchController.SearchBar.SearchBarStyle = UISearchBarStyle.Minimal;
          searchController.SearchBar.Placeholder = "Búsqueda";
+         searchController.SearchBar.TintColor = UIColor.White;
 
          searchController.HidesNavigationBarDuringPresentation = false;
 
          DefinesPresentationContext = true;
 
          NavigationItem.TitleView = searchController.SearchBar;
-      }
-
-      private void Search(string obj)
-      {
-         // Search API
-         Materias.Add(new Subject() { Name = "Matematicas" });
-         Materias.Add(new Subject() { Name = "Español" });
-
-         TableView.ReloadData();
       }
 
       class SearchResultsUpdater : UISearchResultsUpdating

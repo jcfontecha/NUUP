@@ -83,7 +83,7 @@ namespace NUUP.iOS
          public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
          {
             var cell = (PostTableViewCell)tableView.DequeueReusableCell(CellIdentifier, indexPath);
-            cell.Author = controller.Noticias[indexPath.Row].User.Nombre + " " + controller.Noticias[indexPath.Row].User.Apellido;
+            cell.Author = controller.Noticias[indexPath.Row].User.FirstName + " " + controller.Noticias[indexPath.Row].User.LastName;
             cell.Post = controller.Noticias[indexPath.Row].Text;
 
             return cell;

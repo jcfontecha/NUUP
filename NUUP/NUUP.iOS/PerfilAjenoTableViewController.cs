@@ -19,10 +19,10 @@ namespace NUUP.iOS
 
          if (User == null)
          {
-            User = new User() { Nombre = "Juan Carlos" };
+            User = new User() { FirstName = "Juan Carlos" };
          }
 
-         NombreLabel.Text = User.Nombre;
+         NombreLabel.Text = User.FirstName;
       }
    }
 }
