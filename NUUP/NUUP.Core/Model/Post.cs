@@ -26,7 +26,7 @@ namespace NUUP.Core.Model
 
       public Post()
       {
-
+         User = new User();
       }
    }
 }

@@ -48,7 +48,7 @@ namespace NUUP.iOS
          TableView.RefreshControl.BeginRefreshing();
          TableView.SetContentOffset(new CGPoint(0, -TableView.RefreshControl.Frame.Size.Height), true);
 
-         Noticias = await dataAccess.GetLatestNewsAsync();
+         Noticias = await dataAccess.GetLatestNewsAsync(10);
 
          TableView.SetContentOffset(new CGPoint(0, TableView.RefreshControl.Frame.Size.Height), true);
          TableView.RefreshControl.EndRefreshing();

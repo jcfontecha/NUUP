@@ -34,54 +34,83 @@ namespace NUUP.Core
 
          user.FirstName = jObject.GetValue("first_name").ToString();
          user.LastName = jObject.GetValue("last_name").ToString();
+         user.Email = jObject.GetValue("email").ToString();
       }
 
-      public async Task<List<Post>> GetLatestNewsAsync()
+      public async Task FillDreamFactoryUsers(IEnumerable<User> users)
       {
-         var json = await service.GetResourceAsync("nuup/_table/post?related=user_by_idUser&limit=10&order=date%20DESC");
-         var jObject = JObject.Parse(json);
-         var jToken = jObject.GetValue("resource");
-         List<Post> posts = jToken.ToObject<List<Post>>();
-
+         // Get list of IDs to make only one HTTP request
          string ids = "";
-         Post last = posts.Last();
-         foreach (var post in posts)
+         User last = users.Last();
+         foreach (var user in users)
          {
-            ids += post.User.IdDreamfactory;
+            ids += user.IdDreamfactory;
 
-            if (post != last)
+            if (user != last)
             {
                ids += ",";
             }
          }
 
-         json = await service.GetResourceAsync("system/user?fields=id%2Cfirst_name%2Clast_name%2Cemail&ids=" + Uri.EscapeDataString(ids));
-         jObject = JObject.Parse(json);
-         jToken = jObject.GetValue("resource");
+         var json = await service.GetResourceAsync("system/user?fields=id%2Cfirst_name%2Clast_name%2Cemail&ids=" + Uri.EscapeDataString(ids));
+         ExtractResource(json, (newUser) =>
+         {
+            foreach (var user in users)
+            {
+               if (user.IdDreamfactory == (int)newUser.GetValue("id"))
+               {
+                  user.FirstName = newUser.GetValue("first_name").ToString();
+                  user.LastName = newUser.GetValue("last_name").ToString();
+                  user.Email = newUser.GetValue("email").ToString();
+               }
+            }
+         });
+      }
 
-         // TODO: Finish parsing this shit
+      /// <summary>
+      /// Returns the latest number of news
+      /// </summary>
+      /// <param name="limit">Limit of posts to return</param>
+      /// <returns></returns>
+      public async Task<List<Post>> GetLatestNewsAsync(int limit)
+      {
+         // Get POSTS from the table in the API
+         var json = await service.GetResourceAsync("nuup/_table/post?related=user_by_idUser&limit=" + limit + "&order=date%20DESC");
+         var jObject = JObject.Parse(json);
+         var jToken = jObject.GetValue("resource");
+         List<Post> posts = jToken.ToObject<List<Post>>();
+
+         // Get DreamFactory data for each user
+         await FillDreamFactoryUsers(posts.Select(x => x.User));
 
          return posts;
       }
 
-      public async Task<List<Post>> GetLatestNews()
+      /// <summary>
+      /// Extracts the Array under the "resource" tag in the JSON string
+      /// </summary>
+      /// <param name="json"></param>
+      /// <returns></returns>
+      private JArray ExtractResource(string json)
       {
-         var news = new List<Post>();
+         var jObject = JObject.Parse(json);
+         var jToken = jObject.GetValue("resource");
+         return JArray.Parse(jToken.ToString());
+      }
 
-         await Task.Run(() =>
+      /// <summary>
+      /// Extracts the elements inside the "resource" tag in the JSON data.
+      /// </summary>
+      /// <param name="json">JSON string</param>
+      /// <param name="handler">Action to handle each item</param>
+      private void ExtractResource(string json, Action<JObject> handler)
+      {
+         var array = ExtractResource(json);
+
+         foreach (JObject item in array)
          {
-            var post = new Post() { IdPost = 3, IdUser = 6, Date = DateTime.Today, Text = "Me gustaría aprender piano" };
-            post.User = new User() { IdUser = 6, FirstName = "Jose Carlos", LastName = "Suarez" };
-
-            news.Add(post);
-
-            var post2 = new Post() { IdPost = 3, IdUser = 7, Date = DateTime.Today, Text = "Doy clases de programación" };
-            post2.User = new User() { IdUser = 7, FirstName = "Gerardo", LastName = "Alcántara" };
-
-            news.Add(post2);
-         });
-
-         return news;
+            handler(item);
+         }
       }
 
       public async Task<List<Category>> GetCategorias()
