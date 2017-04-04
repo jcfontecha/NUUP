@@ -44,16 +44,7 @@ namespace NUUP.iOS
 
       public async Task GetDataAsync()
       {
-         TableView.RefreshControl = new UIRefreshControl();
-         TableView.RefreshControl.BeginRefreshing();
-         TableView.SetContentOffset(new CGPoint(0, -TableView.RefreshControl.Frame.Size.Height), true);
-
-         Noticias = await dataAccess.GetLatestNewsAsync(10);
-
-         TableView.SetContentOffset(new CGPoint(0, TableView.RefreshControl.Frame.Size.Height), true);
-         TableView.RefreshControl.EndRefreshing();
-
-         TableView.ReloadData();
+         await Helper.GetDataAsync(TableView, () => Noticias = dataAccess.GetLatestNewsAsync(10).Result);
       }
 
       public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)

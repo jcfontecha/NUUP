@@ -27,7 +27,7 @@ namespace Nuup.Core.Tests
 
       public async void TestUserAsync()
       {
-         User user = await dataAccess.GetFullUserAsync(1);
+         User user = await dataAccess.GetUserAsync(1);
          Console.WriteLine(user);
          Console.WriteLine(user.ToString());
       }

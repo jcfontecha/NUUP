@@ -14,12 +14,26 @@ namespace NUUP.Core
       private ServiceManager service;
       public User LoggedInUser { get; set; }
 
+      // Cache properties
+      private List<Category> categoriesCache;
+      private List<Degree> degreesCache;
+      private List<Subject> subjectsCache;
+
       public DataAccess()
       {
          service = ServiceManager.Instance;
+
+         categoriesCache = new List<Category>();
+         degreesCache = new List<Degree>();
+         subjectsCache = new List<Subject>();
       }
 
-      public async Task<User> GetFullUserAsync(int id)
+      /// <summary>
+      /// Retreives a specified User
+      /// </summary>
+      /// <param name="id">Id of the user to be retreived</param>
+      /// <returns></returns>
+      public async Task<User> GetUserAsync(int id)
       {
          var json = await service.GetResourceAsync("nuup/_table/user/1");
          var user = JsonConvert.DeserializeObject<User>(json);
@@ -27,9 +41,37 @@ namespace NUUP.Core
          return user;
       }
 
+      public async Task<User> GetFullUserAsync(int id)
+      {
+         var json = await service.GetResourceAsync("nuup/_table/user/1?related=degree_by_idDegree");
+         var user = JsonConvert.DeserializeObject<User>(json);
+
+         await FillDreamFactoryUser(user);
+
+         return user;
+      }
+
+      public async Task CompleteSingleUserAsync(User user)
+      {
+         if (string.IsNullOrEmpty(user.FirstName))
+         {
+            await FillDreamFactoryUser(user);
+         }
+
+         if (user.Degree == null)
+         {
+            await FillUserDegree(user);
+         }
+      }
+
+      /// <summary>
+      /// Completes DreamFactory info (FirstName, LastName and email)
+      /// </summary>
+      /// <param name="user"></param>
+      /// <returns></returns>
       public async Task FillDreamFactoryUser(User user)
       {
-         var json = await service.GetResourceAsync("system/user/14?fields=first_name%2Clast_name%2Cemail");
+         var json = await service.GetResourceAsync("system/user/" + user.IdUser + "?fields=first_name%2Clast_name%2Cemail");
          var jObject = JObject.Parse(json);
 
          user.FirstName = jObject.GetValue("first_name").ToString();
@@ -37,6 +79,37 @@ namespace NUUP.Core
          user.Email = jObject.GetValue("email").ToString();
       }
 
+      /// <summary>
+      /// Fills the given User's Degree field
+      /// </summary>
+      /// <param name="user"></param>
+      /// <returns></returns>
+      private async Task FillUserDegree(User user)
+      {
+         if (!user.IdDegree.HasValue)
+         {
+            return;
+         }
+
+         Degree degree;
+         if (degreesCache.Select(x => x.IdDegree).Contains(user.IdDegree.Value))
+         {
+            degree = degreesCache.Where(x => x.IdDegree == user.IdDegree).First();
+         }
+         else
+         {
+            var json = await service.GetResourceAsync("nuup/_table/degree/" + user.IdDegree);
+            degree = JsonConvert.DeserializeObject<Degree>(json);
+         }
+
+         user.Degree = degree;
+      }
+
+      /// <summary>
+      /// Completes DreamFactory info (FirstName, LastName and email)
+      /// </summary>
+      /// <param name="users">Set of NUUP users to be filled</param>
+      /// <returns></returns>
       public async Task FillDreamFactoryUsers(IEnumerable<User> users)
       {
          // Get list of IDs to make only one HTTP request

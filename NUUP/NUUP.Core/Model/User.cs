@@ -27,6 +27,9 @@ namespace NUUP.Core.Model
       [JsonProperty("email")]
       public string Email { get; set; }
 
+      [JsonProperty("description")]
+      public string Description { get; set; }
+
       [JsonProperty("birthday")]
       public DateTime Birthday { get; set; }
 
@@ -48,7 +51,9 @@ namespace NUUP.Core.Model
       [JsonProperty("ratingStudent")]
       public float? RatingStudent { get; set; }
 
+      [JsonProperty("degree_by_idDegree")]
       public Degree Degree { get; set; }
+
       public List<Subject> LooksForSubjects { get; set; }
       public List<Session> TutorSessions { get; set; }
       public List<Session> StudentSessions { get; set; }

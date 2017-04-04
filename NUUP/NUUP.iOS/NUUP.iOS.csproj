@@ -108,6 +108,7 @@
     <Compile Include="GruposTableViewController.designer.cs">
       <DependentUpon>GruposTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SearchResultsViewController.cs" />
