@@ -60,6 +60,10 @@ namespace NUUP.iOS
 
             vc.User = Noticias[indexPath.Row].User;
          }
+         else if (segue.Identifier == "EnviarMensajeSegue")
+         {
+            segue.DestinationViewController.HidesBottomBarWhenPushed = true;
+         }
       }
 
       class DataSource : UITableViewDataSource

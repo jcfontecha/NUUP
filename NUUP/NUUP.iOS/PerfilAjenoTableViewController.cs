@@ -40,5 +40,15 @@ namespace NUUP.iOS
          AlumnoLabel.Text = User.RatingStudent + " estrellas";
          DescripcionLabel.Text = User.Description;
       }
+
+      public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+      {
+         base.PrepareForSegue(segue, sender);
+
+         if (segue.Identifier == "EnviarMensajeSegue")
+         {
+            segue.DestinationViewController.HidesBottomBarWhenPushed = true;
+         }
+      }
    }
 }
