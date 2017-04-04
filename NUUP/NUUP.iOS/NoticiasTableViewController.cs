@@ -42,6 +42,15 @@ namespace NUUP.iOS
          await GetDataAsync();
       }
 
+      public override void ViewWillAppear(bool animated)
+      {
+         base.ViewWillAppear(animated);
+
+         TableView.RowHeight = UITableView.AutomaticDimension;
+         TableView.EstimatedRowHeight = 150f;
+         TableView.ReloadData();
+      }
+
       public async Task GetDataAsync()
       {
          await Helper.GetDataAsync(TableView, () => Noticias = dataAccess.GetLatestNewsAsync(10).Result);

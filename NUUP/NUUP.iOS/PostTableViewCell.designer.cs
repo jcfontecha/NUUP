@@ -16,40 +16,58 @@ namespace NUUP.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel authorLabel { get; set; }
+        UIKit.UILabel NameLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView perfilImage { get; set; }
+        UIKit.UIView PostContainerView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView postBackgroundView { get; set; }
+        UIKit.UILabel PostLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel postLabel { get; set; }
+        UIKit.UIImageView ProfileImage { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton SeeProfileButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton SendMessageButton { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (authorLabel != null) {
-                authorLabel.Dispose ();
-                authorLabel = null;
+            if (NameLabel != null) {
+                NameLabel.Dispose ();
+                NameLabel = null;
             }
 
-            if (perfilImage != null) {
-                perfilImage.Dispose ();
-                perfilImage = null;
+            if (PostContainerView != null) {
+                PostContainerView.Dispose ();
+                PostContainerView = null;
             }
 
-            if (postBackgroundView != null) {
-                postBackgroundView.Dispose ();
-                postBackgroundView = null;
+            if (PostLabel != null) {
+                PostLabel.Dispose ();
+                PostLabel = null;
             }
 
-            if (postLabel != null) {
-                postLabel.Dispose ();
-                postLabel = null;
+            if (ProfileImage != null) {
+                ProfileImage.Dispose ();
+                ProfileImage = null;
+            }
+
+            if (SeeProfileButton != null) {
+                SeeProfileButton.Dispose ();
+                SeeProfileButton = null;
+            }
+
+            if (SendMessageButton != null) {
+                SendMessageButton.Dispose ();
+                SendMessageButton = null;
             }
         }
     }

@@ -16,9 +16,9 @@ namespace NUUP.iOS
          {
             author = value;
 
-            if (authorLabel != null)
+            if (NameLabel != null)
             {
-               authorLabel.Text = author;
+               NameLabel.Text = author;
             }
          }
       }
@@ -34,9 +34,9 @@ namespace NUUP.iOS
          {
             post = value;
 
-            if (postLabel != null)
+            if (PostLabel != null)
             {
-               postLabel.Text = post;
+               PostLabel.Text = post;
             }
          }
       }
@@ -48,18 +48,18 @@ namespace NUUP.iOS
 
       public void UpdateCell(string author, string post)
       {
-         authorLabel.Text = author;
-         postLabel.Text = post;
+         NameLabel.Text = author;
+         PostLabel.Text = post;
       }
 
       public override void LayoutSubviews()
       {
-			postBackgroundView.Layer.CornerRadius = 5.0f;
+			PostContainerView.Layer.CornerRadius = 5.0f;
 
-			postBackgroundView.Layer.ShadowColor = UIColor.Black.CGColor;
-			postBackgroundView.Layer.ShadowOpacity = 0.2f;
-			postBackgroundView.Layer.ShadowRadius = 4.0f;
-			postBackgroundView.Layer.ShadowOffset = new CoreGraphics.CGSize(0.0f, 0.0f);
+         PostContainerView.Layer.ShadowColor = UIColor.Black.CGColor;
+         PostContainerView.Layer.ShadowOpacity = 0.2f;
+         PostContainerView.Layer.ShadowRadius = 4.0f;
+         PostContainerView.Layer.ShadowOffset = new CoreGraphics.CGSize(0.0f, 0.0f);
       }
    }
 }
