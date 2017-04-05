@@ -31,6 +31,7 @@ namespace NUUP.iOS
       {
          base.ViewDidLoad();
          NavigationController.NavigationBar.BarStyle = UIBarStyle.BlackOpaque;
+         PerformSegue("ShowLogin", this);
 
          // Perform any additional setup after loading the view, typically from a nib.
 
