@@ -14,8 +14,25 @@ namespace NUUP.iOS
     [Register ("LoginViewController")]
     partial class LoginViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton FacebookLoginButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel ResultLabel { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (FacebookLoginButton != null) {
+                FacebookLoginButton.Dispose ();
+                FacebookLoginButton = null;
+            }
+
+            if (ResultLabel != null) {
+                ResultLabel.Dispose ();
+                ResultLabel = null;
+            }
         }
     }
 }

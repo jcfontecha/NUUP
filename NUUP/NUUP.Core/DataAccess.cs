@@ -28,6 +28,30 @@ namespace NUUP.Core
          subjectsCache = new List<Subject>();
       }
 
+      public async Task<Uri> GetFacebookLoginURL()
+      {
+         var url = await service.PostResourceForRedirectAsync("user/session", "{\"service\": \"facebook\"}");
+
+         return new Uri(url);
+      }
+
+      public async Task<string> FacebookLoginToDreamfactory(string urlQuery)
+      {
+         var parameters = "?oauth_callback=true&" + urlQuery;
+
+         var json = await service.PostResourceWithParametersAsync("user/session", parameters);
+         var jObject = JObject.Parse(json);
+
+         var sessionToken = jObject.GetValue("session_token").ToString();
+         var sessionId = jObject.GetValue("session_id").ToString();
+         var id = jObject.GetValue("id").ToString();
+         var email = jObject.GetValue("email").ToString();
+         var firstName = jObject.GetValue("first_name").ToString();
+         var lastName = jObject.GetValue("last_name").ToString();
+
+         return json;
+      }
+
       /// <summary>
       /// Retreives a specified User
       /// </summary>

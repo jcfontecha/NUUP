@@ -1432,6 +1432,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4458" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
+                                <rect key="frame" x="20" y="291" width="360" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact"/>
+                            </label>
                         </subviews>
                         <variation key="default">
                             <mask key="subviews">
@@ -1440,11 +1447,15 @@
                                 <exclude reference="4418"/>
                                 <exclude reference="4424"/>
                                 <exclude reference="4430"/>
+                                <exclude reference="4458"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4431"/>
                                 <exclude reference="4434"/>
                                 <exclude reference="4435"/>
+                                <exclude reference="4461"/>
+                                <exclude reference="4462"/>
+                                <exclude reference="4463"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1454,6 +1465,7 @@
                                 <include reference="4418"/>
                                 <include reference="4424"/>
                                 <include reference="4430"/>
+                                <include reference="4458"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="4407"/>
@@ -1471,6 +1483,9 @@
                                 <include reference="4431"/>
                                 <include reference="4434"/>
                                 <include reference="4435"/>
+                                <include reference="4461"/>
+                                <include reference="4462"/>
+                                <include reference="4463"/>
                             </mask>
                         </variation>
                         <constraints>
@@ -1489,9 +1504,16 @@
                             <constraint id="4431" firstItem="4303" firstAttribute="trailing" secondItem="4430" secondAttribute="trailing" constant="20"/>
                             <constraint id="4434" firstItem="4430" firstAttribute="leading" secondItem="4303" secondAttribute="leading" constant="20"/>
                             <constraint id="4435" firstItem="4430" firstAttribute="top" secondItem="4424" secondAttribute="bottom" constant="8"/>
+                            <constraint id="4461" firstItem="4458" firstAttribute="leading" secondItem="4303" secondAttribute="leading" constant="20"/>
+                            <constraint id="4462" firstItem="4303" firstAttribute="trailing" secondItem="4458" secondAttribute="trailing" constant="20"/>
+                            <constraint id="4463" firstItem="4458" firstAttribute="top" secondItem="4430" secondAttribute="bottom" constant="8"/>
                         </constraints>
                     </view>
                     <navigationItem title="Title" id="4379" key="navigationItem"/>
+                    <connections>
+                        <outlet property="ResultLabel" destination="4458" id="name-outlet-4458"/>
+                        <outlet property="FacebookLoginButton" destination="4430" id="name-outlet-4430"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4304" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

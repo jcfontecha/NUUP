@@ -30,7 +30,38 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+   <key>CFBundleURLTypes</key>
+   <array>
+      <dict>
+         <key>CFBundleURLSchemes</key>
+         <array>
+            <string>fb1574089662606283</string>
+            <string>nuupApp</string>
+         </array>
+         <key>CFBundleURLName</key>
+         <string>com.nuup.nuup</string>
+      </dict>
+   </array>
+   <key>FacebookAppID</key>
+   <string>1574089662606283</string>
+   <key>FacebookDisplayName</key>
+   <string>NUUP_dev</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.nuup.nuup</string>
+   <key>NSAppTransportSecurity</key>
+   <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+      <key>NSExceptionDomains</key>
+      <dict>
+         <key>yourdomain.com</key>
+         <dict>
+            <key>NSIncludesSubdomains</key>
+            <true/>
+            <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+            <false/>
+         </dict>
+      </dict>
+   </dict>
 </dict>
 </plist>

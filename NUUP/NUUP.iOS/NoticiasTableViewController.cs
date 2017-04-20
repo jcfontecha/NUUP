@@ -40,7 +40,7 @@ namespace NUUP.iOS
 
          TableView.DataSource = dataSource = new DataSource(this);
 
-         await GetDataAsync();
+         //await GetDataAsync();
       }
 
       public override void ViewWillAppear(bool animated)
