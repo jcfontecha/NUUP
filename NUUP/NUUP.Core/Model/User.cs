@@ -24,6 +24,9 @@ namespace NUUP.Core.Model
       [JsonProperty("last_name")]
       public string LastName { get; set; }
 
+      [JsonProperty("name")]
+      public string DisplayName { get; set; }
+
       [JsonProperty("email")]
       public string Email { get; set; }
 

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using NUUP.Core.Model;
 
 namespace NUUP.Core
 {
@@ -15,6 +17,9 @@ namespace NUUP.Core
       private static ServiceManager instance;
       static readonly string serviceAPIKey = "b5a603f00422bdea581c6cee778cb2f161b59a6e97d8ded7ae27d0fdf37895c7";
       static readonly string serviceURL = "http://ec2-35-163-39-223.us-west-2.compute.amazonaws.com";
+
+      public User LoggedInUser { get; set; }
+      public string SessionToken { get; set; }
 
       public static ServiceManager Instance
       {
@@ -42,6 +47,17 @@ namespace NUUP.Core
          client.DefaultRequestHeaders.Add("X-DreamFactory-Api-Key", serviceAPIKey);
       }
 
+      public void AddHeader(string key, string value)
+      {
+         client.DefaultRequestHeaders.Add(key, value);
+      }
+
+      public void RemoveHeader(string key)
+      {
+         client.DefaultRequestHeaders.Remove(key);
+      }
+
+      // TODO: Depricated, delete
       public async Task<string> PostResourceAsync(string path, string json)
       {
          StringContent httpContent = null;
@@ -56,6 +72,7 @@ namespace NUUP.Core
          return contents;
       }
 
+      // TODO: Depricated, delete
       public async Task<string> PostResourceWithParametersAsync(string path, string parameters)
       {
          var url = client.BaseAddress + path + parameters;
@@ -67,6 +84,7 @@ namespace NUUP.Core
          return contents;
       }
 
+      // TODO: Depricated, delete
       public async Task<string> PostResourceForRedirectAsync(string path, string json)
       {
          HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
@@ -76,6 +94,7 @@ namespace NUUP.Core
          return response.Headers.Location.ToString();
       }
 
+      // TODO: Depricated, delete
       public async Task<string> GetResourceAsync(string path)
       {
          HttpResponseMessage response = await client.GetAsync(path);
@@ -87,6 +106,42 @@ namespace NUUP.Core
          else
          {
             throw new Exception("There was an error getting the resource");
+         }
+      }
+
+      public async Task<JObject> GetResourceAsync(RecordRequest request)
+      {
+         HttpResponseMessage response = await client.GetAsync(request.ToString());
+
+         if (response.IsSuccessStatusCode)
+         {
+            var json = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(json);
+         }
+         else
+         {
+            throw new Exception("There was an error getting the resource");
+         }
+      }
+
+      public async Task<JObject> PostResourceAsync(RecordRequest request, string json)
+      {
+         StringContent httpContent = null;
+         if (!string.IsNullOrEmpty(json))
+         {
+            httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+         }
+
+         HttpResponseMessage response = await client.PostAsync(request.ToString(), httpContent);
+
+         if (response.IsSuccessStatusCode)
+         {
+            string responseJson = await response.Content.ReadAsStringAsync();
+            return JObject.Parse(responseJson);
+         }
+         else
+         {
+            throw new Exception("There was an error posting the resource");
          }
       }
    }

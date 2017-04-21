@@ -30,24 +30,50 @@ namespace NUUP.Core
 
       public async Task<Uri> GetFacebookLoginURL()
       {
-         var url = await service.PostResourceForRedirectAsync("user/session", "{\"service\": \"facebook\"}");
+         var url = await service.PostResourceForRedirectAsync("user/session", DFHelper.FacebookRequestString);
 
          return new Uri(url);
       }
 
       public async Task<string> FacebookLoginToDreamfactory(string urlQuery)
       {
-         var parameters = "?oauth_callback=true&" + urlQuery;
+         // Returns string in the format of ?oauth_callback=true&<urlQuery>...
+         var parameters = DFHelper.FormatFacebookCallbackRequest(urlQuery);
 
          var json = await service.PostResourceWithParametersAsync("user/session", parameters);
          var jObject = JObject.Parse(json);
-
-         var sessionToken = jObject.GetValue("session_token").ToString();
-         var sessionId = jObject.GetValue("session_id").ToString();
+         
+         // Get the ID of the logged in user
          var id = jObject.GetValue("id").ToString();
-         var email = jObject.GetValue("email").ToString();
-         var firstName = jObject.GetValue("first_name").ToString();
-         var lastName = jObject.GetValue("last_name").ToString();
+
+         // If necessary, add the user to the NUUP Database
+         await AddDreamFactoryUsertoNUUPDB((int)jObject.GetValue("id"));
+
+         return json;
+      }
+
+      private async Task AddDreamFactoryUsertoNUUPDB(int id)
+      {
+         // Check if we already have a user with that DF ID in the NUUP DB
+         var json2 = await GetRecords(new RecordRequest()
+         {
+            Path = "user",
+            Filter = "idDreamfactory = " + id,
+            CountOnly = true
+         });
+
+         // If not, create one
+         if (json2 == "0")
+         {
+            var postJson = DFHelper.WrapInResourceTag("{\"idDreamfactory\": " + id + "}");
+            await service.PostResourceAsync(DFHelper.userTable, postJson);
+         }
+      }
+
+      public async Task<string> GetRecords(RecordRequest request)
+      {
+         var url = request.ToString();
+         var json = await service.GetResourceAsync(url);
 
          return json;
       }
@@ -67,7 +93,12 @@ namespace NUUP.Core
 
       public async Task<User> GetFullUserAsync(int id)
       {
-         var json = await service.GetResourceAsync("nuup/_table/user/1?related=degree_by_idDegree");
+         var request = new RecordRequest() {
+            Id = id,
+            Related = new [] { "degree_by_idDegree" }
+         };
+
+         var json = await service.GetResourceAsync(request.ToString());
          var user = JsonConvert.DeserializeObject<User>(json);
 
          await FillDreamFactoryUser(user);

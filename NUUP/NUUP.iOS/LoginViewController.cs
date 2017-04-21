@@ -41,7 +41,8 @@ namespace NUUP.iOS
       {
          safariVC.DismissViewController(true, null);
 
-         await dataAccess.FacebookLoginToDreamfactory(urlQuery);
+         string json = await dataAccess.FacebookLoginToDreamfactory(urlQuery);
+
       }
 
       private async void StartFacebookLogin(object sender, EventArgs e)
