@@ -11,6 +11,37 @@ using Newtonsoft.Json;
 
 namespace NUUP.Core
 {
+   public class LoginEventArgs : EventArgs
+   {
+      public bool Succeeded { get; set; }
+      public string Message { get; set; }
+      public User User { get; set; }
+
+      public LoginEventArgs(User user)
+      {
+         User = user;
+      }
+
+      public LoginEventArgs(User user, bool success)
+      {
+         Succeeded = success;
+         User = user;
+      }
+
+      public LoginEventArgs(User user, bool success, string message)
+      {
+         Succeeded = success;
+         User = user;
+         Message = message;
+      }
+
+      public LoginEventArgs(bool success, string message)
+      {
+         Succeeded = success;
+         Message = message;
+      }
+   }
+
    public class ServiceManager
    {
       private HttpClientHandler clientHandler;
@@ -21,6 +52,8 @@ namespace NUUP.Core
 
       private User LoggedInUser { get; set; }
       private string SessionToken { get; set; }
+
+      public event EventHandler<LoginEventArgs> LoginFinished;
 
       public bool NeedsLogin
       {
@@ -63,6 +96,18 @@ namespace NUUP.Core
             LoggedInUser = user;
             SessionToken = sessionToken;
          }
+
+         OnLoginFinished(new LoginEventArgs(user, true));
+      }
+
+      public void FailLogin(string message)
+      {
+         OnLoginFinished(new LoginEventArgs(false, message));
+      }
+
+      protected virtual void OnLoginFinished(LoginEventArgs e)
+      {
+         LoginFinished?.Invoke(this, e);
       }
 
       public void AddHeader(string key, string value)
@@ -77,6 +122,7 @@ namespace NUUP.Core
 
       public async Task<string> GetResourceJSONAsync(RecordRequest request)
       {
+         var requestString = request.ToString();
          HttpResponseMessage response = await client.GetAsync(request.ToString());
 
          if (response.IsSuccessStatusCode)
@@ -92,8 +138,44 @@ namespace NUUP.Core
 
       public async Task<JObject> GetResourceAsync(RecordRequest request)
       {
-         var json = await GetResourceJSONAsync(request);
-         return JObject.Parse(json);
+         try
+         {
+            var json = await GetResourceJSONAsync(request);
+            var jObject = JObject.Parse(json);
+            return jObject;
+         }
+         catch (Exception)
+         {
+            throw new Exception("Hubo un error al parsear la respuesta");
+         }
+      }
+
+      public async Task<JArray> GetResourceArrayAsync(RecordRequest request)
+      {
+         try
+         {
+            var jObject = await GetResourceAsync(request);
+            var jArray = JArray.Parse(jObject["resource"].ToString());
+            return jArray;
+         }
+         catch (Exception)
+         {
+            throw new Exception("Hubo un error al procesar el arreglo.");
+         }
+      }
+
+      public async Task<T> GetResourceArrayAsync<T>(RecordRequest request)
+      {
+         try
+         {
+            var jObject = await GetResourceAsync(request);
+            var jToken = jObject["resource"];
+            return jToken.ToObject<T>();
+         }
+         catch (Exception)
+         {
+            throw new Exception("Hubo un error al procesar el arreglo del tipo " + typeof(T).ToString());
+         }
       }
 
       public async Task<T> GetResourceAsync<T>(RecordRequest request)

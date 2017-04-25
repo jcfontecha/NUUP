@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("BusquedaTableViewController")]
-    partial class BusquedaTableViewController
+    [Register ("SearchTableViewController")]
+    partial class SearchTableViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

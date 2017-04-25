@@ -21,6 +21,9 @@ namespace NUUP.Core
       public static Path NuupUser { get; } = new Path("nuup/_table/user");
       public static Path NuupPost { get; } = new Path("nuup/_table/post");
       public static Path NuupDegree { get; } = new Path("nuup/_table/degree");
+      public static Path NuupCategory { get; } = new Path("nuup/_table/category");
+      public static Path NuupSubject { get; } = new Path("nuup/_table/subject");
+      public static Path NuupOffer { get; } = new Path("nuup/_table/offer");
 
       public static Path User { get; } = new Path("user");
       public static Path UserSession { get; } = new Path("user/session");

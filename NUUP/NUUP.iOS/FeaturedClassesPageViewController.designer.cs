@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("ClasesListTableViewController")]
-    partial class ClasesListTableViewController
+    [Register ("FeaturedClassesPageViewController")]
+    partial class FeaturedClassesPageViewController
     {
         void ReleaseDesignerOutlets ()
         {

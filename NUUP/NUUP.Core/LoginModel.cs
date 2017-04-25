@@ -16,7 +16,7 @@ namespace NUUP.Core
          var request = new RecordRequest(Path.UserSession);
 
          // This is slightly unclear
-         service.AddHeader(DFHelper.AvoidRedirectHeader.Item1, DFHelper.AvoidRedirectHeader.Item1);
+         service.AddHeader(DFHelper.AvoidRedirectHeader.Item1, DFHelper.AvoidRedirectHeader.Item2);
          var jObject = await service.PostResourceAsync(request, DFHelper.FacebookRequestString);
          service.RemoveHeader(DFHelper.AvoidRedirectHeader.Item1);
 
@@ -50,11 +50,11 @@ namespace NUUP.Core
                Email = jObject["email"].ToString()
             };
 
-            // Register newly logged in user with ServiceManager
-            SaveLogin(user, jObject["session_token"].ToString());
-
             // If necessary, add the user to the NUUP Database
             await AddDreamFactoryUsertoNUUPDB(user.IdDreamfactory);
+
+            // Register newly logged in user with ServiceManager
+            SaveLogin(user, jObject["session_token"].ToString());
          }
          catch (Exception)
          {

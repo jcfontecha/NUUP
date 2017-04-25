@@ -5,12 +5,12 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    public partial class PerfilPropioTableViewController : UITableViewController
+    public partial class MyProfileTableViewController : UITableViewController
     {
         private DataSource dataSource;
         public User Usuario { get; private set; }
 
-        public PerfilPropioTableViewController(IntPtr handle) : base(handle)
+        public MyProfileTableViewController(IntPtr handle) : base(handle)
         {
             Title = NSBundle.MainBundle.LocalizedString("Perfil Propio", "Perfil Propio");
         }
@@ -34,9 +34,9 @@ namespace NUUP.iOS
 
         class DataSource : UITableViewDataSource
         {
-            readonly PerfilPropioTableViewController controller;
+            readonly MyProfileTableViewController controller;
 
-            public DataSource(PerfilPropioTableViewController controller)
+            public DataSource(MyProfileTableViewController controller)
             {
                 this.controller = controller;
             }

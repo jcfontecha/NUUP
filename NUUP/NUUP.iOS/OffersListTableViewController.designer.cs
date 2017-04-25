@@ -11,11 +11,11 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-   [Register("ClasePageViewController")]
-   partial class ClasePageViewController
-   {
-      void ReleaseDesignerOutlets()
-      {
-      }
-   }
+    [Register ("OffersListTableViewController")]
+    partial class OffersListTableViewController
+    {
+        void ReleaseDesignerOutlets ()
+        {
+        }
+    }
 }

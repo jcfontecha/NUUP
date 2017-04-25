@@ -8,37 +8,6 @@ using System.Threading.Tasks;
 
 namespace NUUP.Core
 {
-   public class LoginEventArgs : EventArgs
-   {
-      public bool Succeeded { get; set; }
-      public string Message { get; set; }
-      public User User { get; set; }
-
-      public LoginEventArgs(User user)
-      {
-         User = user;
-      }
-
-      public LoginEventArgs(User user, bool success)
-      {
-         Succeeded = success;
-         User = user;
-      }
-
-      public LoginEventArgs(User user, bool success, string message)
-      {
-         Succeeded = success;
-         User = user;
-         Message = message;
-      }
-
-      public LoginEventArgs(bool success, string message)
-      {
-         Succeeded = success;
-         Message = message;
-      }
-   }
-
    public abstract class NUUPModel
    {
       protected ServiceManager service;
@@ -52,6 +21,7 @@ namespace NUUP.Core
       public NUUPModel()
       {
          service = ServiceManager.Instance;
+         service.LoginFinished += OnServiceLoginFinished;
       }
 
       /// <summary>
@@ -68,15 +38,15 @@ namespace NUUP.Core
       protected async Task AddDreamFactoryUsertoNUUPDB(int id)
       {
          // Check if we already have a user with that DF ID in the NUUP DB
-         var jObject = await service.GetResourceAsync(new RecordRequest()
+         var json = await service.GetResourceJSONAsync(new RecordRequest()
          {
-            Path = Path.User,
+            Path = Path.NuupUser,
             Filter = "idDreamfactory = " + id,
             CountOnly = true
          });
 
          // If not, create one
-         if (jObject.ToString() == "0")
+         if (json == "0")
          {
             var postJson = DFHelper.WrapInResourceTag("{\"idDreamfactory\": " + id + "}");
             await service.PostResourceAsync(new RecordRequest(Path.NuupUser), postJson);
@@ -93,8 +63,8 @@ namespace NUUP.Core
          var request = new RecordRequest()
          {
             Path = Path.SystemUser,
-            Fields = new[] { "id", "first_name", "last_name", "email" },
-            Ids = users.Select(x => x.IdUser)
+            Fields = new[] { "id", "name", "first_name", "last_name", "email" },
+            Ids = users.Select(x => x.IdDreamfactory)
          };
 
          var jObject = await service.GetResourceAsync(request);
@@ -105,6 +75,7 @@ namespace NUUP.Core
             {
                if (user.IdDreamfactory == (int)newUser.GetValue("id"))
                {
+                  user.DisplayName = newUser.GetValue("name").ToString();
                   user.FirstName = newUser.GetValue("first_name").ToString();
                   user.LastName = newUser.GetValue("last_name").ToString();
                   user.Email = newUser.GetValue("email").ToString();
@@ -158,12 +129,16 @@ namespace NUUP.Core
       protected void SaveLogin(User user, string sessionToken)
       {
          service.LoginUser(user, sessionToken);
-         OnLoginFinished(new LoginEventArgs(user, true));
       }
 
       protected void FailLogin(string message)
       {
-         OnLoginFinished(new LoginEventArgs(false, message));
+         service.FailLogin(message);
+      }
+
+      private void OnServiceLoginFinished(object sender, LoginEventArgs e)
+      {
+         OnLoginFinished(e);
       }
 
       protected virtual void OnLoginFinished(LoginEventArgs e)

@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace NUUP.iOS
 {
-   public partial class PerfilAjenoTableViewController : UITableViewController
+   public partial class ProfileTableViewController : UITableViewController
    {
-      private DataAccess dataAccess;
+      private ProfileModel model;
       public User User { get; set; }
 
-      public PerfilAjenoTableViewController(IntPtr handle) : base(handle)
+      public ProfileTableViewController(IntPtr handle) : base(handle)
       {
       }
 
       public override async void ViewDidLoad()
       {
          base.ViewDidLoad();
-         dataAccess = new DataAccess();
+         model = new ProfileModel();
 
          NombreLabel.Text = "...";
          EstudiosLabel.Text = "...";
@@ -32,7 +32,7 @@ namespace NUUP.iOS
 
       private async Task GetDataAsync()
       {
-         await Helper.GetDataAsync(TableView, () => dataAccess.CompleteSingleUserAsync(User).Wait());
+         await Helper.GetDataAsync(TableView, () => model.CompleteSingleUserAsync(User).Wait());
 
          NombreLabel.Text = User.FirstName + " " + User.LastName;
          EstudiosLabel.Text = User.Degree.Label;

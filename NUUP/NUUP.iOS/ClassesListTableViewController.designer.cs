@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("PerfilPropioTableViewController")]
-    partial class PerfilPropioTableViewController
+    [Register ("ClassesListTableViewController")]
+    partial class ClassesListTableViewController
     {
         void ReleaseDesignerOutlets ()
         {

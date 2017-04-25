@@ -59,7 +59,7 @@
         <!--Busqueda Table View Controller-->
         <scene sceneID="542">
             <objects>
-                <tableViewController id="543" customClass="BusquedaTableViewController" sceneMemberID="viewController">
+                <tableViewController id="543" customClass="SearchTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="545">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,7 @@
         <!--Grupos Table View Controller-->
         <scene sceneID="630">
             <objects>
-                <tableViewController id="631" customClass="GruposTableViewController" sceneMemberID="viewController">
+                <tableViewController id="631" customClass="GroupsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="633">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,7 +177,7 @@
         <!--Perfil Propio Table View Controller-->
         <scene sceneID="762">
             <objects>
-                <tableViewController id="763" customClass="PerfilPropioTableViewController" sceneMemberID="viewController">
+                <tableViewController id="763" customClass="MyProfileTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="765">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +226,7 @@
         <!--Clases View Controller-->
         <scene sceneID="900">
             <objects>
-                <viewController id="901" customClass="ClasesViewController" sceneMemberID="viewController">
+                <viewController id="901" customClass="ClassesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="898"/>
                         <viewControllerLayoutGuide type="bottom" id="899"/>
@@ -343,17 +343,17 @@
         <!--Root View Controller-->
         <scene sceneID="1500">
             <objects>
-                <tableViewController id="1501" customClass="NoticiasTableViewController" sceneMemberID="viewController">
+                <tableViewController id="1501" customClass="NewsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="1503">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostTableViewCell" rowHeight="189" id="3158" customClass="PostTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="189"/>
+                                <rect key="frame" x="0.0" y="28" width="400" height="189"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3158" id="3159">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="189"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="189"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3161">
@@ -604,7 +604,7 @@
         <!--Categorias Table View Controller-->
         <scene sceneID="2225">
             <objects>
-                <tableViewController id="2226" customClass="CategoriasTableViewController" sceneMemberID="viewController">
+                <tableViewController id="2226" customClass="CategoriesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2227">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="247"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -944,15 +944,15 @@
         <!--Featured Clases Page View Controller-->
         <scene sceneID="2583">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="2584" customClass="FeaturedClasesPageViewController" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="2584" customClass="FeaturedClassesPageViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2585" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="-56"/>
+            <point key="canvasLocation" x="1663" y="-45"/>
         </scene>
         <!--Clases List Table View Controller-->
         <scene sceneID="2675">
             <objects>
-                <tableViewController id="2676" customClass="ClasesListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="2676" customClass="ClassesListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2677">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="247"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -993,7 +993,7 @@
         <!--Ofertas List Table View Controller-->
         <scene sceneID="2929">
             <objects>
-                <tableViewController id="2930" customClass="OfertasListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="2930" customClass="OffersListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2931">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="247"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1040,7 +1040,7 @@
         <!--Perfil Ajeno Table View Controller-->
         <scene sceneID="3223">
             <objects>
-                <tableViewController id="3224" customClass="PerfilAjenoTableViewController" sceneMemberID="viewController">
+                <tableViewController id="3224" customClass="ProfileTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3225">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1052,7 +1052,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3306" id="3307">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="249.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3344">
@@ -1193,7 +1193,7 @@
                                         <rect key="frame" x="0.0" y="250" width="600" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3308" id="3309">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="87.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3364">
@@ -1325,7 +1325,7 @@
         <!--Mensajes View Controller-->
         <scene sceneID="3376">
             <objects>
-                <viewController id="3377" customClass="MensajesViewController" sceneMemberID="viewController">
+                <viewController id="3377" customClass="MessagesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3374"/>
                         <viewControllerLayoutGuide type="bottom" id="3375"/>
@@ -1375,7 +1375,7 @@
         </scene>
         <scene sceneID="4162">
             <objects>
-                <navigationController id="4163" sceneMemberID="viewController">
+                <navigationController id="4163" sceneMemberID="viewController" storyboardIdentifier="loginNavigationController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4165" translucent="NO" barStyle="black">
                         <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1394,7 +1394,7 @@
         </scene>
         <scene sceneID="4301">
             <objects>
-                <viewController id="4302" sceneMemberID="viewController" customClass="LoginViewController">
+                <viewController id="4302" sceneMemberID="viewController" customClass="LoginViewController" storyboardIdentifier="loginViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4299"/>
                         <viewControllerLayoutGuide type="bottom" id="4300"/>

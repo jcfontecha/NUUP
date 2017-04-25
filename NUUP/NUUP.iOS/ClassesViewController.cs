@@ -4,9 +4,9 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-   public partial class ClasesViewController : UIViewController
+   public partial class ClassesViewController : UIViewController
    {
-      public ClasesViewController(IntPtr handle) : base(handle)
+      public ClassesViewController(IntPtr handle) : base(handle)
       {
          Title = NSBundle.MainBundle.LocalizedString("Clases", "Clases");
       }

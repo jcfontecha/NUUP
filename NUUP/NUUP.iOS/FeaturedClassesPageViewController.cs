@@ -6,11 +6,11 @@ using CoreGraphics;
 
 namespace NUUP.iOS
 {
-   public partial class FeaturedClasesPageViewController : UIPageViewController
+   public partial class FeaturedClassesPageViewController : UIPageViewController
    {
       private PVDataSource dataSource;
 
-      public FeaturedClasesPageViewController(IntPtr handle) : base(handle)
+      public FeaturedClassesPageViewController(IntPtr handle) : base(handle)
       {
       }
 
@@ -18,16 +18,16 @@ namespace NUUP.iOS
       {
          base.ViewDidLoad();
 
-         var list = new List<ClasePageViewController>();
-         var vc = new ClasePageViewController(View.Frame, "Matematicas", 0);
+         var list = new List<ClassPageViewController>();
+         var vc = new ClassPageViewController(View.Frame, "Matematicas", 0);
          vc.View.BackgroundColor = UIColor.Red;
          list.Add(vc);
 
-         var vc2 = new ClasePageViewController(View.Frame, "Italiano", 1);
+         var vc2 = new ClassPageViewController(View.Frame, "Italiano", 1);
          vc2.View.BackgroundColor = UIColor.Green;
          list.Add(vc2);
 
-         var vc3 = new ClasePageViewController(View.Frame, "Frances", 2);
+         var vc3 = new ClassPageViewController(View.Frame, "Frances", 2);
          vc3.View.BackgroundColor = UIColor.Blue;
          list.Add(vc3);
 
@@ -56,16 +56,16 @@ namespace NUUP.iOS
 
       class PVDataSource : UIPageViewControllerDataSource
       {
-         readonly List<ClasePageViewController> pages;
+         readonly List<ClassPageViewController> pages;
 
-         public PVDataSource(List<ClasePageViewController> pages)
+         public PVDataSource(List<ClassPageViewController> pages)
          {
             this.pages = pages;
          }
 
          public override UIViewController GetNextViewController(UIPageViewController pageViewController, UIViewController referenceViewController)
          {
-            var currentPage = referenceViewController as ClasePageViewController;
+            var currentPage = referenceViewController as ClassPageViewController;
 
             if (currentPage.Index == 0)
             {
@@ -79,7 +79,7 @@ namespace NUUP.iOS
 
          public override UIViewController GetPreviousViewController(UIPageViewController pageViewController, UIViewController referenceViewController)
          {
-            var currentPage = referenceViewController as ClasePageViewController;
+            var currentPage = referenceViewController as ClassPageViewController;
 
             return pages[(currentPage.Index + 1) % pages.Count];
          }

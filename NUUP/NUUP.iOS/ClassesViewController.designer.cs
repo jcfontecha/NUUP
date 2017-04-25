@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("OfertasListTableViewController")]
-    partial class OfertasListTableViewController
+    [Register ("ClassesViewController")]
+    partial class ClassesViewController
     {
         void ReleaseDesignerOutlets ()
         {

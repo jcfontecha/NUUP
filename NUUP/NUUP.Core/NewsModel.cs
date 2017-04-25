@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NUUP.Core
 {
-   public class NoticiasModel : NUUPModel
+   public class NewsModel : NUUPModel
    {
       /// <summary>
       /// Returns the latest number of news
