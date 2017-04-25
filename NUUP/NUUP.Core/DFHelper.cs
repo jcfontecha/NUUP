@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NUUP.Core
 {
+   /// <summary>
+   /// Class related to all DreamFactory protocols and formats.
+   /// </summary>
    public class DFHelper
    {
       /// <summary>
@@ -45,6 +49,30 @@ namespace NUUP.Core
          return final;
       }
 
+      /// <summary>
+      /// Extracts the Array under the "resource" tag in the JSON string
+      /// </summary>
+      /// <param name="json"></param>
+      /// <returns></returns>
+      public static JArray ExtractResource(JObject jObject)
+      {
+         var jToken = jObject["resource"];
+         return JArray.Parse(jToken.ToString());
+      }
 
+      /// <summary>
+      /// Extracts the elements inside the "resource" tag in the JSON data.
+      /// </summary>
+      /// <param name="json">JSON string</param>
+      /// <param name="handler">Action to handle each item</param>
+      public static void ExtractResource(JObject jObject, Action<JObject> handler)
+      {
+         var array = ExtractResource(jObject);
+
+         foreach (JObject item in array)
+         {
+            handler(item);
+         }
+      }
    }
 }

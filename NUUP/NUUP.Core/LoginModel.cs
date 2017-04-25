@@ -9,10 +9,7 @@ namespace NUUP.Core
 {
    public class LoginModel : NUUPModel
    {
-      public LoginModel() : base()
-      {
-         
-      }
+      public LoginModel() : base() { }
 
       public async Task<Uri> GetFacebookLoginURL()
       {
@@ -28,7 +25,7 @@ namespace NUUP.Core
          return new Uri(url);
       }
 
-      public async Task<User> FacebookLoginToDreamfactory(string urlQuery)
+      public async Task<User> FacebookLoginToDreamfactoryAsync(string urlQuery)
       {
          // Returns string in the format of ?oauth_callback=true&<urlQuery>...
          var parameters = DFHelper.FormatFacebookCallbackRequest(urlQuery);
@@ -41,21 +38,28 @@ namespace NUUP.Core
 
          var jObject = await service.PostResourceAsync(request, null);
 
-         var user = new User()
+         User user = null;
+         try
          {
-            IdDreamfactory = int.Parse(jObject["id"].ToString()),
-            FirstName = jObject["first_name"].ToString(),
-            LastName = jObject["last_name"].ToString(),
-            DisplayName = jObject["name"].ToString(),
-            Email = jObject["email"].ToString()
-         };
+            user = new User()
+            {
+               IdDreamfactory = int.Parse(jObject["id"].ToString()),
+               FirstName = jObject["first_name"].ToString(),
+               LastName = jObject["last_name"].ToString(),
+               DisplayName = jObject["name"].ToString(),
+               Email = jObject["email"].ToString()
+            };
 
-         // Register newly logged in user with ServiceManager
-         service.SessionToken = jObject["session_token"].ToString();
-         service.LoggedInUser = user;
+            // Register newly logged in user with ServiceManager
+            SaveLogin(user, jObject["session_token"].ToString());
 
-         // If necessary, add the user to the NUUP Database
-         await AddDreamFactoryUsertoNUUPDB(user.IdDreamfactory);
+            // If necessary, add the user to the NUUP Database
+            await AddDreamFactoryUsertoNUUPDB(user.IdDreamfactory);
+         }
+         catch (Exception)
+         {
+            FailLogin("Hubo un error al iniciar sesión con Facebook");
+         }
 
          return user;
       }

@@ -53,6 +53,7 @@
     <Compile Include="Model\Subject.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Weekday.cs" />
+    <Compile Include="NoticiasModel.cs" />
     <Compile Include="NUUPModel.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="RecordRequest.cs" />

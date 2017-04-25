@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using NUUP.Core.Model;
+using Newtonsoft.Json;
 
 namespace NUUP.Core
 {
@@ -18,8 +19,16 @@ namespace NUUP.Core
       static readonly string serviceAPIKey = "b5a603f00422bdea581c6cee778cb2f161b59a6e97d8ded7ae27d0fdf37895c7";
       static readonly string serviceURL = "http://ec2-35-163-39-223.us-west-2.compute.amazonaws.com";
 
-      public User LoggedInUser { get; set; }
-      public string SessionToken { get; set; }
+      private User LoggedInUser { get; set; }
+      private string SessionToken { get; set; }
+
+      public bool NeedsLogin
+      {
+         get
+         {
+            return LoggedInUser == null;
+         }
+      }
 
       public static ServiceManager Instance
       {
@@ -47,6 +56,15 @@ namespace NUUP.Core
          client.DefaultRequestHeaders.Add("X-DreamFactory-Api-Key", serviceAPIKey);
       }
 
+      public void LoginUser(User user, string sessionToken)
+      {
+         if (user != null)
+         {
+            LoggedInUser = user;
+            SessionToken = sessionToken;
+         }
+      }
+
       public void AddHeader(string key, string value)
       {
          client.DefaultRequestHeaders.Add(key, value);
@@ -57,51 +75,14 @@ namespace NUUP.Core
          client.DefaultRequestHeaders.Remove(key);
       }
 
-      // TODO: Depricated, delete
-      public async Task<string> PostResourceAsync(string path, string json)
+      public async Task<string> GetResourceJSONAsync(RecordRequest request)
       {
-         StringContent httpContent = null;
-         if (!string.IsNullOrEmpty(json))
-         {
-            httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-         }
-
-         HttpResponseMessage response = await client.PostAsync(path, httpContent);
-         string contents = await response.Content.ReadAsStringAsync();
-
-         return contents;
-      }
-
-      // TODO: Depricated, delete
-      public async Task<string> PostResourceWithParametersAsync(string path, string parameters)
-      {
-         var url = client.BaseAddress + path + parameters;
-
-         HttpResponseMessage response = await client.PostAsync(url, null);
-
-         string contents = await response.Content.ReadAsStringAsync();
-
-         return contents;
-      }
-
-      // TODO: Depricated, delete
-      public async Task<string> PostResourceForRedirectAsync(string path, string json)
-      {
-         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
-         request.Content = new StringContent(json, Encoding.UTF8, "application/json");
-         HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-
-         return response.Headers.Location.ToString();
-      }
-
-      // TODO: Depricated, delete
-      public async Task<string> GetResourceAsync(string path)
-      {
-         HttpResponseMessage response = await client.GetAsync(path);
+         HttpResponseMessage response = await client.GetAsync(request.ToString());
 
          if (response.IsSuccessStatusCode)
          {
-            return await response.Content.ReadAsStringAsync();
+            var json = await response.Content.ReadAsStringAsync();
+            return json;
          }
          else
          {
@@ -111,16 +92,21 @@ namespace NUUP.Core
 
       public async Task<JObject> GetResourceAsync(RecordRequest request)
       {
-         HttpResponseMessage response = await client.GetAsync(request.ToString());
+         var json = await GetResourceJSONAsync(request);
+         return JObject.Parse(json);
+      }
 
-         if (response.IsSuccessStatusCode)
+      public async Task<T> GetResourceAsync<T>(RecordRequest request)
+      {
+         var jObject = await GetResourceAsync(request);
+
+         try
          {
-            var json = await response.Content.ReadAsStringAsync();
-            return JObject.Parse(json);
+            return jObject.ToObject<T>();
          }
-         else
+         catch (Exception)
          {
-            throw new Exception("There was an error getting the resource");
+            throw new Exception("The response could not be deserialized as the desired type T");
          }
       }
 
