@@ -16,9 +16,7 @@ namespace NUUP.Core
             Path = Path.NuupCategory
          };
 
-         var categoriesObject = await service.GetResourceAsync(request);
-         var categoriesArray = DFHelper.ExtractResource(categoriesObject);
-         var categories = categoriesArray.ToObject<List<Category>>();
+         var categories = await service.GetResourceArrayAsync<List<Category>>(request);
 
          return categories;
       }
@@ -31,9 +29,7 @@ namespace NUUP.Core
             Filter = "idCategory = " + category.IdCategory
          };
 
-         var subjectsObject = await service.GetResourceAsync(request);
-         var subjectsArray = DFHelper.ExtractResource(subjectsObject);
-         var subjects = subjectsArray.ToObject<List<Subject>>();
+         var subjects = await service.GetResourceArrayAsync<List<Subject>>(request);
 
          return subjects;
       }

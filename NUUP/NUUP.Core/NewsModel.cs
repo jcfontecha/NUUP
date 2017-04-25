@@ -25,10 +25,7 @@ namespace NUUP.Core
             Order = "date DESC"
          };
 
-         var jObject = await service.GetResourceAsync(request);
-         
-         var jToken = jObject["resource"];
-         List<Post> posts = jToken.ToObject<List<Post>>();
+         var posts = await service.GetResourceArrayAsync<List<Post>>(request);
 
          // Get DreamFactory data for each user
          await FillDreamFactoryUsers(posts.Select(x => x.User));
