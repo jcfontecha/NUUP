@@ -128,7 +128,7 @@ namespace NUUP.Core
 
       protected void SaveLogin(User user, string sessionToken)
       {
-         service.LoginUser(user, sessionToken);
+         service.FinishUserLogin(user, sessionToken);
       }
 
       protected void FailLogin(string message)

@@ -16,28 +16,27 @@ namespace NUUP.Core
       public bool Succeeded { get; set; }
       public string Message { get; set; }
       public User User { get; set; }
+      public string SessionToken { get; set; }
 
-      public LoginEventArgs(User user)
+      /// <summary>
+      /// Constructor used for a successful login attempt
+      /// </summary>
+      /// <param name="user"></param>
+      /// <param name="sessionToken"></param>
+      public LoginEventArgs(User user, string sessionToken)
       {
          User = user;
+         Succeeded = true;
+         SessionToken = sessionToken;
       }
 
-      public LoginEventArgs(User user, bool success)
+      /// <summary>
+      /// Constructor used for a failed login attempt
+      /// </summary>
+      /// <param name="message"></param>
+      public LoginEventArgs(string message)
       {
-         Succeeded = success;
-         User = user;
-      }
-
-      public LoginEventArgs(User user, bool success, string message)
-      {
-         Succeeded = success;
-         User = user;
-         Message = message;
-      }
-
-      public LoginEventArgs(bool success, string message)
-      {
-         Succeeded = success;
+         Succeeded = false;
          Message = message;
       }
    }
@@ -89,20 +88,25 @@ namespace NUUP.Core
          client.DefaultRequestHeaders.Add("X-DreamFactory-Api-Key", serviceAPIKey);
       }
 
-      public void LoginUser(User user, string sessionToken)
+      private void LoginUser(User user, string sessionToken)
       {
          if (user != null)
          {
             LoggedInUser = user;
             SessionToken = sessionToken;
          }
+      }
 
-         OnLoginFinished(new LoginEventArgs(user, true));
+      public void FinishUserLogin(User user, string sessionToken)
+      {
+         LoginUser(user, sessionToken);
+
+         OnLoginFinished(new LoginEventArgs(user, sessionToken));
       }
 
       public void FailLogin(string message)
       {
-         OnLoginFinished(new LoginEventArgs(false, message));
+         OnLoginFinished(new LoginEventArgs(message));
       }
 
       protected virtual void OnLoginFinished(LoginEventArgs e)

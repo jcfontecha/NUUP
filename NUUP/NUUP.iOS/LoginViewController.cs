@@ -48,7 +48,7 @@ namespace NUUP.iOS
       private async void StartFacebookLogin(object sender, EventArgs e)
       {
          url = await model.GetFacebookLoginURL();
-
+         
          ResultLabel.Text = url.ToString();
 
          safariVC = new SFSafariViewController(new NSUrl(url.ToString()));

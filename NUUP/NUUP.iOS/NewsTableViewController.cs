@@ -27,7 +27,7 @@ namespace NUUP.iOS
          // Release any cached data, images, etc that aren't in use.
       }
 
-      public async override void ViewDidLoad()
+      public override async void ViewDidLoad()
       {
          base.ViewDidLoad();
          NavigationController.NavigationBar.BarStyle = UIBarStyle.BlackOpaque;
@@ -38,40 +38,35 @@ namespace NUUP.iOS
          Noticias = new List<Post>();
 
          TableView.DataSource = dataSource = new DataSource(this);
-
-         //await GetDataAsync();
+         
          if (model.NeedsLogin)
          {
             model.LoginFinished += OnLoginFinishedAsync;
 
-            var loginVC = UIStoryboard.FromName("Main", null).InstantiateViewController("loginNavigationController");
-            PresentModalViewController(loginVC, true);
+            Helper.ShowLoginUI(this);
+         }
+         else
+         {
+            await GetDataAsync();
          }
       }
 
       private async void OnLoginFinishedAsync(object sender, LoginEventArgs e)
       {
-         string title, message = "";
          if (e.Succeeded)
          {
-            DismissModalViewController(true);
-            title = "Sesión iniciada";
-            message = "Bienvenido, " + e.User.DisplayName;
+            Helper.SaveLoggedInUser(e.User.IdUser, e.SessionToken);
+            Helper.HandleLoginSuccessUI(this, e.User.DisplayName);
 
             // Unsubscribe from event
             model.LoginFinished -= OnLoginFinishedAsync;
+
+            await GetDataAsync();
          }
          else
          {
-            title = "Error al iniciar sesión";
-            message = "Intentalo más tarde";
+            Helper.HandleLoginFailureUI(this);
          }
-
-         var alertController = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
-         alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
-         PresentViewController(alertController, true, null);
-
-         await GetDataAsync();
       }
 
       public override void ViewWillAppear(bool animated)
