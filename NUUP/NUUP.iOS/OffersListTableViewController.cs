@@ -8,14 +8,14 @@ using NUUP.Core;
 
 namespace NUUP.iOS
 {
-   public partial class OfertasListTableViewController : UITableViewController
+   public partial class OffersListTableViewController : UITableViewController
    {
       private OfertasListDataSource dataSource;
-      public Subject Clase { get; set; }
+      public Subject Subject { get; set; }
       public List<Offer> Ofertas { get; set; }
-      private DataAccess dataAccess;
+      private OffersModel model;
 
-      public OfertasListTableViewController(IntPtr handle) : base(handle)
+      public OffersListTableViewController(IntPtr handle) : base(handle)
       {
          Title = "Ofertas de clase";
       }
@@ -24,43 +24,28 @@ namespace NUUP.iOS
       {
          base.ViewDidLoad();
 
-         dataAccess = new DataAccess();
+         model = new OffersModel();
          TableView.DataSource = dataSource = new OfertasListDataSource(this);
 
          Ofertas = new List<Offer>();
-
-         if (Clase == null)
-         {
-            Clase = new Subject()
-            {
-               IdSubject = 3,
-               Name = "Algebra lineal"
-            };
-         }
 
          await GetDataAsync();
       }
 
       private async Task GetDataAsync()
       {
-         TableView.RefreshControl = new UIRefreshControl();
-         TableView.RefreshControl.BeginRefreshing();
-         TableView.SetContentOffset(new CoreGraphics.CGPoint(0, -TableView.RefreshControl.Frame.Size.Height), true);
-
-         Ofertas = await dataAccess.GetOfertasForSubjectAsync(Clase);
-
-         TableView.SetContentOffset(new CoreGraphics.CGPoint(0, TableView.RefreshControl.Frame.Size.Height), true);
-         TableView.RefreshControl.EndRefreshing();
-
-         TableView.ReloadData();
+         await Helper.GetDataAsync(TableView, () =>
+         {
+            Ofertas = model.GetOffersForSubjectAsync(Subject).Result;
+         });
       }
 
       private class OfertasListDataSource : UITableViewDataSource
       {
-         readonly OfertasListTableViewController controller;
+         readonly OffersListTableViewController controller;
          static string cellIdentifier = "Cell";
 
-         public OfertasListDataSource(OfertasListTableViewController controller)
+         public OfertasListDataSource(OffersListTableViewController controller)
          {
             this.controller = controller;
          }

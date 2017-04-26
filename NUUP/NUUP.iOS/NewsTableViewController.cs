@@ -9,13 +9,13 @@ using CoreGraphics;
 
 namespace NUUP.iOS
 {
-   public partial class NoticiasTableViewController : UITableViewController
+   public partial class NewsTableViewController : UITableViewController
    {
       private DataSource dataSource;
-      private DataAccess dataAccess;
+      private NewsModel model;
       public List<Post> Noticias { get; private set; }
 
-      public NoticiasTableViewController(IntPtr handle) : base(handle)
+      public NewsTableViewController(IntPtr handle) : base(handle)
       {
          Title = NSBundle.MainBundle.LocalizedString("Noticias", "Noticias");
       }
@@ -31,16 +31,47 @@ namespace NUUP.iOS
       {
          base.ViewDidLoad();
          NavigationController.NavigationBar.BarStyle = UIBarStyle.BlackOpaque;
-         PerformSegue("ShowLogin", this);
 
          // Perform any additional setup after loading the view, typically from a nib.
 
-         dataAccess = new DataAccess();
+         model = new NewsModel();
          Noticias = new List<Post>();
 
          TableView.DataSource = dataSource = new DataSource(this);
 
          //await GetDataAsync();
+         if (model.NeedsLogin)
+         {
+            model.LoginFinished += OnLoginFinishedAsync;
+
+            var loginVC = UIStoryboard.FromName("Main", null).InstantiateViewController("loginNavigationController");
+            PresentModalViewController(loginVC, true);
+         }
+      }
+
+      private async void OnLoginFinishedAsync(object sender, LoginEventArgs e)
+      {
+         string title, message = "";
+         if (e.Succeeded)
+         {
+            DismissModalViewController(true);
+            title = "Sesión iniciada";
+            message = "Bienvenido, " + e.User.DisplayName;
+
+            // Unsubscribe from event
+            model.LoginFinished -= OnLoginFinishedAsync;
+         }
+         else
+         {
+            title = "Error al iniciar sesión";
+            message = "Intentalo más tarde";
+         }
+
+         var alertController = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
+         alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+         PresentViewController(alertController, true, null);
+
+         await GetDataAsync();
       }
 
       public override void ViewWillAppear(bool animated)
@@ -54,7 +85,7 @@ namespace NUUP.iOS
 
       public async Task GetDataAsync()
       {
-         await Helper.GetDataAsync(TableView, () => Noticias = dataAccess.GetLatestNewsAsync(10).Result);
+         await Helper.GetDataAsync(TableView, () => Noticias = model.GetLatestNewsAsync(10).Result);
       }
 
       public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
@@ -63,7 +94,7 @@ namespace NUUP.iOS
 
          if (segue.Identifier == "VerPerfilSegue")
          {
-            var vc = (PerfilAjenoTableViewController)segue.DestinationViewController;
+            var vc = (ProfileTableViewController)segue.DestinationViewController;
             var senderButton = (UIButton)sender;
             CGPoint buttonPosition = senderButton.ConvertPointToView(new CGPoint(0.0f, 0.0f), TableView);
             NSIndexPath indexPath = TableView.IndexPathForRowAtPoint(buttonPosition);
@@ -79,9 +110,9 @@ namespace NUUP.iOS
       class DataSource : UITableViewDataSource
       {
          static readonly NSString CellIdentifier = new NSString("PostTableViewCell");
-         readonly NoticiasTableViewController controller;
+         readonly NewsTableViewController controller;
 
-         public DataSource(NoticiasTableViewController controller)
+         public DataSource(NewsTableViewController controller)
          {
             this.controller = controller;
          }

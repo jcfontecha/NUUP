@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("NoticiasTableViewController")]
-    partial class NoticiasTableViewController
+    [Register ("CategoriesTableViewController")]
+    partial class CategoriesTableViewController
     {
         void ReleaseDesignerOutlets ()
         {

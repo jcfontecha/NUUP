@@ -5,7 +5,7 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-   public partial class ClasePageViewController : UIViewController
+   public partial class ClassPageViewController : UIViewController
    {
       public UILabel Label { get; set; }
 
@@ -37,18 +37,18 @@ namespace NUUP.iOS
       public UIImage Image { get; set; }
       public int Index { get; set; }
 
-      public ClasePageViewController() : base("ClasePageViewController", null)
+      public ClassPageViewController() : base("ClasePageViewController", null)
       {
       }
 
-      public ClasePageViewController(CGRect frame)
+      public ClassPageViewController(CGRect frame)
       {
          base.Init();
 
          View.Frame = frame;
       }
 
-      public ClasePageViewController(CGRect frame, string text)
+      public ClassPageViewController(CGRect frame, string text)
       {
          base.Init();
 
@@ -56,7 +56,7 @@ namespace NUUP.iOS
          Text = text;
       }
 
-		public ClasePageViewController(CGRect frame, string text, int index)
+		public ClassPageViewController(CGRect frame, string text, int index)
 		{
 			base.Init();
 

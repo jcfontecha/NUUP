@@ -6,12 +6,12 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    public partial class GruposTableViewController : UITableViewController
+    public partial class GroupsTableViewController : UITableViewController
     {
         private DataSource dataSource;
         public List<IEntity> Results { get; private set; }
 
-        public GruposTableViewController(IntPtr handle) : base(handle)
+        public GroupsTableViewController(IntPtr handle) : base(handle)
         {
             Title = NSBundle.MainBundle.LocalizedString("Grupos", "Grupos");
         }
@@ -37,9 +37,9 @@ namespace NUUP.iOS
         class DataSource : UITableViewDataSource
         {
             private static NSString cellIdentifier = new NSString("Cell");
-            readonly GruposTableViewController controller;
+            readonly GroupsTableViewController controller;
 
-            public DataSource(GruposTableViewController controller)
+            public DataSource(GroupsTableViewController controller)
             {
                 this.controller = controller;
             }

@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("DetalleClaseTableViewController")]
-    partial class DetalleClaseTableViewController
+    [Register ("ClassDetailTableViewController")]
+    partial class ClassDetailTableViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

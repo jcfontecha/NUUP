@@ -51,7 +51,7 @@ namespace NUUP.iOS
                var urlString = url.ToString();
                urlString = urlString.Split('?')[1];
 
-               loginVC.LoginSucceeded(urlString);
+               loginVC.FinishLogin(urlString);
             }
          }
          

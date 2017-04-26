@@ -10,6 +10,13 @@ namespace NUUP.iOS
 {
    public class Helper
    {
+      /// <summary>
+      /// Helper method that animates a UI Refresh Control for the given tableView
+      /// and asynchronously runs some data pulling
+      /// </summary>
+      /// <param name="tableView">The table view to be animated</param>
+      /// <param name="dataUpdater">Action that synchronously gets data for the table view</param>
+      /// <returns></returns>
       public static async Task GetDataAsync(UITableView tableView, Action dataUpdater)
       {
          tableView.RefreshControl = new UIRefreshControl();

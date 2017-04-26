@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("GruposTableViewController")]
-    partial class GruposTableViewController
+    [Register ("NewsTableViewController")]
+    partial class NewsTableViewController
     {
         void ReleaseDesignerOutlets ()
         {

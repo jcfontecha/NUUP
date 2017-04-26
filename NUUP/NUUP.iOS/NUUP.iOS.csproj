@@ -84,29 +84,29 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BusquedaTableViewController.cs" />
-    <Compile Include="BusquedaTableViewController.designer.cs">
-      <DependentUpon>BusquedaTableViewController.cs</DependentUpon>
+    <Compile Include="SearchTableViewController.cs" />
+    <Compile Include="SearchTableViewController.designer.cs">
+      <DependentUpon>SearchTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClasesListTableViewController.cs" />
-    <Compile Include="ClasesListTableViewController.designer.cs">
-      <DependentUpon>ClasesListTableViewController.cs</DependentUpon>
+    <Compile Include="ClassesListTableViewController.cs" />
+    <Compile Include="ClassesListTableViewController.designer.cs">
+      <DependentUpon>ClassesListTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="CategoriasTableViewController.cs" />
-    <Compile Include="CategoriasTableViewController.designer.cs">
-      <DependentUpon>CategoriasTableViewController.cs</DependentUpon>
+    <Compile Include="CategoriesTableViewController.cs" />
+    <Compile Include="CategoriesTableViewController.designer.cs">
+      <DependentUpon>CategoriesTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClasesViewController.cs" />
-    <Compile Include="ClasesViewController.designer.cs">
-      <DependentUpon>ClasesViewController.cs</DependentUpon>
+    <Compile Include="ClassesViewController.cs" />
+    <Compile Include="ClassesViewController.designer.cs">
+      <DependentUpon>ClassesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetalleClaseTableViewController.cs" />
-    <Compile Include="DetalleClaseTableViewController.designer.cs">
-      <DependentUpon>DetalleClaseTableViewController.cs</DependentUpon>
+    <Compile Include="ClassDetailTableViewController.cs" />
+    <Compile Include="ClassDetailTableViewController.designer.cs">
+      <DependentUpon>ClassDetailTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="GruposTableViewController.cs" />
-    <Compile Include="GruposTableViewController.designer.cs">
-      <DependentUpon>GruposTableViewController.cs</DependentUpon>
+    <Compile Include="GroupsTableViewController.cs" />
+    <Compile Include="GroupsTableViewController.designer.cs">
+      <DependentUpon>GroupsTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="LoginViewController.cs" />
@@ -120,21 +120,21 @@
     <None Include="Info.plist">
       <SubType>Designer</SubType>
     </None>
-    <Compile Include="MensajesViewController.cs" />
-    <Compile Include="MensajesViewController.designer.cs">
-      <DependentUpon>MensajesViewController.cs</DependentUpon>
+    <Compile Include="MessagesViewController.cs" />
+    <Compile Include="MessagesViewController.designer.cs">
+      <DependentUpon>MessagesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="NoticiasTableViewController.cs" />
-    <Compile Include="NoticiasTableViewController.designer.cs">
-      <DependentUpon>NoticiasTableViewController.cs</DependentUpon>
+    <Compile Include="NewsTableViewController.cs" />
+    <Compile Include="NewsTableViewController.designer.cs">
+      <DependentUpon>NewsTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfertasListTableViewController.cs" />
-    <Compile Include="OfertasListTableViewController.designer.cs">
-      <DependentUpon>OfertasListTableViewController.cs</DependentUpon>
+    <Compile Include="OffersListTableViewController.cs" />
+    <Compile Include="OffersListTableViewController.designer.cs">
+      <DependentUpon>OffersListTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PerfilPropioTableViewController.cs" />
-    <Compile Include="PerfilPropioTableViewController.designer.cs">
-      <DependentUpon>PerfilPropioTableViewController.cs</DependentUpon>
+    <Compile Include="MyProfileTableViewController.cs" />
+    <Compile Include="MyProfileTableViewController.designer.cs">
+      <DependentUpon>MyProfileTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="PostTableViewCell.cs" />
     <Compile Include="PostTableViewCell.designer.cs">
@@ -142,17 +142,17 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="noticias-tabicon.pdf" />
-    <Compile Include="FeaturedClasesPageViewController.cs" />
-    <Compile Include="FeaturedClasesPageViewController.designer.cs">
-      <DependentUpon>FeaturedClasesPageViewController.cs</DependentUpon>
+    <Compile Include="FeaturedClassesPageViewController.cs" />
+    <Compile Include="FeaturedClassesPageViewController.designer.cs">
+      <DependentUpon>FeaturedClassesPageViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClasePageViewController.cs" />
-    <Compile Include="ClasePageViewController.designer.cs">
-      <DependentUpon>ClasePageViewController.cs</DependentUpon>
+    <Compile Include="ClassPageViewController.cs" />
+    <Compile Include="ClassPageViewController.designer.cs">
+      <DependentUpon>ClassPageViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PerfilAjenoTableViewController.cs" />
-    <Compile Include="PerfilAjenoTableViewController.designer.cs">
-      <DependentUpon>PerfilAjenoTableViewController.cs</DependentUpon>
+    <Compile Include="ProfileTableViewController.cs" />
+    <Compile Include="ProfileTableViewController.designer.cs">
+      <DependentUpon>ProfileTableViewController.cs</DependentUpon>
     </Compile>
     <None Include="packages.config" />
   </ItemGroup>

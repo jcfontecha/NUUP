@@ -7,7 +7,7 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-   public partial class BusquedaTableViewController : UITableViewController
+   public partial class SearchTableViewController : UITableViewController
    {
       private DataSource dataSource;
       public List<IEntity> Results { get; private set; }
@@ -17,7 +17,7 @@ namespace NUUP.iOS
       public List<Offer> Ofertas { get; set; }
       public List<Group> Grupos { get; set; }
 
-      public BusquedaTableViewController(IntPtr handle) : base(handle)
+      public SearchTableViewController(IntPtr handle) : base(handle)
       {
          Title = NSBundle.MainBundle.LocalizedString("Búsqueda", "Búsqueda");
       }
@@ -78,9 +78,9 @@ namespace NUUP.iOS
       class DataSource : UITableViewDataSource
       {
          private static NSString cellIdentifier = new NSString("Cell");
-         readonly BusquedaTableViewController controller;
+         readonly SearchTableViewController controller;
 
-         public DataSource(BusquedaTableViewController controller)
+         public DataSource(SearchTableViewController controller)
          {
             this.controller = controller;
          }

@@ -5,10 +5,10 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-   public partial class DetalleClaseTableViewController : UITableViewController
+   public partial class ClassDetailTableViewController : UITableViewController
    {
       public Offer Offer { get; set; }
-      public DetalleClaseTableViewController(IntPtr handle) : base(handle)
+      public ClassDetailTableViewController(IntPtr handle) : base(handle)
       {
       }
 

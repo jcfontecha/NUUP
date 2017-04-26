@@ -5,6 +5,7 @@ using UIKit;
 using Xamarin.Auth;
 using SafariServices;
 using Foundation;
+using NUUP.Core.Model;
 
 namespace NUUP.iOS
 {
@@ -14,39 +15,39 @@ namespace NUUP.iOS
       public UITextField EmailField { get; set; }
       public UITextField PasswordField { get; set; }
       public UIButton LoginButton { get; set; }
-
-      private DataAccess dataAccess;
+      
       private Uri url;
       private SFSafariViewController safariVC;
+
+      private LoginModel model;
+
+      public LoginViewController() : base()
+      {
+      }
 
       public LoginViewController(IntPtr handle) : base(handle)
       {
          Title = "Login";
-
-         dataAccess = new DataAccess();
+         model = new LoginModel();
       }
 
-      public override async void ViewDidLoad()
+      public override void ViewDidLoad()
       {
          base.ViewDidLoad();
-
-         FacebookLoginButton.TouchUpInside += StartFacebookLogin;
-
          
-
-         //auth = new OAuth2Authenticator("1574089662606283", "email", url, new Uri("http://ec2-35-163-58-56.us-west-2.compute.amazonaws.com/?service=facebook"));
+         FacebookLoginButton.TouchUpInside += StartFacebookLogin;
       }
 
-      public async void LoginSucceeded(string urlQuery)
+      public void FinishLogin(string urlQuery)
       {
          safariVC.DismissViewController(true, null);
 
-         await dataAccess.FacebookLoginToDreamfactory(urlQuery);
+         model.FacebookLoginToDreamfactoryAsync(urlQuery);
       }
 
       private async void StartFacebookLogin(object sender, EventArgs e)
       {
-         url = await dataAccess.GetFacebookLoginURL();
+         url = await model.GetFacebookLoginURL();
 
          ResultLabel.Text = url.ToString();
 
