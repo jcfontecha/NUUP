@@ -11,36 +11,6 @@ using Newtonsoft.Json;
 
 namespace NUUP.Core
 {
-   public class LoginEventArgs : EventArgs
-   {
-      public bool Succeeded { get; set; }
-      public string Message { get; set; }
-      public User User { get; set; }
-      public string SessionToken { get; set; }
-
-      /// <summary>
-      /// Constructor used for a successful login attempt
-      /// </summary>
-      /// <param name="user"></param>
-      /// <param name="sessionToken"></param>
-      public LoginEventArgs(User user, string sessionToken)
-      {
-         User = user;
-         Succeeded = true;
-         SessionToken = sessionToken;
-      }
-
-      /// <summary>
-      /// Constructor used for a failed login attempt
-      /// </summary>
-      /// <param name="message"></param>
-      public LoginEventArgs(string message)
-      {
-         Succeeded = false;
-         Message = message;
-      }
-   }
-
    public class ServiceManager
    {
       private HttpClientHandler clientHandler;
@@ -48,19 +18,6 @@ namespace NUUP.Core
       private static ServiceManager instance;
       static readonly string serviceAPIKey = "b5a603f00422bdea581c6cee778cb2f161b59a6e97d8ded7ae27d0fdf37895c7";
       static readonly string serviceURL = "http://ec2-35-163-39-223.us-west-2.compute.amazonaws.com";
-
-      private User LoggedInUser { get; set; }
-      private string SessionToken { get; set; }
-
-      public event EventHandler<LoginEventArgs> LoginFinished;
-
-      public bool NeedsLogin
-      {
-         get
-         {
-            return LoggedInUser == null;
-         }
-      }
 
       public static ServiceManager Instance
       {
@@ -88,42 +45,7 @@ namespace NUUP.Core
          client.DefaultRequestHeaders.Add("X-DreamFactory-Api-Key", serviceAPIKey);
       }
 
-      private void LoadLogin(int userId, string sessionToken)
-      {
-         // TODO: Load this from a Cache.
-         LoggedInUser = new User()
-         {
-            IdUser = userId
-         };
-
-         SessionToken = sessionToken;
-      }
-
-      private void LoginUser(User user, string sessionToken)
-      {
-         if (user != null)
-         {
-            LoggedInUser = user;
-            SessionToken = sessionToken;
-         }
-      }
-
-      public void FinishUserLogin(User user, string sessionToken)
-      {
-         LoginUser(user, sessionToken);
-
-         OnLoginFinished(new LoginEventArgs(user, sessionToken));
-      }
-
-      public void FailLogin(string message)
-      {
-         OnLoginFinished(new LoginEventArgs(message));
-      }
-
-      protected virtual void OnLoginFinished(LoginEventArgs e)
-      {
-         LoginFinished?.Invoke(this, e);
-      }
+      #region Header methods
 
       public void AddHeader(string key, string value)
       {
@@ -134,6 +56,10 @@ namespace NUUP.Core
       {
          client.DefaultRequestHeaders.Remove(key);
       }
+
+      #endregion
+
+      #region HTTP Requests Methods
 
       public async Task<string> GetResourceJSONAsync(RecordRequest request)
       {
@@ -227,5 +153,9 @@ namespace NUUP.Core
             throw new Exception("There was an error posting the resource");
          }
       }
+
+
+      #endregion
+
    }
 }

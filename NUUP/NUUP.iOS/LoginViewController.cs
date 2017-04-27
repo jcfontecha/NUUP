@@ -35,24 +35,46 @@ namespace NUUP.iOS
       {
          base.ViewDidLoad();
          
-         FacebookLoginButton.TouchUpInside += StartFacebookLogin;
+         // Login button
+         FacebookLoginButton.TouchUpInside += FacebookLogin;
+
+         // Facebook callback
+         var session = SessionManager.Instance;
+         session.FacebookCallback += OnFacebookCallback;
+         session.LoginFail += OnLoginFail;
       }
 
-      public void FinishLogin(string urlQuery)
+      private void OnLoginFail(object sender, LoginFailEventArgs e)
+      {
+         var alertController = UIAlertController.Create("Error", e.Message, UIAlertControllerStyle.Alert);
+         alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+
+         PresentViewController(alertController, true, null);
+      }
+
+      private void OnFacebookCallback(object sender, FacebookCallbackEventArgs e)
+      {
+         DreamFactoryFacebookLogin(e.Query);
+      }
+
+      public void DreamFactoryFacebookLogin(string facebookUrlQuery)
       {
          safariVC.DismissViewController(true, null);
 
-         model.FacebookLoginToDreamfactoryAsync(urlQuery);
+         model.FacebookLoginToDreamfactoryAsync(facebookUrlQuery);
       }
 
-      private async void StartFacebookLogin(object sender, EventArgs e)
+      private async void FacebookLogin(object sender, EventArgs e)
       {
          url = await model.GetFacebookLoginURL();
          
-         ResultLabel.Text = url.ToString();
+         if (url != null)
+         {
+            ResultLabel.Text = url.ToString();
 
-         safariVC = new SFSafariViewController(new NSUrl(url.ToString()));
-         PresentViewController(safariVC, true, null);
+            safariVC = new SFSafariViewController(new NSUrl(url.ToString()));
+            PresentViewController(safariVC, true, null);
+         }
       }
    }
 }

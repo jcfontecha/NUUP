@@ -13,10 +13,6 @@ namespace NUUP.iOS
 {
    public class Helper
    {
-      public static string IsLoggedInKey { get; } = "isLoggedIn";
-      public static string SessionTokenKey { get; } = "sessionToken";
-      public static string UserIdKey { get; } = "userId";
-
       /// <summary>
       /// Helper method that animates a UI Refresh Control for the given tableView
       /// and asynchronously runs some data pulling
@@ -59,14 +55,6 @@ namespace NUUP.iOS
              : pagePathWithoutQueryString;
       }
 
-      public static bool IsLoggedIn
-      {
-         get {
-            var defaults = NSUserDefaults.StandardUserDefaults;
-            return defaults.BoolForKey(IsLoggedInKey);
-         }
-      }
-
       public static void ShowLoginUI(UIViewController sender)
       {
          var loginVC = UIStoryboard.FromName("Main", null).InstantiateViewController("loginNavigationController");
@@ -92,31 +80,6 @@ namespace NUUP.iOS
          var alertController = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
          alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
          sender.PresentViewController(alertController, true, null);
-      }
-
-      public static void SaveLoggedInUser(int idUser, string sessionToken)
-      {
-         var defaults = NSUserDefaults.StandardUserDefaults;
-
-         defaults.SetBool(true, IsLoggedInKey);
-         defaults.SetString(idUser.ToString(), UserIdKey);
-         defaults.SetString(sessionToken, SessionTokenKey);
-      }
-
-      public static Tuple<string, int> LoadLoggedInUser()
-      {
-         var defaults = NSUserDefaults.StandardUserDefaults;
-
-         if (IsLoggedIn)
-         {
-            string sessionToken = defaults.StringForKey(SessionTokenKey);
-            int idUser = int.Parse(defaults.StringForKey(UserIdKey));
-            return new Tuple<string, int>(sessionToken, idUser);
-         }
-         else
-         {
-            return null;
-         }
       }
    }
 }

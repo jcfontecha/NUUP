@@ -12,27 +12,9 @@ namespace NUUP.Core
    {
       protected ServiceManager service;
 
-      // Events
-      /// <summary>
-      /// Event called when the Login process is finished
-      /// </summary>
-      public event EventHandler<LoginEventArgs> LoginFinished;
-
       public NUUPModel()
       {
          service = ServiceManager.Instance;
-         service.LoginFinished += OnServiceLoginFinished;
-      }
-
-      /// <summary>
-      /// Returns whether we need the user to log in or not.
-      /// </summary>
-      public bool NeedsLogin
-      {
-         get
-         {
-            return service.NeedsLogin;
-         }
       }
 
       protected async Task AddDreamFactoryUsertoNUUPDB(int id)
@@ -126,29 +108,5 @@ namespace NUUP.Core
          return user;
       }
 
-      public void LoadLogin(int userId, string sessionToken)
-      {
-         
-      }
-
-      protected void SaveLogin(User user, string sessionToken)
-      {
-         service.FinishUserLogin(user, sessionToken);
-      }
-
-      protected void FailLogin(string message)
-      {
-         service.FailLogin(message);
-      }
-
-      private void OnServiceLoginFinished(object sender, LoginEventArgs e)
-      {
-         OnLoginFinished(e);
-      }
-
-      protected virtual void OnLoginFinished(LoginEventArgs e)
-      {
-         LoginFinished?.Invoke(this, e);
-      }
    }
 }

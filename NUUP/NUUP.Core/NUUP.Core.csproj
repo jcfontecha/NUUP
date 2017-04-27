@@ -37,6 +37,7 @@
     <Compile Include="ClassesModel.cs" />
     <Compile Include="DFHelper.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="SessionManager.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Degree.cs" />

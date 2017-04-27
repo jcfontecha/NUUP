@@ -13,6 +13,8 @@ namespace NUUP.iOS
    {
       private DataSource dataSource;
       private NewsModel model;
+      private SessionHelper sessionHelper;
+
       public List<Post> Noticias { get; private set; }
 
       public NewsTableViewController(IntPtr handle) : base(handle)
@@ -31,46 +33,21 @@ namespace NUUP.iOS
       {
          base.ViewDidLoad();
          NavigationController.NavigationBar.BarStyle = UIBarStyle.BlackOpaque;
-
-         // Perform any additional setup after loading the view, typically from a nib.
+         TableView.DataSource = dataSource = new DataSource(this);
 
          model = new NewsModel();
          Noticias = new List<Post>();
 
-         TableView.DataSource = dataSource = new DataSource(this);
+         sessionHelper = new SessionHelper(this);
 
-         if (Helper.IsLoggedIn)
+         if (sessionHelper.IsLoggedIn)
          {
-            var loginInfo = Helper.LoadLoggedInUser();
-         }
-
-         if (model.NeedsLogin)
-         {
-            model.LoginFinished += OnLoginFinishedAsync;
-
-            Helper.ShowLoginUI(this);
-         }
-         else
-         {
-            await GetDataAsync();
-         }
-      }
-
-      private async void OnLoginFinishedAsync(object sender, LoginEventArgs e)
-      {
-         if (e.Succeeded)
-         {
-            Helper.SaveLoggedInUser(e.User.IdUser, e.SessionToken);
-            Helper.HandleLoginSuccessUI(this, e.User.DisplayName);
-
-            // Unsubscribe from event
-            model.LoginFinished -= OnLoginFinishedAsync;
-
+            sessionHelper.LoadLoggedInUser();
             await GetDataAsync();
          }
          else
          {
-            Helper.HandleLoginFailureUI(this);
+            sessionHelper.Login();
          }
       }
 
