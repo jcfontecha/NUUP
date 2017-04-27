@@ -88,6 +88,17 @@ namespace NUUP.Core
          client.DefaultRequestHeaders.Add("X-DreamFactory-Api-Key", serviceAPIKey);
       }
 
+      private void LoadLogin(int userId, string sessionToken)
+      {
+         // TODO: Load this from a Cache.
+         LoggedInUser = new User()
+         {
+            IdUser = userId
+         };
+
+         SessionToken = sessionToken;
+      }
+
       private void LoginUser(User user, string sessionToken)
       {
          if (user != null)

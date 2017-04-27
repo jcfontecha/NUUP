@@ -38,7 +38,12 @@ namespace NUUP.iOS
          Noticias = new List<Post>();
 
          TableView.DataSource = dataSource = new DataSource(this);
-         
+
+         if (Helper.IsLoggedIn)
+         {
+            var loginInfo = Helper.LoadLoggedInUser();
+         }
+
          if (model.NeedsLogin)
          {
             model.LoginFinished += OnLoginFinishedAsync;

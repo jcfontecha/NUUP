@@ -126,6 +126,11 @@ namespace NUUP.Core
          return user;
       }
 
+      public void LoadLogin(int userId, string sessionToken)
+      {
+         
+      }
+
       protected void SaveLogin(User user, string sessionToken)
       {
          service.FinishUserLogin(user, sessionToken);
