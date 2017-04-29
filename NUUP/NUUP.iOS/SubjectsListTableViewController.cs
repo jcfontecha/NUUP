@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace NUUP.iOS
 {
-   public partial class ClassesListTableViewController : UITableViewController
+   public partial class SubjectsListTableViewController : UITableViewController
    {
       public Category Category { get; set; }
       private ClassesListDataSource dataSource;
-      public List<Subject> Classes { get; set; }
-      private ClassesModel model;
+      public List<Subject> Subjects { get; set; }
+      private SubjectsModel model;
 
-      public ClassesListTableViewController(IntPtr handle) : base(handle)
+      public SubjectsListTableViewController(IntPtr handle) : base(handle)
       {
          Title = "Clases";
       }
@@ -25,9 +25,9 @@ namespace NUUP.iOS
          base.ViewDidLoad();
 
          TableView.DataSource = dataSource = new ClassesListDataSource(this);
-         model = new ClassesModel();
+         model = new SubjectsModel();
 
-         Classes = new List<Subject>();
+         Subjects = new List<Subject>();
 
          await GetDataAsync();
       }
@@ -36,7 +36,7 @@ namespace NUUP.iOS
       {
          await Helper.GetDataAsync(TableView, () =>
          {
-            Classes = model.GetSubjectsForCategory(Category).Result;
+            Subjects = model.GetSubjectsForCategory(Category).Result;
          });
       }
 
@@ -47,16 +47,16 @@ namespace NUUP.iOS
          if (segue.Identifier == "showOfertas")
          {
             var vc = (OffersListTableViewController)segue.DestinationViewController;
-            vc.Subject = Classes[TableView.IndexPathForSelectedRow.Row];
+            vc.Subject = Subjects[TableView.IndexPathForSelectedRow.Row];
          }
       }
 
       private class ClassesListDataSource : UITableViewDataSource
       {
-         readonly ClassesListTableViewController controller;
+         readonly SubjectsListTableViewController controller;
          static string cellIdentifier = "Cell";
 
-         public ClassesListDataSource(ClassesListTableViewController controller)
+         public ClassesListDataSource(SubjectsListTableViewController controller)
          {
             this.controller = controller;
          }
@@ -64,14 +64,14 @@ namespace NUUP.iOS
          public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
          {
             var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath);
-            cell.TextLabel.Text = controller.Classes[indexPath.Row].Name;
+            cell.TextLabel.Text = controller.Subjects[indexPath.Row].Name;
 
             return cell;
          }
 
          public override nint RowsInSection(UITableView tableView, nint section)
          {
-            return controller.Classes.Count;
+            return controller.Subjects.Count;
          }
       }
    }

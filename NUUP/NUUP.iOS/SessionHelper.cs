@@ -44,6 +44,7 @@ namespace NUUP.iOS
       private void OnLoginSuccess(object sender, LoginSuccessEventArgs e)
       {
          Sender.DismissModalViewController(true);
+         SaveLoggedInUser(e.User.IdUser, e.SessionToken);
 
          var sessionManager = SessionManager.Instance;
          sessionManager.LoginSuccess -= OnLoginSuccess;

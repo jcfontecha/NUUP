@@ -14,7 +14,7 @@ namespace NUUP.Core
          var request = new RecordRequest()
          {
             Path = Path.NuupOffer,
-            Filter = "idSubject = " + subject
+            Filter = "idSubject = " + subject.IdSubject
          };
 
          var offersObject = await service.GetResourceAsync(request);

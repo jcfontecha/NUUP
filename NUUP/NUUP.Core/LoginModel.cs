@@ -1,4 +1,5 @@
-﻿using NUUP.Core.Model;
+﻿using Newtonsoft.Json.Linq;
+using NUUP.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,52 @@ namespace NUUP.Core
          }
       }
 
+      public async Task<User> EmailLoginAsync(string email, string password)
+      {
+         try
+         {
+            var request = new RecordRequest()
+            {
+               Path = Path.UserSession
+            };
+
+            dynamic loginJson = new JObject();
+            loginJson.email = email;
+            loginJson.password = password;
+
+            var jObject = await service.PostResourceAsync(request, loginJson.ToString());
+
+            return await CompleteUserLoginFromResponse(jObject);
+         }
+         catch (Exception)
+         {
+            throw;
+         }
+      }
+
+      private async Task<User> CompleteUserLoginFromResponse(JObject jObject)
+      {
+         // Create user object
+         User user = null;
+         user = new User()
+         {
+            IdDreamfactory = int.Parse(jObject["id"].ToString()),
+            FirstName = jObject["first_name"].ToString(),
+            LastName = jObject["last_name"].ToString(),
+            DisplayName = jObject["name"].ToString(),
+            Email = jObject["email"].ToString()
+         };
+
+         // If necessary, add the user to the NUUP Database
+         await AddDreamFactoryUsertoNUUPDB(user.IdDreamfactory);
+
+         // Register newly logged in user with SessionManager
+         var session = SessionManager.Instance;
+         session.SetLoginInfo(user, jObject["session_token"].ToString());
+
+         return user;
+      }
+
       public async Task<User> FacebookLoginToDreamfactoryAsync(string urlQuery)
       {
          try
@@ -53,24 +100,7 @@ namespace NUUP.Core
 
             var jObject = await service.PostResourceAsync(request, null);
 
-            User user = null;
-            user = new User()
-            {
-               IdDreamfactory = int.Parse(jObject["id"].ToString()),
-               FirstName = jObject["first_name"].ToString(),
-               LastName = jObject["last_name"].ToString(),
-               DisplayName = jObject["name"].ToString(),
-               Email = jObject["email"].ToString()
-            };
-
-            // If necessary, add the user to the NUUP Database
-            await AddDreamFactoryUsertoNUUPDB(user.IdDreamfactory);
-
-            // Register newly logged in user with SessionManager
-            var session = SessionManager.Instance;
-            session.SetLoginInfo(user, jObject["session_token"].ToString());
-
-            return user;
+            return await CompleteUserLoginFromResponse(jObject);
          }
          catch (Exception)
          {

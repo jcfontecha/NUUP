@@ -13,7 +13,7 @@ namespace NUUP.iOS
    {
       public List<Category> Categories { get; set; }
       private DataSource dataSource;
-      private ClassesModel model;
+      private SubjectsModel model;
 
       public CategoriesTableViewController(IntPtr handle) : base(handle)
       {
@@ -23,7 +23,7 @@ namespace NUUP.iOS
       {
          base.ViewDidLoad();
 
-         model = new ClassesModel();
+         model = new SubjectsModel();
 
          Categories = new List<Category>();
 
@@ -45,7 +45,7 @@ namespace NUUP.iOS
 
          if (segue.Identifier == "showClases")
          {
-            var vc = (ClassesListTableViewController)segue.DestinationViewController;
+            var vc = (SubjectsListTableViewController)segue.DestinationViewController;
             vc.Category = Categories[TableView.IndexPathForSelectedRow.Row];
          }
       }

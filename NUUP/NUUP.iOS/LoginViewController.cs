@@ -10,12 +10,7 @@ using NUUP.Core.Model;
 namespace NUUP.iOS
 {
    public partial class LoginViewController : UIViewController
-   {
-      public UILabel LoginLabel { get; set; }
-      public UITextField EmailField { get; set; }
-      public UITextField PasswordField { get; set; }
-      public UIButton LoginButton { get; set; }
-      
+   {  
       private Uri url;
       private SFSafariViewController safariVC;
 
@@ -37,11 +32,17 @@ namespace NUUP.iOS
          
          // Login button
          FacebookLoginButton.TouchUpInside += FacebookLogin;
+         LoginButton.TouchUpInside += EmailLogin;
 
          // Facebook callback
          var session = SessionManager.Instance;
          session.FacebookCallback += OnFacebookCallback;
          session.LoginFail += OnLoginFail;
+      }
+
+      private void EmailLogin(object sender, EventArgs e)
+      {
+         model.EmailLoginAsync(EmailTextField.Text, PasswordTextField.Text);
       }
 
       private void OnLoginFail(object sender, LoginFailEventArgs e)

@@ -48,7 +48,13 @@ namespace NUUP.iOS
          else
          {
             sessionHelper.Login();
+            sessionHelper.LoginSuccess += OnLoginSuccess;
          }
+      }
+
+      private async void OnLoginSuccess(object sender, EventArgs e)
+      {
+         await GetDataAsync();
       }
 
       public override void ViewWillAppear(bool animated)

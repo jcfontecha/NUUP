@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CategoriesModel.cs" />
-    <Compile Include="ClassesModel.cs" />
+    <Compile Include="SubjectsModel.cs" />
     <Compile Include="DFHelper.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="SessionManager.cs" />

@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using NUUP.Core;
 using UIKit;
 
 namespace NUUP.iOS
@@ -31,29 +32,35 @@ namespace NUUP.iOS
 
       public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
       {
-         var rootController = ((AppDelegate)(UIApplication.SharedApplication.Delegate)).Window.RootViewController.PresentedViewController;
-         var navController = rootController as UINavigationController;
+         //var rootController = ((AppDelegate)(UIApplication.SharedApplication.Delegate)).Window.RootViewController.PresentedViewController;
+         //var navController = rootController as UINavigationController;
 
-         if (navController != null)
-         {
-            LoginViewController loginVC = null;
-            foreach (var vc in navController.ViewControllers)
-            {
-               if (vc is LoginViewController)
-               {
-                  loginVC = vc as LoginViewController;
-                  break;
-               }
-            }
+         //if (navController != null)
+         //{
+         //   LoginViewController loginVC = null;
+         //   foreach (var vc in navController.ViewControllers)
+         //   {
+         //      if (vc is LoginViewController)
+         //      {
+         //         loginVC = vc as LoginViewController;
+         //         break;
+         //      }
+         //   }
 
-            if (loginVC != null)
-            {
-               var urlString = url.ToString();
-               urlString = urlString.Split('?')[1];
+         //   if (loginVC != null)
+         //   {
+         //      var urlString = url.ToString();
+         //      urlString = urlString.Split('?')[1];
 
-               loginVC.DreamFactoryFacebookLogin(urlString);
-            }
-         }
+         //      loginVC.DreamFactoryFacebookLogin(urlString);
+         //   }
+         //}
+
+         var urlString = url.ToString();
+         urlString = urlString.Split('?')[1];
+
+         var session = SessionManager.Instance;
+         session.SetFacebookCallback(urlString);
          
          return true;
       }

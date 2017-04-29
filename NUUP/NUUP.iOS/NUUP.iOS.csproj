@@ -88,9 +88,9 @@
     <Compile Include="SearchTableViewController.designer.cs">
       <DependentUpon>SearchTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClassesListTableViewController.cs" />
-    <Compile Include="ClassesListTableViewController.designer.cs">
-      <DependentUpon>ClassesListTableViewController.cs</DependentUpon>
+    <Compile Include="SubjectsListTableViewController.cs" />
+    <Compile Include="SubjectsListTableViewController.designer.cs">
+      <DependentUpon>SubjectsListTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="CategoriesTableViewController.cs" />
     <Compile Include="CategoriesTableViewController.designer.cs">

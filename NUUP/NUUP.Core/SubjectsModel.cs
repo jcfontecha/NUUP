@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NUUP.Core
 {
-   public class ClassesModel : NUUPModel
+   public class SubjectsModel : NUUPModel
    {
       public async Task<List<Category>> GetCategories()
       {
