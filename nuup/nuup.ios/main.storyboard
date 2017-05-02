@@ -4,9 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1435,12 +1435,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4458">
-                                <rect key="frame" x="20" y="227" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGb-cR-4iz">
+                                <rect key="frame" x="20" y="227" width="334" height="30"/>
+                                <state key="normal" title="Crear cuenta"/>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="z7Y-RM-GkT">
+                                <rect key="frame" x="177" y="265" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1459,9 +1460,11 @@
                             <constraint firstAttribute="trailing" secondItem="4430" secondAttribute="trailing" constant="20" id="4431"/>
                             <constraint firstItem="4430" firstAttribute="leading" secondItem="4303" secondAttribute="leading" constant="20" id="4434"/>
                             <constraint firstItem="4430" firstAttribute="top" secondItem="4424" secondAttribute="bottom" constant="8" id="4435"/>
-                            <constraint firstItem="4458" firstAttribute="leading" secondItem="4303" secondAttribute="leading" constant="20" id="4461"/>
-                            <constraint firstAttribute="trailing" secondItem="4458" secondAttribute="trailing" constant="20" id="4462"/>
-                            <constraint firstItem="4458" firstAttribute="top" secondItem="4430" secondAttribute="bottom" constant="8" id="4463"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BGb-cR-4iz" secondAttribute="trailing" constant="5" id="HhV-On-6FX"/>
+                            <constraint firstItem="z7Y-RM-GkT" firstAttribute="top" secondItem="BGb-cR-4iz" secondAttribute="bottom" constant="8" id="Jbs-Vf-9U5"/>
+                            <constraint firstItem="BGb-cR-4iz" firstAttribute="top" secondItem="4430" secondAttribute="bottom" constant="8" id="QNC-05-cdE"/>
+                            <constraint firstItem="z7Y-RM-GkT" firstAttribute="centerX" secondItem="4303" secondAttribute="centerX" id="gN5-oN-QTG"/>
+                            <constraint firstItem="BGb-cR-4iz" firstAttribute="leading" secondItem="4303" secondAttribute="leadingMargin" constant="4" id="mR0-F8-XFy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -1470,15 +1473,11 @@
                                 <exclude reference="4418"/>
                                 <exclude reference="4424"/>
                                 <exclude reference="4430"/>
-                                <exclude reference="4458"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="4431"/>
                                 <exclude reference="4434"/>
                                 <exclude reference="4435"/>
-                                <exclude reference="4461"/>
-                                <exclude reference="4462"/>
-                                <exclude reference="4463"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1488,7 +1487,6 @@
                                 <include reference="4418"/>
                                 <include reference="4424"/>
                                 <include reference="4430"/>
-                                <include reference="4458"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="4407"/>
@@ -1506,21 +1504,35 @@
                                 <include reference="4431"/>
                                 <include reference="4434"/>
                                 <include reference="4435"/>
-                                <include reference="4461"/>
-                                <include reference="4462"/>
-                                <include reference="4463"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="4379"/>
                     <connections>
                         <outlet property="FacebookLoginButton" destination="4430" id="name-outlet-4430"/>
-                        <outlet property="ResultLabel" destination="4458" id="name-outlet-4458"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4304" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2204" y="-1458"/>
+            <point key="canvasLocation" x="2204" y="-1458.6206896551726"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mha-t9-w3L">
+            <objects>
+                <viewController id="0hH-dT-ixT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V1V-t6-GX5"/>
+                        <viewControllerLayoutGuide type="bottom" id="jKN-Pc-mKZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QQc-AG-j2D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ro4-hw-USZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3049" y="-1437"/>
         </scene>
     </scenes>
     <resources>
