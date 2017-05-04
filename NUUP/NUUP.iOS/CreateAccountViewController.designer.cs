@@ -11,8 +11,8 @@ using UIKit;
 
 namespace NUUP.iOS
 {
-    [Register ("LoginViewController")]
-    partial class LoginViewController
+    [Register ("CreateAccountViewController")]
+    partial class CreateAccountViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -24,7 +24,7 @@ namespace NUUP.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton FacebookLoginButton { get; set; }
+        UIKit.UITextField LastNameTextField { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -32,11 +32,7 @@ namespace NUUP.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton LoginButton { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField PasswordTextField { get; set; }
+        UIKit.UITextField NameTextField { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -50,9 +46,9 @@ namespace NUUP.iOS
                 EmailTextField = null;
             }
 
-            if (FacebookLoginButton != null) {
-                FacebookLoginButton.Dispose ();
-                FacebookLoginButton = null;
+            if (LastNameTextField != null) {
+                LastNameTextField.Dispose ();
+                LastNameTextField = null;
             }
 
             if (LoadingActivityIndicatorView != null) {
@@ -60,14 +56,9 @@ namespace NUUP.iOS
                 LoadingActivityIndicatorView = null;
             }
 
-            if (LoginButton != null) {
-                LoginButton.Dispose ();
-                LoginButton = null;
-            }
-
-            if (PasswordTextField != null) {
-                PasswordTextField.Dispose ();
-                PasswordTextField = null;
+            if (NameTextField != null) {
+                NameTextField.Dispose ();
+                NameTextField = null;
             }
         }
     }

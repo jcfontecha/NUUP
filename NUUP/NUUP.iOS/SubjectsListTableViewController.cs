@@ -18,6 +18,7 @@ namespace NUUP.iOS
       public SubjectsListTableViewController(IntPtr handle) : base(handle)
       {
          Title = "Clases";
+         model = new SubjectsModel();
       }
 
       public override async void ViewDidLoad()
@@ -25,18 +26,10 @@ namespace NUUP.iOS
          base.ViewDidLoad();
 
          TableView.DataSource = dataSource = new ClassesListDataSource(this);
-         model = new SubjectsModel();
 
-         Subjects = new List<Subject>();
-
-         await GetDataAsync();
-      }
-
-      public async Task GetDataAsync()
-      {
-         await Helper.GetDataAsync(TableView, () =>
+         await Helper.GetDataAsync(this, true, async () =>
          {
-            Subjects = model.GetSubjectsForCategory(Category).Result;
+            Subjects = await model.GetSubjectsForCategory(Category);
          });
       }
 

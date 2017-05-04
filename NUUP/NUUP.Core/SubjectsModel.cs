@@ -31,6 +31,13 @@ namespace NUUP.Core
 
          var subjects = await service.GetResourceArrayAsync<List<Subject>>(request);
 
+         foreach (var subject in subjects)
+         {
+            subject.Category = category;
+         }
+
+         category.Subjects = subjects;
+
          return subjects;
       }
    }

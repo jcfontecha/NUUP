@@ -24,9 +24,14 @@ namespace NUUP.Core
       public static Path NuupCategory { get; } = new Path("nuup/_table/category");
       public static Path NuupSubject { get; } = new Path("nuup/_table/subject");
       public static Path NuupOffer { get; } = new Path("nuup/_table/offer");
+      public static Path NuupPlace { get; } = new Path("nuup/_table/place");
+      public static Path NuupState { get; } = new Path("nuup/_table/state");
+      public static Path NuupGroup { get; } = new Path("nuup/_table/group");
+      public static Path NuupWeekday { get; } = new Path("nuup/_table/weekday");
 
       public static Path User { get; } = new Path("user");
       public static Path UserSession { get; } = new Path("user/session");
+      public static Path UserRegister { get; } = new Path("user/register");
       public static Path SystemUser { get; } = new Path("system/user");
 
       private Path(string value)

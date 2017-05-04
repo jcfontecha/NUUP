@@ -3,15 +3,18 @@ using Foundation;
 using UIKit;
 using System.Collections.Generic;
 using NUUP.Core.Model;
+using NUUP.Core;
 
 namespace NUUP.iOS
 {
    public partial class SearchResultsViewController : UITableViewController
    {
-      public List<Subject> Materias { get; set; }
+      public List<Subject> Subjects { get; set; }
+      private SearchModel model;
 
       public SearchResultsViewController()
       {
+         model = new SearchModel();
       }
 
       public override void ViewDidLoad()
@@ -20,18 +23,17 @@ namespace NUUP.iOS
 
          // Perform any additional setup after loading the view, typically from a nib.
 
-         Materias = new List<Subject>();
+         Subjects = new List<Subject>();
 
          TableView.DataSource = new SearchResultsDataSource(this);
       }
 
-      public void Search(string text)
+      public async void SearchAsync(string text)
       {
-         // Search API
-         Materias.Add(new Subject() { Name = "Matematicas" });
-         Materias.Add(new Subject() { Name = "Español" });
-
-         TableView.ReloadData();
+         await Helper.GetDataAsync(this, async () =>
+         {
+            Subjects = await model.SearchSubjectsAsync(text);
+         });
       }
 
       class SearchResultsDataSource : UITableViewDataSource
@@ -47,14 +49,14 @@ namespace NUUP.iOS
          {
             var cell = new UITableViewCell();
 
-            cell.TextLabel.Text = controller.Materias[indexPath.Row].Name;
+            cell.TextLabel.Text = controller.Subjects[indexPath.Row].Name;
 
             return cell;
          }
 
          public override nint RowsInSection(UITableView tableView, nint section)
          {
-            return controller.Materias.Count;
+            return controller.Subjects.Count;
          }
       }
    }

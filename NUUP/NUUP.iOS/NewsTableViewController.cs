@@ -68,7 +68,10 @@ namespace NUUP.iOS
 
       public async Task GetDataAsync()
       {
-         await Helper.GetDataAsync(TableView, () => Noticias = model.GetLatestNewsAsync(10).Result);
+         await Helper.GetDataAsync(this, true, async () =>
+         {
+            Noticias = await model.GetLatestNewsAsync(10);
+         });
       }
 
       public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)

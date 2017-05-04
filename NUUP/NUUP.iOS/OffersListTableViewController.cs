@@ -29,14 +29,9 @@ namespace NUUP.iOS
 
          Ofertas = new List<Offer>();
 
-         await GetDataAsync();
-      }
-
-      private async Task GetDataAsync()
-      {
-         await Helper.GetDataAsync(TableView, () =>
+         await Helper.GetDataAsync(this, true, async () =>
          {
-            Ofertas = model.GetOffersForSubjectAsync(Subject).Result;
+            Ofertas = await model.GetOffersForSubjectAsync(Subject);
          });
       }
 

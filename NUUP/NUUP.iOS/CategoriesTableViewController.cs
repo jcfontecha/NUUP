@@ -29,21 +29,18 @@ namespace NUUP.iOS
 
          TableView.DataSource = dataSource = new DataSource(this);
 
-         await GetDataAsync();
+         // Get data
+         await Helper.GetDataAsync(this, async () =>
+         {
+            Categories = await model.GetCategories();
+         });
       }
-
-      private async Task GetDataAsync()
-      {
-         var categories = await model.GetCategories();
-         Categories = categories.ToList();
-         TableView.ReloadData();
-      }
-
+      
       public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
       {
          base.PrepareForSegue(segue, sender);
 
-         if (segue.Identifier == "showClases")
+         if (segue.Identifier == "ShowSubjects")
          {
             var vc = (SubjectsListTableViewController)segue.DestinationViewController;
             vc.Category = Categories[TableView.IndexPathForSelectedRow.Row];

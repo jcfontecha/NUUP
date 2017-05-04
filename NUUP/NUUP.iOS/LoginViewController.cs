@@ -38,6 +38,8 @@ namespace NUUP.iOS
          var session = SessionManager.Instance;
          session.FacebookCallback += OnFacebookCallback;
          session.LoginFail += OnLoginFail;
+
+         LoadingActivityIndicatorView.Hidden = true;
       }
 
       private void EmailLogin(object sender, EventArgs e)
@@ -58,11 +60,32 @@ namespace NUUP.iOS
          DreamFactoryFacebookLogin(e.Query);
       }
 
-      public void DreamFactoryFacebookLogin(string facebookUrlQuery)
+      public async void DreamFactoryFacebookLogin(string facebookUrlQuery)
       {
          safariVC.DismissViewController(true, null);
 
-         model.FacebookLoginToDreamfactoryAsync(facebookUrlQuery);
+         SetUIState(false);
+
+         await model.FacebookLoginToDreamfactoryAsync(facebookUrlQuery);
+
+         SetUIState(false);
+      }
+
+      private void SetUIState(bool enabled)
+      {
+         if (enabled)
+         {
+            LoadingActivityIndicatorView.StartAnimating();
+         }
+         else
+         {
+            LoadingActivityIndicatorView.StopAnimating();
+         }
+
+         LoadingActivityIndicatorView.Hidden = !enabled;
+         CreateAccountButton.Enabled = !enabled;
+         LoginButton.Enabled = !enabled;
+         FacebookLoginButton.Enabled = !enabled;
       }
 
       private async void FacebookLogin(object sender, EventArgs e)
@@ -71,11 +94,25 @@ namespace NUUP.iOS
          
          if (url != null)
          {
-            ResultLabel.Text = url.ToString();
-
             safariVC = new SFSafariViewController(new NSUrl(url.ToString()));
             PresentViewController(safariVC, true, null);
          }
+      }
+
+      public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+      {
+         base.PrepareForSegue(segue, sender);
+
+         if (segue.Identifier == "CreateAccountSegue")
+         {
+            var destVC = segue.DestinationViewController as CreateAccountViewController;
+            destVC.RegistrationSuccess += OnRegistrationSuccess;
+         }
+      }
+
+      private void OnRegistrationSuccess(object sender, EventArgs e)
+      {
+         NavigationController.PopViewController(true);
       }
    }
 }

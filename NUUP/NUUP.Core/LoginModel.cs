@@ -58,6 +58,10 @@ namespace NUUP.Core
          }
          catch (Exception)
          {
+            var message = "Hubo un error al iniciar sesión con Facebook. Puedes intentarlo de nuevo";
+            var session = SessionManager.Instance;
+            session.FailLogin(message);
+
             throw;
          }
       }

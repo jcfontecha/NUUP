@@ -8,13 +8,26 @@ using System.Threading.Tasks;
 
 namespace NUUP.Core
 {
+   public class ServerErrorException : Exception
+   {
+      public ServerErrorException(string message) : base(message)
+      {
+      }
+
+      public ServerErrorException(string message, Exception innerException) : base(message, innerException)
+      {
+      }
+   }
+
    public abstract class NUUPModel
    {
       protected ServiceManager service;
+      protected CacheManager cache;
 
       public NUUPModel()
       {
          service = ServiceManager.Instance;
+         cache = CacheManager.Instance;
       }
 
       protected async Task AddDreamFactoryUsertoNUUPDB(int id)

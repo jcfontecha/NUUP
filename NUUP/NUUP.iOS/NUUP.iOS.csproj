@@ -84,6 +84,10 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CreateAccountViewController.cs" />
+    <Compile Include="CreateAccountViewController.designer.cs">
+      <DependentUpon>CreateAccountViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchTableViewController.cs" />
     <Compile Include="SearchTableViewController.designer.cs">
       <DependentUpon>SearchTableViewController.cs</DependentUpon>

@@ -11,6 +11,24 @@ using Newtonsoft.Json;
 
 namespace NUUP.Core
 {
+   public class BadRequestException : Exception
+   {
+      public BadRequestException()
+      {
+      }
+
+      public BadRequestException(string message) : base(message)
+      {
+      }
+   }
+
+   public class UnexpectedParsingException : Exception
+   {
+      public UnexpectedParsingException(string message) : base(message)
+      {
+      }
+   }
+
    public class ServiceManager
    {
       private HttpClientHandler clientHandler;
@@ -64,7 +82,7 @@ namespace NUUP.Core
       public async Task<string> GetResourceJSONAsync(RecordRequest request)
       {
          var requestString = request.ToString();
-         HttpResponseMessage response = await client.GetAsync(request.ToString());
+         HttpResponseMessage response = await client.GetAsync(requestString);
 
          if (response.IsSuccessStatusCode)
          {
@@ -73,7 +91,7 @@ namespace NUUP.Core
          }
          else
          {
-            throw new Exception("There was an error getting the resource");
+            throw new BadRequestException("Bad request response from the server");
          }
       }
 
@@ -85,9 +103,16 @@ namespace NUUP.Core
             var jObject = JObject.Parse(json);
             return jObject;
          }
-         catch (Exception)
+         catch (Exception e)
          {
-            throw new Exception("Hubo un error al parsear la respuesta");
+            if (e is BadRequestException)
+            {
+               throw e;
+            }
+            else
+            {
+               throw new UnexpectedParsingException("Unexpected response while trying to parse response");
+            }
          }
       }
 
@@ -99,9 +124,16 @@ namespace NUUP.Core
             var jArray = JArray.Parse(jObject["resource"].ToString());
             return jArray;
          }
-         catch (Exception)
+         catch (Exception e)
          {
-            throw new Exception("Hubo un error al procesar el arreglo.");
+            if (e is BadRequestException)
+            {
+               throw e;
+            }
+            else
+            {
+               throw new UnexpectedParsingException("There was an error parsing the array");
+            }
          }
       }
 
@@ -113,9 +145,16 @@ namespace NUUP.Core
             var jToken = jObject["resource"];
             return jToken.ToObject<T>();
          }
-         catch (Exception)
+         catch (Exception e)
          {
-            throw new Exception("Hubo un error al procesar el arreglo del tipo " + typeof(T).ToString());
+            if (e is BadRequestException)
+            {
+               throw e;
+            }
+            else
+            {
+               throw new UnexpectedParsingException("There was an error parsing the array of type " + typeof(T).ToString());
+            }
          }
       }
 
@@ -127,9 +166,16 @@ namespace NUUP.Core
          {
             return jObject.ToObject<T>();
          }
-         catch (Exception)
+         catch (Exception e)
          {
-            throw new Exception("The response could not be deserialized as the desired type T");
+            if (e is BadRequestException)
+            {
+               throw e;
+            }
+            else
+            {
+               throw new UnexpectedParsingException("There was an error parsing the object to type " + typeof(T).ToString());
+            }
          }
       }
 
@@ -150,7 +196,7 @@ namespace NUUP.Core
          }
          else
          {
-            throw new Exception("There was an error posting the resource");
+            throw new BadRequestException("Bad request while posting resource");
          }
       }
 

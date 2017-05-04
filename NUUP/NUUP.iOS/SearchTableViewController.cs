@@ -16,10 +16,13 @@ namespace NUUP.iOS
       public List<Subject> Materias { get; set; }
       public List<Offer> Ofertas { get; set; }
       public List<Group> Grupos { get; set; }
+      private SearchModel model;
 
       public SearchTableViewController(IntPtr handle) : base(handle)
       {
          Title = NSBundle.MainBundle.LocalizedString("Búsqueda", "Búsqueda");
+
+         model = new SearchModel();
       }
 
       public override void DidReceiveMemoryWarning()
@@ -44,9 +47,9 @@ namespace NUUP.iOS
 
          var searchResultsController = new SearchResultsViewController();
 
-         var searchUpdater = new SearchResultsUpdater();
-         searchUpdater.UpdateSearchResults += searchResultsController.Search;
 
+         var searchUpdater = new SearchResultsUpdater();
+         searchUpdater.UpdateSearchResults += searchResultsController.SearchAsync;
 
          searchController = new UISearchController(searchResultsController)
          {
@@ -57,12 +60,21 @@ namespace NUUP.iOS
          searchController.SearchBar.SearchBarStyle = UISearchBarStyle.Minimal;
          searchController.SearchBar.Placeholder = "Búsqueda";
          searchController.SearchBar.TintColor = UIColor.White;
+         searchController.SearchBar.SearchButtonClicked += OnSearchButtonClickedAsync;
 
          searchController.HidesNavigationBarDuringPresentation = false;
 
          DefinesPresentationContext = true;
 
          NavigationItem.TitleView = searchController.SearchBar;
+      }
+
+      private async void OnSearchButtonClickedAsync(object sender, EventArgs e)
+      {
+         var query = searchController.SearchBar.Text;
+         searchController.Active = false;
+
+         var searchResults = await model.GetSearchResultsAsync(query);
       }
 
       class SearchResultsUpdater : UISearchResultsUpdating

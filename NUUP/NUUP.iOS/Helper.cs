@@ -17,24 +17,49 @@ namespace NUUP.iOS
       /// Helper method that animates a UI Refresh Control for the given tableView
       /// and asynchronously runs some data pulling
       /// </summary>
-      /// <param name="tableView">The table view to be animated</param>
+      /// <param name="sender">UITableViewController to be animated</param>
       /// <param name="dataUpdater">Action that synchronously gets data for the table view</param>
       /// <returns></returns>
-      public static async Task GetDataAsync(UITableView tableView, Action dataUpdater)
+      public static async Task GetDataAsync(UITableViewController sender, Func<Task> dataUpdater)
       {
-         tableView.RefreshControl = new UIRefreshControl();
-         tableView.RefreshControl.BeginRefreshing();
-         tableView.SetContentOffset(new CGPoint(0, -tableView.RefreshControl.Frame.Size.Height), true);
+         await GetDataAsync(sender, false, dataUpdater);
+      }
 
-         await Task.Run(() =>
+      /// <summary>
+      /// Helper method that animates a UI Refresh Control for the given UITableViewController's table
+      /// and asynchronously runs some data pulling
+      /// </summary>
+      /// <param name="sender">UITableViewController to be animated</param>
+      /// <param name="dataUpdater">Action that synchronously gets data for the table view</param>
+      /// <param name="animateRefreshControl">Wether or not we should animate a RefreshControl</param>
+      /// <returns></returns>
+      public static async Task GetDataAsync(UITableViewController sender, bool animateRefreshControl, Func<Task> dataUpdater)
+      {
+         // Check for animation
+         if (animateRefreshControl)
          {
-            dataUpdater();
-         });
+            sender.TableView.RefreshControl = new UIRefreshControl();
+            sender.TableView.RefreshControl.BeginRefreshing();
+            sender.TableView.SetContentOffset(new CGPoint(0, -sender.TableView.RefreshControl.Frame.Size.Height), true);
+         }
 
-         tableView.SetContentOffset(new CGPoint(0, tableView.RefreshControl.Frame.Size.Height), true);
-         tableView.RefreshControl.EndRefreshing();
+         // Call data pulling
+         try
+         {
+            await dataUpdater();
+         }
+         catch (Exception e)
+         {
+            HandleServerError(sender, e);
+         }
 
-         tableView.ReloadData();
+         if (animateRefreshControl)
+         {
+            sender.TableView.SetContentOffset(new CGPoint(0, sender.TableView.RefreshControl.Frame.Size.Height), true);
+            sender.TableView.RefreshControl.EndRefreshing();
+         }
+
+         sender.TableView.ReloadData();
       }
 
       public static string RemoveQueryStringByKey(string url, string key)
@@ -67,9 +92,8 @@ namespace NUUP.iOS
 
          string title = "Sesión iniciada";
          string message = "Bienvenido, " + name;
-         var alertController = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
-         alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
-         sender.PresentViewController(alertController, true, null);
+
+         ShowAlert(sender, title, message);
       }
       
       public static void HandleLoginFailureUI(UIViewController sender)
@@ -77,6 +101,23 @@ namespace NUUP.iOS
          string title = "Error al iniciar sesión";
          string message = "Inténtalo de nuevo más tarde";
 
+         ShowAlert(sender, title, message);
+      }
+
+      public static void HandleServerError(UIViewController sender, Exception e)
+      {
+         if (e is ServerErrorException)
+         {
+            ShowAlert(sender, "Error", "Hubo un error en la comunicación con el servidor. Inténtalo más tarde");
+         }
+         else
+         {
+            throw e;
+         }
+      }
+
+      public static void ShowAlert(UIViewController sender, string title, string message)
+      {
          var alertController = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
          alertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
          sender.PresentViewController(alertController, true, null);

@@ -32,7 +32,9 @@ namespace NUUP.iOS
 
       private async Task GetDataAsync()
       {
-         await Helper.GetDataAsync(TableView, () => model.CompleteSingleUserAsync(User).Wait());
+         await Helper.GetDataAsync(this, true, async () => {
+            await model.CompleteSingleUserAsync(User);
+         });
 
          NombreLabel.Text = User.FirstName + " " + User.LastName;
          EstudiosLabel.Text = User.Degree.Label;

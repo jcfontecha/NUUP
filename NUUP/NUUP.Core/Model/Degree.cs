@@ -15,6 +15,7 @@ namespace NUUP.Core.Model
       [JsonProperty("label")]
       public string Label { get; set; }
 
+      [JsonProperty("user_by_idDegree")]
       public List<User> Users { get; set; }
 
       public Degree()
