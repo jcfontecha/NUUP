@@ -12,6 +12,13 @@ namespace NUUP.Core.Model
 {
    public class Membership
    {
+      public static readonly string IdMembershipField = "idMembership";
+      public static readonly string IdGroupField = "idGroup";
+      public static readonly string IdUserField = "idUser";
+      public static readonly string CreationField = "creation";
+      public static readonly string GroupField = "group_by_idGroup";
+      public static readonly string UserField = "user_by_idUser";
+
       [JsonProperty("idMembership")]
       public int IdMembership { get; set; }
 

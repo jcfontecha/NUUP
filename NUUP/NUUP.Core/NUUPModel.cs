@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUUP.Core.Model;
 using System;
 using System.Collections.Generic;
@@ -90,13 +91,14 @@ namespace NUUP.Core
          {
             Path = Path.SystemUser,
             Id = user.IdUser,
-            Fields = new[] { "first_name", "last_name", "email" }
+            Fields = new[] { "first_name", "last_name", "name", "email" }
          };
 
          var jObject = await service.GetResourceAsync(request);
 
          user.FirstName = jObject["first_name"].ToString();
          user.LastName = jObject["last_name"].ToString();
+         user.DisplayName = jObject["name"].ToString();
          user.Email = jObject["email"].ToString();
       }
 

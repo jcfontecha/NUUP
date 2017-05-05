@@ -1,59 +1,64 @@
 ﻿using Foundation;
 using NUUP.Core;
+using NUUP.Core.Model;
 using System;
 using System.Collections.Generic;
 using UIKit;
 
 namespace NUUP.iOS
 {
-    public partial class GroupsTableViewController : UITableViewController
-    {
-        private DataSource dataSource;
-        public List<IEntity> Results { get; private set; }
+   public partial class GroupsTableViewController : UITableViewController
+   {
+      private DataSource dataSource;
+      public List<Group> Groups { get; private set; }
+      private GroupsModel model;
 
-        public GroupsTableViewController(IntPtr handle) : base(handle)
-        {
-            Title = NSBundle.MainBundle.LocalizedString("Grupos", "Grupos");
-        }
+      public GroupsTableViewController(IntPtr handle) : base(handle)
+      {
+         Title = NSBundle.MainBundle.LocalizedString("Grupos", "Grupos");
+         model = new GroupsModel();
+      }
 
-        public override void DidReceiveMemoryWarning()
-        {
-            // Releases the view if it doesn't have a superview.
-            base.DidReceiveMemoryWarning();
+      public override async void ViewDidLoad()
+      {
+         base.ViewDidLoad();
 
-            // Release any cached data, images, etc that aren't in use.
-        }
+         // Perform any additional setup after loading the view
+         TableView.Source = dataSource = new DataSource(this);
 
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
+         TableView.RowHeight = UITableView.AutomaticDimension;
+         TableView.EstimatedRowHeight = 125;
 
-            // Perform any additional setup after loading the view
-            TableView.DataSource = dataSource = new DataSource(this);
+         Groups = new List<Group>();
 
-            Results = new List<IEntity>();
-        }
+         await Helper.GetDataAsync(this, true, async () =>
+         {
+            Groups = await model.GetGroups(20);
+         });
+      }
 
-        class DataSource : UITableViewDataSource
-        {
-            private static NSString cellIdentifier = new NSString("Cell");
-            readonly GroupsTableViewController controller;
+      class DataSource : UITableViewSource
+      {
+         private static NSString cellIdentifier = new NSString("GroupCell");
+         readonly GroupsTableViewController controller;
 
-            public DataSource(GroupsTableViewController controller)
-            {
-                this.controller = controller;
-            }
+         public DataSource(GroupsTableViewController controller)
+         {
+            this.controller = controller;
+         }
 
-            public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
-            {
-                var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath);
-                return cell;
-            }
+         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+         {
+            var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath) as SearchResultTableViewCell;
+            cell.UpdateCell(controller.Groups[indexPath.Row]);
 
-            public override nint RowsInSection(UITableView tableView, nint section)
-            {
-                return controller.Results.Count;
-            }
-        }
-    }
+            return cell;
+         }
+
+         public override nint RowsInSection(UITableView tableView, nint section)
+         {
+            return controller.Groups.Count;
+         }
+      }
+   }
 }

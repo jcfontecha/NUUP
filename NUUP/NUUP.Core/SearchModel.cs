@@ -12,6 +12,13 @@ namespace NUUP.Core
       public List<Subject> Subjects { get; set; }
       public List<Offer> Offers { get; set; }
       public List<Group> Groups { get; set; }
+
+      public SearchResults()
+      {
+         Subjects = new List<Subject>();
+         Offers = new List<Offer>();
+         Groups = new List<Group>();
+      }
    }
 
    public class SearchModel : NUUPModel
@@ -41,27 +48,59 @@ namespace NUUP.Core
             var allSubjects = await cache.GetSubjectsAsync(false);
             var subjects = allSubjects.Where(x => x.Name.Contains(term)).ToList();
 
+            string subjectFilter = string.Join(" or ", subjects.Select(x => string.Format("(idSubject = {0})", x.IdSubject)));
+
             // Get Offers
             var offerRequest = new RecordRequest()
             {
                Path = Path.NuupOffer,
-               Filter = string.Format("(description like %{0}%) and (available = 1)", term),
+               Related = new[] { Offer.UserField, Offer.IntervalField },
+               Filter = string.Format("((description like %{0}%) or {1}) and (available = 1)", term, string.Join(" or ", subjectFilter)),
                Limit = "20",
                Order = "creation DESC"
             };
 
             var offers = await service.GetResourceArrayAsync<List<Offer>>(offerRequest);
 
+            // Set subject fields for Offers
+            foreach (var offer in offers)
+            {
+               offer.Subject = subjects.Where(x => x.IdSubject == offer.IdSubject).First();
+            }
+
+            // Set User fields for Offers
+            await FillDreamFactoryUsers(offers.Select(x => x.User));
+
+            // Set Intervals and Weekdays and stuff
+            var weekdays = await cache.GetWeekdaysAsync(false);
+
+            foreach (var offer in offers)
+            {
+               offer.Interval.Weekday = weekdays.Where(x => x.IdWeekday == offer.Interval.IdWeekday).First();
+            }
+
             // Get Groups
             var groupRequest = new RecordRequest()
             {
                Path = Path.NuupGroup,
+               Related = new[] { Group.TutorField, Group.IntervalsField },
                Filter = string.Format("(name like %{0}%) or (description like %{1}%)", term, term),
                Limit = "20",
                Order = "creation DESC"
             };
 
             var groups = await service.GetResourceArrayAsync<List<Group>>(groupRequest);
+
+            // Set User fields for Offers
+            await FillDreamFactoryUsers(groups.Select(x => x.Tutor));
+
+            foreach (var group in groups)
+            {
+               foreach (var interval in group.Intervals)
+               {
+                  interval.Weekday = weekdays.Where(x => x.IdWeekday == interval.IdWeekday).First();
+               }
+            }
 
             var results = new SearchResults()
             {

@@ -12,6 +12,36 @@ namespace NUUP.Core.Model
 {
    public class User
    {
+      public static readonly string IdUserField = "idUser";
+      public static readonly string IdDreamfactoryField = "idDreamfactory";
+      public static readonly string FirstNameField = "first_name";
+      public static readonly string LastNameField = "last_name";
+      public static readonly string DisplayNameField = "name";
+      public static readonly string EmailField = "email";
+      public static readonly string DescriptionField = "description";
+      public static readonly string BirthdayField = "birthday";
+      public static readonly string LatField = "lat";
+      public static readonly string LngField = "lng";
+      public static readonly string IdDegreeField = "idDegree";
+      public static readonly string CreationField = "creation";
+      public static readonly string RatingTutorField = "ratingTutor";
+      public static readonly string RatingStudentField = "ratingStudent";
+      public static readonly string DegreeField = "degree_by_idDegree";
+      public static readonly string LooksForSubjectsField = "subject_by_usr_looksfor_subject";
+      public static readonly string TutorSessionsField = "session_by_idTutor";
+      public static readonly string StudentSessionsField = "session_by_idStudent";
+      public static readonly string AvailableIntervalsField = "interval_by_usr_interval";
+      public static readonly string TutorGroupsField = "group_by_idTutor";
+      public static readonly string OffersField = "offer_by_idUser";
+      public static readonly string MembershipsField = "membership_by_idUser";
+      public static readonly string GroupsField = "group_by_membership";
+      public static readonly string Friendships1Field = "friendship_by_idUser1";
+      public static readonly string Friendships2Field = "friendship_by_idUser2";
+      public static readonly string FriendRequestsField = "friend_request_by_idUserTo";
+      public static readonly string SentMessagesField = "message_by_idUserFrom";
+      public static readonly string ReceivedMessagesField = "message_by_idUserTo";
+      public static readonly string PostsField = "post_by_idUser";
+
       [JsonProperty("idUser")]
       public int IdUser { get; set; }
 

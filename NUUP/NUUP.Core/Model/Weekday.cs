@@ -12,6 +12,9 @@ namespace NUUP.Core.Model
 {
    public class Weekday
    {
+      public static readonly string IdWeekdayField = "idWeekday";
+      public static readonly string LabelField = "label";
+
       [JsonProperty("idWeekday")]
       public int IdWeekday { get; set; }
 

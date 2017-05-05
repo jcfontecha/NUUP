@@ -13,6 +13,14 @@ namespace NUUP.Core.Model
 {
    public class Subject
    {
+      public static readonly string IdSubjectField = "idSubject";
+      public static readonly string NameField = "name";
+      public static readonly string IdCategoryField = "idCategory";
+      public static readonly string OffersField = "offer_by_idSubject";
+      public static readonly string IntervalsField = "interval_by_offer";
+      public static readonly string UsersWhoOfferItField = "user_by_offer";
+      public static readonly string UsersWhoLookForItField = "user_by_usr_looksfor_subject";
+
       [JsonProperty("idSubject")]
       public int IdSubject { get; set; }
 

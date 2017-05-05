@@ -12,6 +12,19 @@ namespace NUUP.Core.Model
 {
    public class Offer
    {
+      public static readonly string IdOfferField = "idOffer";
+      public static readonly string CostField = "cost";
+      public static readonly string DescriptionField = "description";
+      public static readonly string IdSubjectField = "idSubject";
+      public static readonly string IdUserField = "idUser";
+      public static readonly string IdIntervalField = "idInterval";
+      public static readonly string CreationField = "creation";
+      public static readonly string AvailableField = "available";
+      public static readonly string UserField = "user_by_idUser";
+      public static readonly string SubjectField = "subject_by_idSubject";
+      public static readonly string IntervalField = "interval_by_idInterval";
+      public static readonly string SessionsField = "session_by_idOffer";
+
       [JsonProperty("idOffer")]
       public int IdOffer { get; set; }
 

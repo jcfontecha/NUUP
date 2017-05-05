@@ -9,6 +9,12 @@ namespace NUUP.Core.Model
 {
    public class Post
    {
+      public static readonly string IdPostField = "idPost";
+      public static readonly string IdUserField = "idUser";
+      public static readonly string TextField = "text";
+      public static readonly string DateField = "date";
+      public static readonly string UserField = "user_by_idUser";
+
       [JsonProperty("idPost")]
       public int IdPost { get; set; }
 

@@ -10,12 +10,9 @@ namespace NUUP.iOS
    public partial class SearchTableViewController : UITableViewController
    {
       private DataSource dataSource;
-      public List<IEntity> Results { get; private set; }
       private UISearchController searchController;
 
-      public List<Subject> Materias { get; set; }
-      public List<Offer> Ofertas { get; set; }
-      public List<Group> Grupos { get; set; }
+      public SearchResults SearchResults { get; set; }
       private SearchModel model;
 
       public SearchTableViewController(IntPtr handle) : base(handle)
@@ -38,15 +35,14 @@ namespace NUUP.iOS
          base.ViewDidLoad();
 
          // Perform any additional setup after loading the view
-         TableView.DataSource = dataSource = new DataSource(this);
+         TableView.Source = dataSource = new DataSource(this);
 
-         Results = new List<IEntity>();
-         Materias = new List<Subject>();
-         Ofertas = new List<Offer>();
-         Grupos = new List<Group>();
+         TableView.RowHeight = UITableView.AutomaticDimension;
+         TableView.EstimatedRowHeight = 44f;
+
+         SearchResults = new SearchResults();
 
          var searchResultsController = new SearchResultsViewController();
-
 
          var searchUpdater = new SearchResultsUpdater();
          searchUpdater.UpdateSearchResults += searchResultsController.SearchAsync;
@@ -74,7 +70,10 @@ namespace NUUP.iOS
          var query = searchController.SearchBar.Text;
          searchController.Active = false;
 
-         var searchResults = await model.GetSearchResultsAsync(query);
+         await Helper.GetDataAsync(this, true, async () =>
+         {
+            SearchResults = await model.GetSearchResultsAsync(query);
+         });
       }
 
       class SearchResultsUpdater : UISearchResultsUpdating
@@ -87,9 +86,11 @@ namespace NUUP.iOS
          }
       }
 
-      class DataSource : UITableViewDataSource
+      class DataSource : UITableViewSource
       {
-         private static NSString cellIdentifier = new NSString("Cell");
+         private static NSString subjectCellIdentifier = new NSString("SubjectCell");
+         private static NSString resultCellIdentifier = new NSString("SearchResultCell");
+
          readonly SearchTableViewController controller;
 
          public DataSource(SearchTableViewController controller)
@@ -99,14 +100,70 @@ namespace NUUP.iOS
 
          public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
          {
-            var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath);
-         cell.TextLabel.Text = controller.Materias[indexPath.Row].Name;
-            return cell;
+            switch (indexPath.Section)
+            {
+               case 0:
+                  var subjectCell = tableView.DequeueReusableCell(subjectCellIdentifier, indexPath);
+                  subjectCell.TextLabel.Text = controller.SearchResults.Subjects[indexPath.Row].Name;
+                  return subjectCell;
+               case 1:
+                  var resultCell = tableView.DequeueReusableCell(resultCellIdentifier, indexPath) as SearchResultTableViewCell;
+                  resultCell.UpdateCell(controller.SearchResults.Offers[indexPath.Row]);
+                  return resultCell;
+               case 2:
+                  var groupCell = tableView.DequeueReusableCell(resultCellIdentifier, indexPath) as SearchResultTableViewCell;
+                  groupCell.UpdateCell(controller.SearchResults.Groups[indexPath.Row]);
+                  return groupCell;
+               default:
+                  throw new ArgumentException("Invalid index Path");
+            }
          }
+
+         //public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+         //{
+         //   if (indexPath.Section == 1 || indexPath.Section == 2)
+         //   {
+         //      return 135;
+         //   }
+         //   else
+         //   {
+         //      return 44;
+         //   }
+         //}
 
          public override nint RowsInSection(UITableView tableView, nint section)
          {
-            return controller.Materias.Count;
+            switch (section)
+            {
+               case 0:
+                  return controller.SearchResults.Subjects.Count;
+               case 1:
+                  return controller.SearchResults.Offers.Count;
+               case 2:
+                  return controller.SearchResults.Groups.Count;
+               default:
+                  return 0;
+            }
+         }
+
+         public override nint NumberOfSections(UITableView tableView)
+         {
+            return 3;
+         }
+
+         public override string TitleForHeader(UITableView tableView, nint section)
+         {
+            switch (section)
+            {
+               case 0:
+                  return "Materias";
+               case 1:
+                  return "Ofertas";
+               case 2:
+                  return "Grupos";
+               default:
+                  throw new ArgumentException("Invalid section");
+            }
          }
       }
    }

@@ -12,6 +12,10 @@ namespace NUUP.Core.Model
 {
    public class Category
    {
+      public static readonly string IdCategoryField = "idCategory";
+      public static readonly string LabelField = "label";
+      public static readonly string SubjectsField = "subject_by_idCategory";
+
       [JsonProperty("idCategory")]
       public int IdCategory { get; set; }
 

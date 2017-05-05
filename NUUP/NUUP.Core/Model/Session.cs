@@ -12,6 +12,27 @@ namespace NUUP.Core.Model
 {
    public class Session
    {
+      public static readonly string IdSessionField = "idSession";
+      public static readonly string StartDateField = "startDate";
+      public static readonly string HoursField = "hours";
+      public static readonly string CostField = "cost";
+      public static readonly string IdOfferField = "idOffer";
+      public static readonly string IdIntervalField = "idInterval";
+      public static readonly string IdStateField = "idState";
+      public static readonly string IdPlaceField = "idPlace";
+      public static readonly string LatField = "lat";
+      public static readonly string LngField = "lng";
+      public static readonly string IdTutorField = "idTutor";
+      public static readonly string IdStudentField = "idStudent";
+      public static readonly string OtherLocationField = "otherLocation";
+      public static readonly string EndDateField = "endDate";
+      public static readonly string OfferField = "offer_by_idOffer";
+      public static readonly string IntervalField = "interval_by_idInterval";
+      public static readonly string StateField = "state_by_idState";
+      public static readonly string PlaceField = "place_by_idPlace";
+      public static readonly string TutorField = "user_by_idTutor";
+      public static readonly string StudentField = "user_by_idStudent";
+
       [JsonProperty("idSession")]
       public int IdSession { get; set; }
 

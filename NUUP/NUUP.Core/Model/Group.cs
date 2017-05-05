@@ -12,6 +12,21 @@ namespace NUUP.Core.Model
 {
    public class Group
    {
+      public static readonly string User2Field = "user_by_idUser2";
+      public static readonly string IdGroupField = "idGroup";
+      public static readonly string NameField = "name";
+      public static readonly string DescriptionField = "description";
+      public static readonly string CuotaField = "quota";
+      public static readonly string CostField = "cost";
+      public static readonly string LatField = "lat";
+      public static readonly string LngField = "lng";
+      public static readonly string IdTutorField = "idTutor";
+      public static readonly string CreationField = "creation";
+      public static readonly string TutorField = "user_by_idTutor";
+      public static readonly string IntervalsField = "interval_by_group_interval";
+      public static readonly string MembershipsField = "membership_by_idGroup";
+      public static readonly string MembersField = "user_by_membership";
+
       [JsonProperty("idGroup")]
       public int IdGroup { get; set; }
 

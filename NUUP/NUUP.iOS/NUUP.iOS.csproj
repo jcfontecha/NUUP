@@ -121,6 +121,10 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SearchResultsViewController.cs" />
     <Compile Include="SessionHelper.cs" />
+    <Compile Include="SearchResultTableViewCell.cs" />
+    <Compile Include="SearchResultTableViewCell.designer.cs">
+      <DependentUpon>SearchResultTableViewCell.cs</DependentUpon>
+    </Compile>
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>

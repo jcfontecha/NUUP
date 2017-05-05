@@ -12,6 +12,9 @@ namespace NUUP.Core.Model
 {
    public class Place
    {
+      public static readonly string IdPlaceField = "idPlace";
+      public static readonly string LabelField = "label";
+
       [JsonProperty("idPlace")]
       public int IdPlace { get; set; }
 

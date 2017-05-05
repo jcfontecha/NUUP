@@ -12,6 +12,13 @@ namespace NUUP.Core.Model
 {
    public class FriendRequest
    {
+      public static readonly string IdFriendRequestField = "idFriendRequest";
+      public static readonly string IdUserFromField = "idUserFrom";
+      public static readonly string IdUserToField = "idUserTo";
+      public static readonly string CreationField = "creation";
+      public static readonly string UserFromField = "user_by_idUserFrom";
+      public static readonly string UserToField = "user_by_idUserTo";
+
       [JsonProperty("idFriendRequest")]
       public int IdFriendRequest { get; set; }
 

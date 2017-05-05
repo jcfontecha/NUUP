@@ -12,6 +12,9 @@ namespace NUUP.Core.Model
 {
    public class State
    {
+      public static readonly string IdStateField = "idState";
+      public static readonly string LabelField = "label";
+
       [JsonProperty("idState")]
       public int IdState { get; set; }
 
