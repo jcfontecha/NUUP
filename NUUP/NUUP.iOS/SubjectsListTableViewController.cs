@@ -17,7 +17,7 @@ namespace NUUP.iOS
 
       public SubjectsListTableViewController(IntPtr handle) : base(handle)
       {
-         Title = "Clases";
+         Title = "Materias";
          model = new SubjectsModel();
       }
 
@@ -27,7 +27,8 @@ namespace NUUP.iOS
 
          TableView.DataSource = dataSource = new ClassesListDataSource(this);
 
-         await Helper.GetDataAsync(this, true, async () =>
+         Subjects = new List<Subject>();
+         await Helper.GetDataForTableAsync(this, true, async () =>
          {
             Subjects = await model.GetSubjectsForCategory(Category);
          });

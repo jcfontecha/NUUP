@@ -68,7 +68,7 @@ namespace NUUP.iOS
 
       public async Task GetDataAsync()
       {
-         await Helper.GetDataAsync(this, true, async () =>
+         await Helper.GetDataForTableAsync(this, true, async () =>
          {
             Noticias = await model.GetLatestNewsAsync(10);
          });

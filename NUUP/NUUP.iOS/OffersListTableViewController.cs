@@ -12,7 +12,7 @@ namespace NUUP.iOS
    {
       private OfertasListDataSource dataSource;
       public Subject Subject { get; set; }
-      public List<Offer> Ofertas { get; set; }
+      public List<Offer> Offers { get; set; }
       private OffersModel model;
 
       public OffersListTableViewController(IntPtr handle) : base(handle)
@@ -27,18 +27,32 @@ namespace NUUP.iOS
          model = new OffersModel();
          TableView.DataSource = dataSource = new OfertasListDataSource(this);
 
-         Ofertas = new List<Offer>();
+         TableView.RowHeight = UITableView.AutomaticDimension;
+         TableView.EstimatedRowHeight = 125;
 
-         await Helper.GetDataAsync(this, true, async () =>
+         Offers = new List<Offer>();
+
+         await Helper.GetDataForTableAsync(this, true, async () =>
          {
-            Ofertas = await model.GetOffersForSubjectAsync(Subject);
+            Offers = await model.GetOffersForSubjectAsync(Subject);
          });
+      }
+
+      public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+      {
+         base.PrepareForSegue(segue, sender);
+
+         if (segue.Identifier == "ShowOfferDetails")
+         {
+            var destVC = segue.DestinationViewController as OfferDetailTableViewController;
+            destVC.Offer = Offers[TableView.IndexPathForSelectedRow.Row];
+         }
       }
 
       private class OfertasListDataSource : UITableViewDataSource
       {
          readonly OffersListTableViewController controller;
-         static string cellIdentifier = "Cell";
+         static string cellIdentifier = "OfferCell";
 
          public OfertasListDataSource(OffersListTableViewController controller)
          {
@@ -47,16 +61,17 @@ namespace NUUP.iOS
 
          public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
          {
-            var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath);
-            cell.TextLabel.Text = controller.Ofertas[indexPath.Row].Subject.Name;
-            cell.DetailTextLabel.Text = controller.Ofertas[indexPath.Row].Description;
+            var cell = tableView.DequeueReusableCell(cellIdentifier, indexPath) as SearchResultTableViewCell;
+            var offer = controller.Offers[indexPath.Row];
+
+            cell.UpdateCell(offer);
 
             return cell;
          }
 
          public override nint RowsInSection(UITableView tableView, nint section)
          {
-            return controller.Ofertas.Count;
+            return controller.Offers.Count;
          }
       }
    }

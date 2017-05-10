@@ -123,5 +123,31 @@ namespace NUUP.Core
          return user;
       }
 
+      public async Task<State> GetStateForId(int id)
+      {
+         var request = new RecordRequest()
+         {
+            Path = Path.NuupState,
+            Id = id
+         };
+
+         try
+         {
+            var state = await service.GetResourceAsync<State>(request);
+
+            return state;
+         }
+         catch (Exception e)
+         {
+            if (e is UnexpectedParsingException)
+            {
+               throw new ServerErrorException("There was an error getting the resource from the server", e);
+            }
+            else
+            {
+               throw e;
+            }
+         }
+      }
    }
 }

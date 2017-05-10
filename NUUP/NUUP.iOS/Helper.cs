@@ -20,9 +20,9 @@ namespace NUUP.iOS
       /// <param name="sender">UITableViewController to be animated</param>
       /// <param name="dataUpdater">Action that synchronously gets data for the table view</param>
       /// <returns></returns>
-      public static async Task GetDataAsync(UITableViewController sender, Func<Task> dataUpdater)
+      public static async Task GetDataForTableAsync(UITableViewController sender, Func<Task> dataUpdater)
       {
-         await GetDataAsync(sender, false, dataUpdater);
+         await GetDataForTableAsync(sender, false, dataUpdater);
       }
 
       /// <summary>
@@ -33,7 +33,7 @@ namespace NUUP.iOS
       /// <param name="dataUpdater">Action that synchronously gets data for the table view</param>
       /// <param name="animateRefreshControl">Wether or not we should animate a RefreshControl</param>
       /// <returns></returns>
-      public static async Task GetDataAsync(UITableViewController sender, bool animateRefreshControl, Func<Task> dataUpdater)
+      public static async Task GetDataForTableAsync(UITableViewController sender, bool animateRefreshControl, Func<Task> dataUpdater)
       {
          // Check for animation
          if (animateRefreshControl)
@@ -43,6 +43,19 @@ namespace NUUP.iOS
             sender.TableView.SetContentOffset(new CGPoint(0, -sender.TableView.RefreshControl.Frame.Size.Height), true);
          }
 
+         await GetDataAsync(sender, dataUpdater);
+
+         if (animateRefreshControl)
+         {
+            sender.TableView.SetContentOffset(new CGPoint(0, sender.TableView.RefreshControl.Frame.Size.Height), true);
+            sender.TableView.RefreshControl.EndRefreshing();
+         }
+
+         sender.TableView.ReloadData();
+      }
+
+      public static async Task GetDataAsync(UIViewController sender, Func<Task> dataUpdater)
+      {
          // Call data pulling
          try
          {
@@ -52,14 +65,6 @@ namespace NUUP.iOS
          {
             HandleServerError(sender, e);
          }
-
-         if (animateRefreshControl)
-         {
-            sender.TableView.SetContentOffset(new CGPoint(0, sender.TableView.RefreshControl.Frame.Size.Height), true);
-            sender.TableView.RefreshControl.EndRefreshing();
-         }
-
-         sender.TableView.ReloadData();
       }
 
       public static string RemoveQueryStringByKey(string url, string key)

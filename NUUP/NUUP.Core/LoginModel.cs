@@ -84,7 +84,7 @@ namespace NUUP.Core
 
          // Register newly logged in user with SessionManager
          var session = SessionManager.Instance;
-         session.SetLoginInfo(user, jObject["session_token"].ToString());
+         session.SetLoginInfoAsync(user, jObject["session_token"].ToString());
 
          return user;
       }

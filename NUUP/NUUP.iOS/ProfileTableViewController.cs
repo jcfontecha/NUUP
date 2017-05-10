@@ -32,7 +32,7 @@ namespace NUUP.iOS
 
       private async Task GetDataAsync()
       {
-         await Helper.GetDataAsync(this, true, async () => {
+         await Helper.GetDataForTableAsync(this, true, async () => {
             await model.CompleteSingleUserAsync(User);
          });
 

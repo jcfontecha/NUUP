@@ -71,7 +71,7 @@ namespace NUUP.Core
          });
       }
       
-      public void SetLoginInfo(User user, string sessionToken)
+      public async void SetLoginInfoAsync(User user, string sessionToken)
       {
          if (user != null)
          {
@@ -79,6 +79,31 @@ namespace NUUP.Core
 
             User = user;
             SessionToken = sessionToken;
+
+            if (string.IsNullOrEmpty(user.FirstName))
+            {
+               var request = new RecordRequest()
+               {
+                  Path = Path.User,
+                  Id = user.IdUser
+               };
+
+               try
+               {
+                  user = await ServiceManager.Instance.GetResourceAsync<User>(request);
+               }
+               catch (Exception e)
+               {
+                  if (e is UnexpectedParsingException)
+                  {
+                     throw new ServerErrorException("There was an error getting the resource from the server", e);
+                  }
+                  else
+                  {
+                     throw e;
+                  }
+               }
+            }
 
             OnLoginSuccess(new LoginSuccessEventArgs()
             {

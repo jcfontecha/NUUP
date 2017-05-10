@@ -70,7 +70,7 @@ namespace NUUP.iOS
          var query = searchController.SearchBar.Text;
          searchController.Active = false;
 
-         await Helper.GetDataAsync(this, true, async () =>
+         await Helper.GetDataForTableAsync(this, true, async () =>
          {
             SearchResults = await model.GetSearchResultsAsync(query);
          });

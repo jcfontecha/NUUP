@@ -30,7 +30,7 @@ namespace NUUP.iOS
          TableView.DataSource = dataSource = new DataSource(this);
 
          // Get data
-         await Helper.GetDataAsync(this, async () =>
+         await Helper.GetDataForTableAsync(this, async () =>
          {
             Categories = await model.GetCategories();
          });

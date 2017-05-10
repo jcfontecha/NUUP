@@ -88,6 +88,18 @@
     <Compile Include="CreateAccountViewController.designer.cs">
       <DependentUpon>CreateAccountViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditSessionTableViewController.cs" />
+    <Compile Include="EditSessionTableViewController.designer.cs">
+      <DependentUpon>EditSessionTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GroupDetailTableViewController.cs" />
+    <Compile Include="GroupDetailTableViewController.designer.cs">
+      <DependentUpon>GroupDetailTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfferDetailTableViewController.cs" />
+    <Compile Include="OfferDetailTableViewController.designer.cs">
+      <DependentUpon>OfferDetailTableViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchTableViewController.cs" />
     <Compile Include="SearchTableViewController.designer.cs">
       <DependentUpon>SearchTableViewController.cs</DependentUpon>

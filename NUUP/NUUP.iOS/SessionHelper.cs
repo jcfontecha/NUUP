@@ -80,7 +80,10 @@ namespace NUUP.iOS
             // TODO: Implement cache or figure out a way to fetch the data
             // or verify the login with the server in this step
             var session = SessionManager.Instance;
-            session.SetLoginInfo(new User() { IdUser = idUser, DisplayName = "TEST" }, sessionToken);
+            Helper.GetDataAsync(Sender, async () =>
+            {
+               session.SetLoginInfoAsync(new User() { IdUser = idUser }, sessionToken);
+            });
 
             return new Tuple<string, int>(sessionToken, idUser);
          }

@@ -30,7 +30,7 @@ namespace NUUP.iOS
 
       public async void SearchAsync(string text)
       {
-         await Helper.GetDataAsync(this, async () =>
+         await Helper.GetDataForTableAsync(this, async () =>
          {
             Subjects = await model.SearchSubjectsAsync(text);
          });

@@ -31,10 +31,21 @@ namespace NUUP.iOS
 
          Groups = new List<Group>();
 
-         await Helper.GetDataAsync(this, true, async () =>
+         await Helper.GetDataForTableAsync(this, true, async () =>
          {
             Groups = await model.GetGroups(20);
          });
+      }
+
+      public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+      {
+         base.PrepareForSegue(segue, sender);
+
+         if (segue.Identifier == "ShowGroupSegue")
+         {
+            var destVC = segue.DestinationViewController as GroupDetailTableViewController;
+            destVC.Group = Groups[TableView.IndexPathForSelectedRow.Row];
+         }
       }
 
       class DataSource : UITableViewSource

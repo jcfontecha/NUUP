@@ -19,7 +19,7 @@ namespace NUUP.Core.Model
       public int IdPlace { get; set; }
 
       [JsonProperty("label")]
-      public int Label { get; set; }
+      public string Label { get; set; }
 
       public Place()
       {
